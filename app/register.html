@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <link href="../css/vendor/bootstrap.min.css" rel="stylesheet">
+	<link href='../css/vendor/bootstrap-theme.css' type='text/css' rel='stylesheet'/>
+  <link href="../css/style.css" rel="stylesheet">.
+  <link rel="stylesheet" href="/static/jAlert-master/src/jAlert-v3.css" />
+  <script src="../js/vendor/angular.js" type="text/javascript"></script>
+  <script src="../js/appjs.js" type="text/javascript"></script>
+  <script src="/static/jAlert-master/src/jAlert-v3.js"></script>
+  <script src="/static/jAlert-master/src/jAlert-functions.js"></script>
+
+</head>
+
+<body ng-app="registerApp">
+  <!-- This is the header with the nav -->
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="row">
+        <div class="col-xs-4">
+          <img src="../images/logo.jpg" class="img-responsive logo">
+        </div>
+
+        <div class="col-xs-4">
+          <div class="nav-dropdown" ng-controller="myTurnCtrl">
+            <select class="btn btn-primary" ng-model="selectedName" ng-options="x for x in names">
+              <option value="">Turn</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="nav-dropdown" ng-controller="myPenaltyCtrl">
+            <select class="btn btn-primary" ng-model="selectedName" ng-options="x for x in names">
+              <option value="">Penalty</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Finish of header and nav -->
+
+  <div class="container" ng-controller="contRegisterCtrl as ctr">
+    <div class="panel panel-success col-md-offset-4 col-md-6">
+      <div class="panel-heading">Register</div>
+      <div class="panel-body">
+        <form class="form-horizontal" id="registerForm">
+          <div class="form-group">
+            <label class="col-md-4 control-label">Name:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="name" type="text" name="name" placeholder="Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Middle Name:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="middleName" type="text" name="middleName" placeholder="Middle Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Last Name:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="lastName" type="text" name="lastName" placeholder="Last Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">RUM ID Number:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="rumIdNumber" type="text" name="RumIdNumber" placeholder="RUM ID Number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Birth date:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="birthDate" type="date" name="birthDate">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Phone:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="phone" type="text" name="phone" placeholder="(_ _ _)  _ _ _  _ _ _ _">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Handicap:</label>
+            <div class="col-md-8">
+              <input type="checkbox" value="" id="handicap" ng-model="ctr.handicap"> Handicap
+              <input class="form-control" id="inputHandicap" type="text" name="handicap" placeholder="Handicap Description" ng-model="ctr.inputHandicap" ng-disabled = "!ctr.handicap">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Mail:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="mail" type="mail" name="mail" placeholder="my.mail@upr.edu">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" id="pass" type="password" name="pass">
+            </div>
+          </div>
+          <div class="col-md-offset-4 col-md-6">
+            <button type="button" class="btn btn-success col-md-6" style="margin: 10px;">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start of footer -->
+  <footer class="well" align="center">
+      Developed @2016
+  </footer>
+  <!-- End of footer -->
+</body>
+</html>

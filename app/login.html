@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in</title>
+  <link href="../css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="../css/style.css" rel="stylesheet">
+  <script src="../js/vendor/angular.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <!-- This is the header with the nav -->
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="row">
+        <div class="col-xs-4">
+          <img src="../images/logo.jpg" class="img-responsive logo">
+        </div>
+
+        <div class="col-xs-4">
+          <div class="nav-dropdown" ng-app="navTurno" ng-controller="myCtrl">
+            <select class="btn btn-primary" ng-model="selectedName" ng-options="x for x in names">
+              <option value="">Turn</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="nav-dropdown" ng-app="navPenalty" ng-controller="myCtrl">
+            <select class="btn btn-primary" ng-model="selectedName" ng-options="x for x in names">
+              <option value="">Penalty</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+<!-- Finish of header and nav -->
+
+  <div class="container">
+    <div class="panel panel-success col-md-offset-4 col-md-6" >
+      <div class="panel-heading">Log in</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col-md-2 control-label">Mail:</label>
+          <div class="col-md-10">
+            <input class="form-control" id="mail" type="text" name="mail">
+          </div>
+         </div>
+         <div class="form-group">
+           <label class="col-md-2 control-label" align="center">Password:</label>
+           <div class="col-md-10">
+             <input class="form-control" id="pass" type="password" name="pass">
+           </div>
+         </div>
+        <div class="row">
+          <div class="col-md-offset-4 col-md-6">
+            <button type="button" class="btn btn-success col-md-6" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
+          </div>
+          <div class="col-md-offset-4 col-md-6">
+            <a href="./register.html"><button type="button" class="btn btn-danger" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Create Account</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start of footer -->
+  <footer class="well" align="center">
+      Developed @2016
+  </footer>
+   <!-- End of footer -->
+</body>
+</html>
