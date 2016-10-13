@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name appFrontApp.controller:RegistrerConfirmCtrl
+ * @name appFrontApp.controller:AdminCurrentTurnCtrl
  * @description
- * # RegistrerConfirmCtrl
+ * # AdminCurrentTurnCtrl
  * Controller of the appFrontApp
  */
 angular.module('appFrontApp')
-  .controller('RegistrerConfirmCtrl', function () {
+  .controller('AdminCurrentTurnCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name appFrontApp.controller:StudentHome
+ * @name appFrontApp.controller:StudentHomeCtrl
  * @description
- * # StudentHome
+ * # StudentHomeCtrl
  * Controller of the appFrontApp
  */
 angular.module('appFrontApp')
-  .controller('StudentHome', function () {
+  .controller('StudentHomeCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
