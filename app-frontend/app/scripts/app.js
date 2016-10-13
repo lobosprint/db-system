@@ -29,6 +29,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/studentHome', {
+        templateUrl: 'views/studentHome.html',
+        controller: 'StudentHomeCtrl',
+        controllerAs: 'studentHome'
+      })
       .when('/registrer', {
         templateUrl: 'views/registrer.html',
         controller: 'RegistrerCtrl',
