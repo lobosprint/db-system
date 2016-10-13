@@ -29,6 +29,31 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/studentPenaltiesView', {
+        templateUrl: 'views/studentPenaltiesView.html',
+        controller: 'StudentPenaltiesViewCtrl',
+        controllerAs: 'studentPenaltiesView'
+      })
+      .when('/adminCurrentTurn', {
+        templateUrl: 'views/adminCurrentTurn.html',
+        controller: 'AdminCurrentTurnCtrl',
+        controllerAs: 'adminCurrentTurn'
+      })
+      .when('/adminTurnsHistory', {
+        templateUrl: 'views/adminTurnsHistory.html',
+        controller: 'AdminTurnsHistoryCtrl',
+        controllerAs: 'adminTurnsHistory'
+      })
+      .when('/studentPaymentsView', {
+        templateUrl: 'views/studentPaymentsView.html',
+        controller: 'StudentPaymentsViewCtrl',
+        controllerAs: 'studentPaymentsView'
+      })
+      .when('/studentPayPenalty', {
+        templateUrl: 'views/studentPayPenalty.html',
+        controller: 'StudentPayPenaltyCtrl',
+        controllerAs: 'studentPayPenalty'
+      })
       .when('/studentHome', {
         templateUrl: 'views/studentHome.html',
         controller: 'StudentHomeCtrl',

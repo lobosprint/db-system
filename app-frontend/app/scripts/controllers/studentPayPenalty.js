@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name appFrontApp.controller:RegistrerConfirmCtrl
+ * @name appFrontApp.controller:StudentPayPenaltyCtrl
  * @description
- * # RegistrerConfirmCtrl
+ * # StudentPayPenaltyCtrl
  * Controller of the appFrontApp
  */
 angular.module('appFrontApp')
-  .controller('RegistrerConfirmCtrl', function () {
+  .controller('StudentPayPenaltyCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
