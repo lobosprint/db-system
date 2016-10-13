@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-md-offset-4 col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">Register</div>
+
+      <div class="panel-body">
+        <form class="form-horizontal" id="registerForm">
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Name:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="name" type="text" name="name" placeholder="Name">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Middle Name:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="middleName" type="text" name="middleName" placeholder="Middle Name">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Last Name:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="lastName" type="text" name="lastName" placeholder="Last Name">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">RUM ID Number:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="rumIdNumber" type="text" name="RumIdNumber" placeholder="RUM ID Number">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Birth date:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="birthDate" type="date" name="birthDate">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Phone:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="phone" type="text" name="phone" placeholder="(_ _ _)  _ _ _  _ _ _ _">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Handicap:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input type="checkbox" value="" id="handicap" ng-model="ctr.handicap"> Handicap
+                <input class="form-control" id="inputHandicap" type="text" name="handicap" placeholder="Handicap Description" ng-model="ctr.inputHandicap" ng-disabled = "!ctr.handicap">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Mail:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="mail" type="mail" name="mail" placeholder="my.mail@upr.edu">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row padding-aside">
+              <div class="col-md-4">
+                <label class="control-label">Password:</label>
+              </div>
+
+              <div class="col-md-8">
+                <input class="form-control" id="pass" type="password" name="pass">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-offset-4 col-md-6">
+              <a ng-href="indexStudent.html#/registrerConfirm">
+                <button type="button" class="btn btn-success col-md-6" style="margin: 10px;">Register</button>
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,23 +1,46 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="row">
+  <div class="col-xs-12 col-lg-offset-3 col-lg-6">
+    <div class="panel panel-success" >
+      <div class="panel-heading">Log in</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-2">
+              <label class="control-label">Mail:</label>
+            </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+            <div class="col-md-10">
+              <input class="form-control" id="mail" type="text" name="mail">
+            </div>
+          </div>
+        </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-2">
+              <label class="control-label" align="center">Password:</label>
+            </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+            <div class="col-md-10">
+              <input class="form-control" id="pass" type="password" name="pass">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-xs-offset-0 col-md-offset-2 col-md-4">
+            <button type="button" class="btn btn-lg btn-success hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
+            <button type="button" class="btn btn-success visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
+          </div>
+
+          <div class="col-xs-7 col-md-4">
+            <a ng-href="#/registrer">
+              <button type="button" class="btn-lg btn btn-info hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Create Account</button>
+              <button type="button" class="btn btn-info visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Create Account</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

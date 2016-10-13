@@ -29,7 +29,27 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/registrer', {
+        templateUrl: 'views/registrer.html',
+        controller: 'RegistrerCtrl',
+        controllerAs: 'registrer'
+      })
+      .when('/registrerConfirm', {
+        templateUrl: 'views/registrerConfirm.html',
+        controller: 'RegistrerConfirmCtrl',
+        controllerAs: 'registrerConfirm'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+var app = angular.module('navTurno', []);
+app.controller('myCtrl', function($scope) {
+    $scope.names = ["Solicitar", "Pendientes"];
+});
+
+var app = angular.module('navPenalty', []);
+app.controller('myCtrl', function($scope) {
+    $scope.names = ["Pagadas", "Pendientes"];
+});

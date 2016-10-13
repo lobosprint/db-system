@@ -20,43 +20,32 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">appFront</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- This is the header with the nav -->
+    <header class="container">
+        <nav class="navbar navbar-default">
+            <div class="row">
+                <div class="col-xs-4 col-sm-2">
+                    <img src="./images/logo.jpg" class="img-responsive logo">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Finish of header and nav -->
 
     <div class="container">
     <div ng-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+    <!-- Start of footer -->
+    <footer class="container">
+    <div class="navbar navbar-default">
+      <div class="row">
+        <div class="col-xs-12">
+          Developed @2016
+        </div>
+      </div></div>
+    </footer>
+    <!-- End of footer -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
