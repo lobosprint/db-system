@@ -1,5 +1,9 @@
-<div class="panel panel-default">
-    <div class="panel-heading">Atendiendo a Pepito Goznalez - <b>0h 45min 33seg</div>
+<div class="panel panel-default" ng-controller="AdminCurrentTurnCtrl as admincurrentturn" ng-init="fetch"  >
+    <div class="panel-heading">Atendiendo a {{student.name+ " "+ student.middleName+ " "+student.lastName}} - <b>0h 45min 33seg</b>
+   {{student.name}}
+    <!-- <timer interval="1000" autostart="true">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer> -->
+
+    </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-3">
