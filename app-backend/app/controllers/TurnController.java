@@ -36,7 +36,7 @@ public class TurnController extends Controller{
 //        for(int i = 0; i < 2; i++){
 //            Turn turn;
 //            turn = new Turn( "Bla bla bla #" + (i+1), new DateTime(), (new DateTime()).plusDays(10),
-//                                new BigDecimal(1000));
+//                                1000);
 //            TurnsList.add(turn);
 //        }
 //

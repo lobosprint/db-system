@@ -10,8 +10,11 @@
 #GET     /app-backend/login          controllers.LoginController.login
 # An example controller showing how to use dependency injection
 GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
+GET     /app-backend/getStudent     controllers.StudentController.getStudent
+
 
 GET     /getStudents                controllers.StudentController.getAllStudents
+GET     /getStudent                 controllers.StudentController.getStudent
 
 POST     /app-backend/login         controllers.LoginController.login
 
