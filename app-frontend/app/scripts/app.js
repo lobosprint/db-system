@@ -24,6 +24,26 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/studentConfirmTicket', {
+        templateUrl: 'views/studentConfirmTicket.html',
+        controller: 'StudentConfirmTicketCtrl',
+        controllerAs: 'studentConfirmTicket'
+      })
+      .when('/studentConfirmPayment', {
+        templateUrl: 'views/studentConfirmPayment.html',
+        controller: 'StudentConfirmPaymentCtrl',
+        controllerAs: 'studentConfirmPayment'
+      })
+      .when('/studentListTurns', {
+        templateUrl: 'views/studentListTurns.html',
+        controller: 'StudentListTurnsCtrl',
+        controllerAs: 'studentListTurns'
+      })
+      .when('/studentGetTurn', {
+        templateUrl: 'views/studentGetTurn.html',
+        controller: 'StudentGetTurnCtrl',
+        controllerAs: 'studentGetTurn'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
@@ -33,6 +53,21 @@ angular
         templateUrl: 'views/studentPenaltiesView.html',
         controller: 'StudentPenaltiesViewCtrl',
         controllerAs: 'studentPenaltiesView'
+      })
+      .when('/adminHome', {
+        templateUrl: 'views/adminHome.html',
+        controller: 'AdminHomeCtrl',
+        controllerAs: 'adminHome'
+      })
+      .when('/adminPassTurn', {
+        templateUrl: 'views/adminPassTurn.html',
+        controller: 'AminPassTurnCtrl',
+        controllerAs: 'adminPassTurn'
+      })
+      .when('/adminTurnQueue', {
+        templateUrl: 'views/adminTurnQueue.html',
+        controller: 'AdminTurnQueueCtrl',
+        controllerAs: 'adminTurnQueue'
       })
       .when('/adminCurrentTurn', {
         templateUrl: 'views/adminCurrentTurn.html',
@@ -59,10 +94,14 @@ angular
         controller: 'StudentHomeCtrl',
         controllerAs: 'studentHome'
       })
+      .when('/adminPendingTurns', {
+        templateUrl: 'views/adminPendingTurns.html',
+        controller: 'AdminPendingTurnsCtrl',
+        controllerAs: 'adminPendingTurns'
+      })
       .when('/registrer', {
         templateUrl: 'views/registrer.html',
         controller: 'RegistrerCtrl',
-        controllerAs: 'registrer'
       })
       .when('/registrerConfirm', {
         templateUrl: 'views/registrerConfirm.html',
@@ -73,13 +112,3 @@ angular
         redirectTo: '/'
       });
   });
-
-var app = angular.module('navTurno', []);
-app.controller('myCtrl', function($scope) {
-    $scope.names = ["Solicitar", "Pendientes"];
-});
-
-var app = angular.module('navPenalty', []);
-app.controller('myCtrl', function($scope) {
-    $scope.names = ["Pagadas", "Pendientes"];
-});
