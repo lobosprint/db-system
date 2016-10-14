@@ -1,10 +1,16 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
+import org.joda.time.DateTime;
 import play.data.FormFactory;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.Student;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by cristian on 10-14-16.
@@ -23,4 +29,17 @@ public class StudentController extends Controller{
         }
     }
 
+    public Result getAllStudents(){
+        ArrayList<Student> studentsList;
+        studentsList = new ArrayList<>();
+
+        for(int i = 0; i < 4; i++){
+            Student student;
+            student = new Student( "FName#" + (i+1), "MName#" + (i+1), "LName#" + (i+1), new DateTime(),
+                    "1234561", "FName" + (i+1) + "@test.com", "123451", "7891", false);
+            studentsList.add(student);
+        }
+        JsonNode studentsListJson = Json.toJson(studentsList);
+        return ok(studentsListJson);
+    }
 }

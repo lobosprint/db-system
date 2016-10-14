@@ -2,7 +2,7 @@ package models;
 
 import com.avaje.ebean.Model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 import javax.persistence.Entity;
 
@@ -15,13 +15,13 @@ public class Person extends Model {
     public String   name;
     public String   middleName;
     public String   lastName;
-    public Date     birthDate;
+    public DateTime birthDate;
     public String   phone;
     public String   mail;
     public String   pass;
     public String   rumId;
 
-    public Person(){
+    Person(){
         name        = "";
         middleName  = "";
         lastName    = "";
@@ -30,6 +30,18 @@ public class Person extends Model {
         mail        = "";
         pass        = "";
         rumId       = "";
+    }
+
+    Person(String name, String middleName, String lastName, DateTime birthDate,
+                    String phone, String mail, String pass, String rumId){
+        this.name = name;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.phone = phone;
+        this.mail = mail;
+        this.pass = pass;
+        this.rumId = rumId;
     }
 
 }

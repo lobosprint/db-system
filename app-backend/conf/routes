@@ -3,14 +3,17 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.LoginController.login
+#GET     /                           controllers.LoginController.login
 # An example controller showing a sample home page
-GET     /app-backend                           controllers.LoginController.login
+#GET     /app-backend                controllers.LoginController.login
 # An example controller showing a sample home page
-GET     /app-backend/login                           controllers.LoginController.login
+#GET     /app-backend/login          controllers.LoginController.login
 # An example controller showing how to use dependency injection
+GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
 
-POST     /app-backend/login                     controllers.LoginController.login
+GET     /getStudents                controllers.StudentController.getAllStudents
+
+POST     /app-backend/login         controllers.LoginController.login
 
 POST     /addStudent                controllers.StudentController.addStudent
 
