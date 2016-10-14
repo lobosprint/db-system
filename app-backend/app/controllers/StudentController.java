@@ -42,4 +42,12 @@ public class StudentController extends Controller{
         JsonNode studentsListJson = Json.toJson(studentsList);
         return ok(studentsListJson);
     }
+
+    public Result getStudent(){
+        Student student;
+        student = new Student( "FName#123", "MName#123", "LName#123", new DateTime(),
+                    "1234561", "FName123@test.com", "123451", "7891", false);
+        JsonNode studentsListJson = Json.toJson(student);
+        return ok(studentsListJson);
+    }
 }

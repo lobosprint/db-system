@@ -29,19 +29,19 @@ public class TurnController extends Controller{
         }
     }
 
-    public Result getAllTurns(){
-        ArrayList<Turn> TurnsList;
-        TurnsList = new ArrayList<>();
-
-        for(int i = 0; i < 2; i++){
-            Turn turn;
-            turn = new Turn( "Bla bla bla #" + (i+1), new DateTime(), (new DateTime()).plusDays(10),
-                                new BigDecimal(1000));
-            TurnsList.add(turn);
-        }
-
-        JsonNode turnsListJson = Json.toJson(TurnsList);
-        return ok(turnsListJson);
-    }
+//    public Result getAllTurns(){
+//        ArrayList<Turn> TurnsList;
+//        TurnsList = new ArrayList<>();
+//
+//        for(int i = 0; i < 2; i++){
+//            Turn turn;
+//            turn = new Turn( "Bla bla bla #" + (i+1), new DateTime(), (new DateTime()).plusDays(10),
+//                                1000);
+//            TurnsList.add(turn);
+//        }
+//
+//        JsonNode turnsListJson = Json.toJson(TurnsList);
+//        return ok(turnsListJson);
+//    }
 
 }

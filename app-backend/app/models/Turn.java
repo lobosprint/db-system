@@ -17,7 +17,7 @@ public class Turn extends Controller{
     public String description;
     public DateTime startTime;
     public DateTime endTime;
-    public BigDecimal penaltyCost;
+    public int penaltyCost;
 
     Turn() {
         student = new Student();
@@ -27,10 +27,10 @@ public class Turn extends Controller{
         description = "";
         startTime = null;
         endTime = null;
-        penaltyCost = new BigDecimal(0);
+        penaltyCost = 0;
     }
 
-    public Turn(String description, DateTime startTime, DateTime endTime, BigDecimal penaltyCost){
+    public Turn(String description, DateTime startTime, DateTime endTime, int penaltyCost){
         student = new Student();
         administrative = new Administrative();
         comment = new Comment();
