@@ -1,38 +1,33 @@
-
-
-
-  <center class= "margin-bottom-xs h3">
-    Turnos
-  </center>
-
-<div class= "row margin-bottom-xs">
-
-    <button type="button" class="btn btn-info center-block margin-bottom-xs ">Solicitar Turno</button>   
-   
-    <button type="button" class="btn btn-info center-block margin-bottom-xs">Turnos Pendientes</button> 
-
-
-</div>
-
- <center class= "margin-bottom-xs h3">
-    Penalizaciones
-  </center>
-
-
-
-  <button type="button" class="btn btn-info center-block margin-bottom-xs">Ver Penalizaciones</button>
-
-<button type="button" class="btn btn-info center-block margin-bottom-xs">Ver Pagos</button> 
-
 <div class="container">
-
   <div class="panel-group">
-
     <div class="panel panel-primary">
       <div class="panel-heading">Turnos</div>
-      <div class="panel-body">Solicitar Turno</div>
-       <div class="panel-body">Turnos Pendientes</div>
-    </div>
+      <div class="panel-body">
+        <a ng-href="#/studentGetTurn">
+          <button type="button" class="btn btn-info space-xs">Solicitar Turno</button>
+        </a>
 
+        <a ng-href="#/studentListTurns">
+          <button type="button" class="btn btn-info space-xs">Turnos Pendientes</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penalizaciones</div>
+      <div class="panel-body">
+        <a ng-href="#/studentPenaltiesView">
+          <button type="button" class="btn btn-info space-xs">Ver Penalizaciones</button>
+        </a>
+
+        <a ng-href="#/studentPaymentsView">
+          <button type="button" class="btn btn-info space-xs">Ver Pagos realizados</button>
+        </a>
+      </div>
+    </div>
   </div>
 </div>

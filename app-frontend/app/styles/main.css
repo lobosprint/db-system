@@ -21,3 +21,7 @@ a>button:hover {
 .nav-pills {
     margin-top: 40px;
 }
+
+.space-xs {
+    margin: 10px;
+}
