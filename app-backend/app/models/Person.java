@@ -11,7 +11,7 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Person extends Model {
+public class Person extends Model{
     public String   name;
     public String   middleName;
     public String   lastName;

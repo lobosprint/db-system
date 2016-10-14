@@ -1,14 +1,24 @@
 package models;
 
+import com.avaje.ebean.Model;
+
+import javax.persistence.Entity;
+
 /**
  * Created by cristian on 10-14-16.
  */
-public class Job {
+@Entity
+public class Job extends Model {
     public String name;
     public String description;
 
-    public Job(){
+    Job(){
         name        = "";
         description = "";
+    }
+
+    public Job(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 }

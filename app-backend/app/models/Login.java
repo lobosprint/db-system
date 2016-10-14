@@ -12,9 +12,13 @@ public class Login extends Model {
     public String mail;
     public  String pass;
 
-     public Login(){
+     Login(){
          mail = "";
          pass = "";
      }
 
+    public Login(String mail, String pass) {
+        this.mail = mail;
+        this.pass = pass;
+    }
 }
