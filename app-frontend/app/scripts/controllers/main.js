@@ -11,11 +11,13 @@ angular.module('appFrontApp')
   .controller('MainCtrl', function ($scope, $http, $log) {
      $scope.signup = function() {
        var values = {
-         email : $scope.mail,
+         mail : $scope.mail,
          pass : $scope.pass
        };
 
-       $http.get('http://136.145.116.186:9090/login', values)
+       $log.error(values);
+
+       $http.post('app-backend/login', values)
            .success(function(data) {
              $log.debug(data);
            });
