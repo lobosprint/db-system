@@ -1,15 +1,20 @@
 package models;
 
+import com.avaje.ebean.Model;
 import org.joda.time.DateTime;
-import play.mvc.Controller;
+import play.api.libs.json.JsValue;
+import play.api.libs.json.Writes;
+import scala.Function1;
 
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 /**
  * Created by cristian on 10-14-16.
  */
+@Entity
+public class Turn extends Model {
 
-public class Turn extends Controller{
     public Student student;
     public Administrative administrative;
     public Comment comment;
@@ -17,7 +22,7 @@ public class Turn extends Controller{
     public String description;
     public DateTime startTime;
     public DateTime endTime;
-    public int penaltyCost;
+    public BigDecimal penaltyCost;
 
     Turn() {
         student = new Student();
@@ -27,10 +32,10 @@ public class Turn extends Controller{
         description = "";
         startTime = null;
         endTime = null;
-        penaltyCost = 0;
+        penaltyCost = new BigDecimal(0);
     }
 
-    public Turn(String description, DateTime startTime, DateTime endTime, int penaltyCost){
+    public Turn(String description, DateTime startTime, DateTime endTime, BigDecimal penaltyCost){
         student = new Student();
         administrative = new Administrative();
         comment = new Comment();
@@ -40,4 +45,5 @@ public class Turn extends Controller{
         this.endTime = endTime;
         this.penaltyCost = penaltyCost;
     }
+
 }

@@ -1,15 +1,20 @@
 package models;
 
+import com.avaje.ebean.Model;
+
+import javax.persistence.Entity;
+
 /**
  * Created by cristian on 10-14-16.
  */
-public class Location {
+@Entity
+public class Location extends Model {
     public String office;
     public String building;
     public String longitude;
     public String latitude;
 
-    public Location() {
+    Location() {
         office      = "";
         building    = "";
         longitude   = "";

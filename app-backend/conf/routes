@@ -11,10 +11,13 @@
 # An example controller showing how to use dependency injection
 GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
 GET     /app-backend/getStudent     controllers.StudentController.getStudent
-
+GET     /app-backend/getTurns       controllers.TurnController.getAllTurns
+GET     /app-backend/getTurn        controllers.TurnController.getTurn
 
 GET     /getStudents                controllers.StudentController.getAllStudents
 GET     /getStudent                 controllers.StudentController.getStudent
+GET     /getTurns                   controllers.TurnController.getAllTurns
+GET     /getTurn                    controllers.TurnController.getTurn
 
 POST     /app-backend/login         controllers.LoginController.login
 

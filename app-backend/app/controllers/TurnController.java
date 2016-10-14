@@ -1,13 +1,12 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static  play.libs.Json.toJson;
 import com.google.inject.Inject;
+import models.*;
 import org.joda.time.DateTime;
-import play.api.libs.json.Json;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
-import models.Turn;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -29,19 +28,27 @@ public class TurnController extends Controller{
         }
     }
 
-//    public Result getAllTurns(){
-//        ArrayList<Turn> TurnsList;
-//        TurnsList = new ArrayList<>();
-//
-//        for(int i = 0; i < 2; i++){
-//            Turn turn;
-//            turn = new Turn( "Bla bla bla #" + (i+1), new DateTime(), (new DateTime()).plusDays(10),
-//                                1000);
-//            TurnsList.add(turn);
-//        }
-//
-//        JsonNode turnsListJson = Json.toJson(TurnsList);
-//        return ok(turnsListJson);
-//    }
+    public Result getTurn(){
+        Turn turn;
+        Student turnStudent                 = new Student();
+        Administrative turnAdministrative   = new Administrative();
+        Comment turnComment                 = new Comment("El muchacho no atendio");
+        Penalty turnPenalty                 = new Penalty();
+        turn = new Turn( "Bla bla bla #123", new DateTime(), (new DateTime()).plusDays(10), new BigDecimal(100));
+        return ok(toJson(turn));
+    }
+
+    public Result getAllTurns(){
+        ArrayList<Turn> TurnsList;
+        TurnsList = new ArrayList<>();
+
+        for(int i = 0; i < 3; i++){
+            Turn turn;
+            turn = new Turn( "Bla bla bla #" + (i+1), new DateTime(), (new DateTime()).plusDays(10),
+                                new BigDecimal(1000));
+            TurnsList.add(turn);
+        }
+        return ok(toJson(TurnsList));
+    }
 
 }
