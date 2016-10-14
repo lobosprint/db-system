@@ -12,14 +12,24 @@ import javax.persistence.Entity;
 
 @Entity
 public class Person extends Model {
-    public String   firstName;
+    public String   name;
     public String   middleName;
     public String   lastName;
-    public Date     dateBirth;
+    public Date     birthDate;
     public String   phone;
     public String   mail;
     public String   pass;
     public String   rumId;
 
+    public Person(){
+        name        = "";
+        middleName  = "";
+        lastName    = "";
+        birthDate   = null;
+        phone       = "";
+        mail        = "";
+        pass        = "";
+        rumId       = "";
+    }
 
 }

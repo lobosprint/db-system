@@ -1,11 +1,10 @@
 package controllers;
 
 import com.google.inject.Inject;
-import models.Student;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.*;
+import models.Student;
 
 /**
  * Created by cristian on 10-14-16.
@@ -18,9 +17,9 @@ public class StudentController extends Controller{
     public Result addStudent() {
         Student student = formFactory.form(Student.class).bindFromRequest().get();
         if(!student.mail.equals("") && !student.pass.equals("")){
-            return ok("Sucessfull added student " + student.firstName + " " + student.middleName + " " + student.lastName);
+            return ok("Added STUDENT successfully" + student.name + " " + student.middleName + " " + student.lastName);
         } else{
-            return internalServerError("Must provide the mail and password like minumum");
+            return internalServerError("Must provide the STUDENT mail and password like minimum");
         }
     }
 

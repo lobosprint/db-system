@@ -8,4 +8,9 @@ import javax.persistence.Entity;
 @Entity
 public class Student extends Person{
     public boolean handiecap;
+
+    public Student(){
+        new Person();
+        handiecap = false;
+    }
 }
