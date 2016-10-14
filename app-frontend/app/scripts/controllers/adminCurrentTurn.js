@@ -15,9 +15,9 @@
  	'Karma'
  	];
  	
- 	$scope.testing= "paila";
+ 	
  	$scope.student=[];
- 	$http.get('/app-backend/getStudent').success(function(data){
+ 	$http.get('/app-backend/getTurns').success(function(data){
  			$scope.student=data;
  			$log.error(data);
  		});

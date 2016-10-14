@@ -1,7 +1,15 @@
-<div class="panel panel-default" ng-controller="AdminCurrentTurnCtrl as admincurrentturn" ng-init="fetch"  >
-    <div class="panel-heading">Atendiendo a {{student.name+ " "+ student.middleName+ " "+student.lastName}} - <b>0h 45min 33seg</b>
-   {{student.name}}
+<div class="panel panel-default" ng-controller="AdminCurrentTurnCtrl as admincurrentturn" ng-init="fetch"  > 
+<strong> Estudiante:</strong>
+{{ +student[0].student.name
++ " " 
++student[0].student.middleName
++" "
++student[0].student.lastName
+}}
+<b>0h 45min 33seg</b>
+ 
     <!-- <timer interval="1000" autostart="true">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer> -->
+{{student[0].administrative.lastName}}
 
     </div>
     <div class="panel-body">
@@ -40,7 +48,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Notas tomadas</div>
             <div class="panel-body">
-                No hay ninguna nota.
+               {{student[0].comment.description}}
             </div>
         </div>
 
