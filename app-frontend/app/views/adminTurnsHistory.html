@@ -1,71 +1,51 @@
-<table class="table table-bordered" >
-    <thead class="thead-inverse" >
-        <tr>
-            <th colspan="7">
-                <p align="center"> Historial de Turnos</p>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Historial de Turnos</div>
+  <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar por...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success margin-bottom-xs" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
 
-            <td colspan= "2"><label for= "buscador"> Buscador:  </label></td>
-            <td colspan= "4"> <input type="input" class="form-control" id="buscadorTexto"></td>
-            <td colspan= "1"> <button type="button" class="btn btn-info">Buscar</button></td>
-        </tr>
-        <tr>
-            <th colspan= "3">
-                RUM ID
-            </th>
-            <th colspan= "3">
-                Hora
-            </th>
-            <th colspan= "1">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>RUM ID</th>
+                    <th>Hora</th>
+                    <th>Acción</th>
+                </tr>
 
-            </th>
-        </tr>
+                <tr>
+                    <td>802-12-5541</td>
+                    <td>15:30</td>
+                    <td><a ng-href="#/adminPassTurn">
+                            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver</button>
+                        </a></td>
+                    </td>
+                </tr>
 
-        <tr >
+                <tr>
+                    <td>802-12-5541</td>
+                    <td>14:45</td>
+                    <td><a ng-href="#/adminPassTurn">
+                            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver</button>
+                        </a></td>
+                </tr>
 
-            <td colspan= "3">
-                802-12-2222
-            </td>
-            <td colspan= "3">
-                15:30
-            </td>
-            <td colspan= "1">
-                <a ng-href="#/">
-                    <button type="button" class="btn btn-info">Ver</button>
-                </a>
-            </td>
-        </tr>
-        <tr >
-
-            <td colspan= "3">
-                802-07-5462
-            </td>
-            <td colspan= "3">
-                14:45
-            </td>
-            <td colspan= "1">
-                <a ng-href="#/">
-                    <button type="button" class="btn btn-info">Ver</button>
-                </a>
-            </td>
-        </tr>
-        <tr >
-
-            <td colspan= "3">
-                841-10-4596
-            </td>
-            <td colspan= "3">
-                13:59
-            </td>
-            <td colspan= "1">
-                <a ng-href="#/">
-                    <button type="button" class="btn btn-info">Ver</button>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                <tr>
+                    <td>802-12-5441</td>
+                    <td>13:59</td>
+                    <td><a ng-href="#/adminPassTurn">
+                            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver</button>
+                        </a></td>
+                </tr>
+            </table>
+        </div>
+  </div>
+</div>

@@ -1,107 +1,48 @@
-<h2>Jobs</h2>
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#AllJobs">All Jobs</a></li>
-    <li><a data-toggle="tab" href="#job1">Job1</a></li>
-    <li><a data-toggle="tab" href="#job2">Job2</a></li>
-    <li><a data-toggle="tab" href="#job3">Job3</a></li>
-</ul>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Turnos All Jobs</div>
+  <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>RUM ID</th>
+                    <th>Nombre</th>
+                    <th>Acción</th>
+                </tr>
 
-<div class="tab-content">
-    <div id="AllJobs" class="tab-pane fade in active">
-        <h3>Turnos All Jobs</h3>
+                <tr>
+                    <td>802-12-5541</td>
+                    <td>Pepito Perez</td>
+                    <td>
+                        <a ng-href="#/adminCurrentTurn" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno actual</a>
+                    </td>
+                    </td>
+                </tr>
 
-        <table width=100%>
-            <tr>
-                <th>RUM ID</th>
-                <th>Nombre</th>
-            </tr>
+                <tr>
+                    <td>802-12-5541</td>
+                    <td>Pepito Santiago</td>
+                    <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
+                </tr>
 
-            <tr>
-                <td>802-12-5541</td>
-                <td>Pepito Perez</td>
-            </tr>
+                <tr>
+                    <td>802-12-5441</td>
+                    <td>Jose Lopez</td>
+                    <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
+                </tr>
 
-            <tr>
-                <td>802-12-5541</td>
-                <td>Pepito Santiago</td>
-            </tr>
+                <tr>
+                    <td>802-11-5541</td>
+                    <td>Victor Lopez</td>
+                    <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
+                </tr>
 
-            <tr>
-                <td>802-12-5441</td>
-                <td>Jose Lopez</td>
-            </tr>
-
-            <tr>
-                <td>802-11-5541</td>
-                <td>Victor Lopez</td>
-            </tr>
-
-            <tr>
-                <td>841-11-5541</td>
-                <td>Juan del Pueblo</td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="job1" class="tab-pane fade">
-        <h3>Turnos Job1</h3>
-
-        <table width=100%>
-            <tr>
-                <th>RUM ID</th>
-                <th>Nombre</th>
-            </tr>
-
-            <tr>
-                <td>802-12-5441</td>
-                <td>Jose Lopez</td>
-            </tr>
-
-            <tr>
-                <td>802-11-5541</td>
-                <td>Victor Lopez</td>
-            </tr>
-
-            <tr>
-                <td>841-11-5541</td>
-                <td>Juan del Pueblo</td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="job2" class="tab-pane fade">
-        <h3>Turnos Job 2</h3>
-        <table width=100%>
-            <tr>
-                <th>RUM ID</th>
-                <th>Nombre</th>
-            </tr>
-
-            <tr>
-                <td>802-12-5541</td>
-                <td>Pepito Perez</td>
-            </tr>
-
-            <tr>
-                <td>802-12-5541</td>
-                <td>Pepito Santiago</td>
-            </tr>
-
-            <tr>
-                <td>841-11-5541</td>
-                <td>Juan del Pueblo</td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="job3" class="tab-pane fade">
-        <h3>Turnos Job 3</h3>
-
-        <table width=100%>
-            <tr>
-                <th>RUM ID</th>
-                <th>Nombre</th>
-            </tr>
-        </table>
-    </div>
+                <tr>
+                    <td>841-11-5541</td>
+                    <td>Juan del Pueblo</td>
+                    <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
+                </tr>
+            </table>
+        </div>
+  </div>
 </div>
