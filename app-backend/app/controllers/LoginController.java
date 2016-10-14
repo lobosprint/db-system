@@ -23,12 +23,17 @@ public class LoginController extends Controller {
     private FormFactory formFactory;
 
     public Result index() {
+
         return ok(index.render("Your new application is ready."));
     }
 
     public Result login() {
         Login login = formFactory.form(Login.class).bindFromRequest().get();
-        return ok("User permited, \n Mail: "+login.mail + " Password: " + login.password);
+        if(login.mail.equals("abc@abc.com") && login.pass.equals("abc")){
+            return ok("Loggin succesfully, \n Mail: " + login.mail + " Password: " + login.pass);
+        } else{
+            return internalServerError("User don't have permission...");
+        }
     }
 
 }
