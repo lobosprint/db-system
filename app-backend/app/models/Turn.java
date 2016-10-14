@@ -46,4 +46,14 @@ public class Turn extends Model {
         this.penaltyCost = penaltyCost;
     }
 
+    public Turn(Student student, Administrative administrative, Comment comment, Penalty penalty, String description, DateTime startTime, DateTime endTime, BigDecimal penaltyCost) {
+        this.student = student;
+        this.administrative = administrative;
+        this.comment = comment;
+        this.penalty = penalty;
+        this.description = description;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.penaltyCost = penaltyCost;
+    }
 }

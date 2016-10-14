@@ -20,4 +20,11 @@ public class Location extends Model {
         longitude   = "";
         latitude    = "";
     }
+
+    public Location(String office, String building, String longitude, String latitude) {
+        this.office = office;
+        this.building = building;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
 }

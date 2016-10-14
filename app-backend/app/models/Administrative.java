@@ -10,7 +10,7 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Administrative extends Person{
-        public Position position;
+    public Position position;
 
     Administrative(){
         position = new Position();

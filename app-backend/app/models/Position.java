@@ -18,4 +18,10 @@ public class Position extends Model {
         job = new Job();
         location = new Location();
     }
+
+    public Position(Area area, Job job, Location location) {
+        this.area = area;
+        this.job = job;
+        this.location = location;
+    }
 }

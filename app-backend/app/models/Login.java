@@ -17,4 +17,8 @@ public class Login extends Model {
          pass = "";
      }
 
+    public Login(String mail, String pass) {
+        this.mail = mail;
+        this.pass = pass;
+    }
 }

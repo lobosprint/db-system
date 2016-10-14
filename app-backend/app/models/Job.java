@@ -16,4 +16,9 @@ public class Job extends Model {
         name        = "";
         description = "";
     }
+
+    public Job(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

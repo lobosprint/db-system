@@ -16,4 +16,8 @@ public class Penalty extends Model {
         payment     = new Payment();
         description = "";
     }
+
+    public Penalty(String description) {
+        this.description = description;
+    }
 }
