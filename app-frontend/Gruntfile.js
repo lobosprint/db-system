@@ -16,7 +16,9 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    configureProxies: 'grunt-connect-proxy'
+
   });
 
   // Configurable paths for the application
@@ -78,19 +80,26 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           open: true,
+
           middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
-              ),
-              connect.static(appConfig.app)
-            ];
+            var middlewares = [];
+
+            // Setup the proxy
+            middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
+            // Serve static files
+            middlewares.push(connect.static('.tmp'));
+            middlewares.push(connect().use(
+              '/bower_components',
+              connect.static('./bower_components')
+            ));
+            middlewares.push(connect().use(
+              '/app/styles',
+              connect.static('./app/styles')
+            ));
+            middlewares.push(connect.static(appConfig.app));
+
+            return middlewares;
           }
         }
       },
@@ -117,7 +126,14 @@ module.exports = function (grunt) {
         }
       }
     },
-
+    proxies: [
+      {
+        context: '/app', // the context of the data service
+        host: 'localhost', // wherever the data service is running
+        port: 9090, // the port that the data service is running on
+        changeOrigin: true
+      }
+    ],
     // Make sure there are no obvious mistakes
     jshint: {
       options: {
@@ -211,16 +227,16 @@ module.exports = function (grunt) {
         fileTypes:{
           js: {
             block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-              detect: {
-                js: /'(.*\.js)'/gi
-              },
-              replace: {
-                js: '\'{{filePath}}\','
-              }
+            detect: {
+              js: /'(.*\.js)'/gi
+            },
+            replace: {
+              js: '\'{{filePath}}\','
             }
           }
+        }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -437,6 +453,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'postcss:server',
+      'configureProxies:server',
       'connect:livereload',
       'watch'
     ]);

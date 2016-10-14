@@ -10,5 +10,12 @@ import javax.persistence.Entity;
 @Entity
 public class Login extends Model {
     public String mail;
-    public  String password;
+    public  String pass;
+
+     public Login(){
+         mail = "";
+         pass = "";
+
+     }
+
 }
