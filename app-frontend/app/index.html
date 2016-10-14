@@ -36,13 +36,13 @@
             <div ng-show="navAdmin" ng-controller="IndexCtrl">
                 <div class="row">
                     <div class="col-xs-2">
-                        <a ng-href="#/main"><img src="./images/logo.jpg" class="img-responsive logo"></a>
+                        <a ng-href="#/adminHome"><img src="./images/logo.jpg" class="img-responsive logo"></a>
                     </div>
 
                     <div class="col-xs-10">
-                        <ul class="nav nav-pills nav-stacked">
-                          <li role="presentation" class="active"><a ng-href="#/adminHome">Página principal</a></li>
-                          <li role="presentation"><a ng-href="#/adminTurnQueue">Turnos</a></li>
+                        <ul class="nav nav-pills">
+                          <li role="presentation" class="active"><a ng-href="#/adminCurrentTurn">Turno actual</a></li>
+                          <li role="presentation"><a ng-href="#/adminPendingTurns">Turnos pendientes</a></li>
                           <li role="presentation"><a ng-href="#/adminTurnsHistory">Historial</a></li>
                         </ul>
                     </div>
