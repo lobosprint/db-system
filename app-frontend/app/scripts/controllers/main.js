@@ -17,7 +17,7 @@ angular.module('appFrontApp')
 
        $log.error(values);
 
-       $http.post('http://localhost:9090/login', values)
+       $http.post('http://136.145.216.150:9090/app-backend/login', values)
            .success(function(data) {
              $log.debug(data);
            });
