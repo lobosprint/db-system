@@ -15,7 +15,6 @@ public class Login extends Model {
      public Login(){
          mail = "";
          pass = "";
-
      }
 
 }
