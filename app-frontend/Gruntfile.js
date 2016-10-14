@@ -1,4 +1,4 @@
-// Generated on 2016-10-12 using generator-angular 0.15.1
+// Generated on 2016-07-19 using generator-angular 0.15.1
 'use strict';
 
 // # Globbing
@@ -6,6 +6,7 @@
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
+
 
 module.exports = function (grunt) {
 
@@ -17,8 +18,8 @@ module.exports = function (grunt) {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
-    configureProxies: 'grunt-connect-proxy'
-
+    configureProxies: 'grunt-connect-proxy',
+    autoprefixier: 'grunt-autoprefixer'
   });
 
   // Configurable paths for the application
@@ -74,9 +75,17 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: '0.0.0.0',
+        hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+        {
+          context: '/app-backend', // the context of the data service
+          host: 'localhost', // wherever the data service is running
+          port: 9090, // the port that the data service is running on
+          changeOrigin: true
+        }
+      ],
       livereload: {
         options: {
           open: true,
@@ -126,14 +135,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    proxies: [
-      {
-        context: '/app-backend', // the context of the data service
-        host: 'localhost', // wherever the data service is running
-        port: 9090, // the port that the data service is running on
-        changeOrigin: true
-      }
-    ],
+
     // Make sure there are no obvious mistakes
     jshint: {
       options: {
@@ -187,7 +189,7 @@ module.exports = function (grunt) {
     },
 
     // Add vendor prefixed styles
-    postcss: {
+    autoprefixer: {
       options: {
         processors: [
           require('autoprefixer-core')({browsers: ['last 1 version']})
@@ -354,7 +356,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'appFrontApp',
+          module: 'crispClientApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -442,7 +444,6 @@ module.exports = function (grunt) {
     }
   });
 
-
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -452,8 +453,8 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
-      'postcss:server',
       'configureProxies:server',
+      'autoprefixer:server',
       'connect:livereload',
       'watch'
     ]);
@@ -468,7 +469,7 @@ module.exports = function (grunt) {
     'clean:server',
     'wiredep',
     'concurrent:test',
-    'postcss',
+    'autoprefixer',
     'connect:test',
     'karma'
   ]);
@@ -478,7 +479,7 @@ module.exports = function (grunt) {
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
-    'postcss',
+    'autoprefixer',
     'ngtemplates',
     'concat',
     'ngAnnotate',
@@ -497,4 +498,5 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
 };
