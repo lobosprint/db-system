@@ -1,12 +1,21 @@
 package models;
 
+import com.avaje.ebean.Model;
+
+import javax.persistence.Entity;
+
 /**
  * Created by cristian on 10-14-16.
  */
-public class Comment {
+@Entity
+public class Comment extends Model {
     public String description;
 
-    public Comment(){
+    Comment(){
         description = "";
+    }
+
+    public Comment(String description){
+        this.description = description;
     }
 }
