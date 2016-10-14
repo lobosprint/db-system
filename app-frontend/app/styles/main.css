@@ -17,3 +17,7 @@ a>button:hover {
   padding-right: 5%;
   padding-left: 5%;
 }
+
+.nav-pills {
+    margin-top: 40px;
+}

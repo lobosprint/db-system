@@ -23,9 +23,48 @@
     <!-- This is the header with the nav -->
     <header class="container">
         <nav class="navbar navbar-default">
-            <div class="row">
-                <div class="col-xs-4 col-sm-2">
-                    <img src="./images/logo.jpg" class="img-responsive logo">
+            <!-- No registrado -->
+            <div ng-show="navDefault" ng-controller="IndexCtrl">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-2">
+                        <img src="./images/logo.jpg" class="img-responsive logo">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Administrator -->
+            <div ng-show="navAdmin" ng-controller="IndexCtrl">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="./images/logo.jpg" class="img-responsive logo">
+                    </div>
+
+                    <div class="col-xs-10">
+                        <ul class="nav nav-pills nav-stacked">
+                          <li role="presentation" class="active"><a ng-href="#/adminHome">Página principal</a></li>
+                          <li role="presentation"><a ng-href="#/adminTurnQueue">Turnos</a></li>
+                          <li role="presentation"><a ng-href="#/adminTurnsHistory">Historial</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student -->
+            <div ng-show="navStudent" ng-controller="IndexCtrl">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <img src="../images/logo.jpg" class="img-responsive logo">
+                    </div>
+
+                    <div class="col-xs-8">
+                        <ul class="nav nav-pills">
+                          <li role="presentation" class="active"><a ng-href="#/studentHome">Principal</a></li>
+                          <li role="presentation"><a ng-href="#/studentListTurns">Turnos pendientes</a></li>
+                          <li role="presentation"><a ng-href="#/studentGetTurn">Solicitar turno</a></li>
+                          <li role="presentation"><a ng-href="#/studentPenaltiesView">Ver penalizaciones</a></li>
+                          <li role="presentation"><a ng-href="#/studentPaymentsView">Ver pagos</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -75,8 +114,27 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/adminHome.js"></script>
+        <script src="scripts/controllers/adminPendingTurns.js"></script>
+        <script src="scripts/controllers/adminTurnsHistory.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/registrer.js"></script>
+        <script src="scripts/controllers/studentConfirmTicket.js"></script>
+        <script src="scripts/controllers/studentHome.js"></script>
+        <script src="scripts/controllers/studentPayPenalty.js"></script>
+        <script src="scripts/controllers/adminCurrentTurn.js"></script>
+        <script src="scripts/controllers/adminPassTurn.js"></script>
+        <script src="scripts/controllers/adminTurnQueue.js"></script>
+        <script src="scripts/controllers/index.js"></script>
+        <script src="scripts/controllers/registrerConfirm.js"></script>
+        <script src="scripts/controllers/studentConfirmPayment.js"></script>
+        <script src="scripts/controllers/studentGetTurn.js"></script>
+        <script src="scripts/controllers/studentListTurns.js"></script>
+        <script src="scripts/controllers/studentPenaltiesView.js"></script>
+        <script src="scripts/controllers/studentPaymentsView.js"></script>
         <!-- endbuild -->
 </body>
 </html>
+
+
