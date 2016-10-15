@@ -22,7 +22,7 @@ public class PaymentController extends Controller{
 
     public Result addPayment (){
         Payment payment = formFactory.form(Payment.class).bindFromRequest().get();
-        if(!payment.confirmationNumber.equals("0")){
+        if(!payment.confirmationNumber.equals("1")){
             return ok("Added PAYMENT successfully " + payment.confirmationNumber);
         } else {
             return  internalServerError("Must provide the PAYMENT confirmation number like minimum");
