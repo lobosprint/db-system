@@ -15,7 +15,6 @@ angular.module('appFrontApp')
       'Karma'
     ];
 
-
  	$scope.turns=[];
  	$http.get('/app-backend/getTurns').success(function(data){
  			$scope.turns=data;
