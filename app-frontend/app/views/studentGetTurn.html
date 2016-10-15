@@ -2,9 +2,9 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Area
-        </a>
+        <button class="btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Area
+        </button>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -12,16 +12,17 @@
         <tr class="sucess" align="center">
           <td><button type="button" class="btn btn-default">ICOM<br></br>Computer Engineering</button></td>
           <td><button type="button" class="btn btn-default">INEL<br></br>Electrical Engineering</button></td>
-          <td><button type="button" class="btn btn-default">INQU<br></br>Chemical Engineering</button></td>
         </tr>
         <tr align="center">
           <td><button type="button" class="btn btn-default">ICOM<br></br>Computer Engineering</button></td>
           <td><button type="button" class="btn btn-default">INEL<br></br>Electrical Engineering</button></td>
-          <td><button type="button" class="btn btn-default">INQU<br></br>Chemical Engineering</button></td>
         </tr>
         <tr align="center">
           <td><button type="button" class="btn btn-default">ICOM<br></br>Computer Engineering</button></td>
           <td><button type="button" class="btn btn-default">INEL<br></br>Electrical Engineering</button></td>
+        </tr>
+        <tr align="center">
+          <td><button type="button" class="btn btn-default">INQU<br></br>Chemical Engineering</button></td>
           <td><button type="button" class="btn btn-default">INQU<br></br>Chemical Engineering</button></td>
         </tr>
       </table>
@@ -30,9 +31,9 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Jobs
-        </a>
+        <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Jobs
+        </button>
       </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -60,9 +61,9 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Description
-        </a>
+        <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Description
+        </button>
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
@@ -80,7 +81,7 @@
           </div>
         </div>
         <div class="form-group col-md-offset-4">
-          <a href="./confirmTicket.html"><button type="button" class="btn btn-success" style="margin: 10px;"><span class="glyphicon glyphicon-ok"></span> Get a ticket !!!</button></a>
+          <a ng-href="#/studentConfirmTicket"><button type="button" class="btn btn-success" style="margin: 10px;"><span class="glyphicon glyphicon-ok"></span> Get a ticket !!!</button></a>
         </div>
       </div>
     </div>
