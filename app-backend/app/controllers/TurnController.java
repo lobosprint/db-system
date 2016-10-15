@@ -50,11 +50,11 @@ public class TurnController extends Controller{
         Comment turnComment  =
                             new Comment("El muchacho tiene problemas con el chavo del 8");
         Penalty turnPenalty =
-                            new Penalty("Es la tercera vez que solicita turno y no viene");
+                            new Penalty("Es la tercera vez que solicita turno y no viene", 100  );
         turn                =
                             new Turn(   turnStudent, turnAdministrative, turnComment, turnPenalty,
                                         "Bla bla bla #123", new DateTime(), (new DateTime()).plusDays(10),
-                                        new BigDecimal(100));
+                                        100);
         return ok(toJson(turn));
     }
 
@@ -87,11 +87,11 @@ public class TurnController extends Controller{
             Comment turnComment  =
                     new Comment("El muchacho tiene problemas con el chavo del 8. #"+ (i+1));
             Penalty turnPenalty =
-                    new Penalty("Es la tercera vez que solicita turno y no viene. #"+ (i+1));
+                    new Penalty("Es la tercera vez que solicita turno y no viene. #"+ (i+1), 1000+i);
             turn                =
                     new Turn(   turnStudent, turnAdministrative, turnComment, turnPenalty,
                             "Bla bla bla #123" + (i+1), new DateTime(), (new DateTime()).plusDays(10+i),
-                            new BigDecimal(1000+i));
+                            1000+i);
             TurnsList.add(turn);
         }
         return ok(toJson(TurnsList));

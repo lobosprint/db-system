@@ -2,31 +2,41 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
-#GET     /                           controllers.LoginController.login
-# An example controller showing a sample home page
-#GET     /app-backend                controllers.LoginController.login
-# An example controller showing a sample home page
-#GET     /app-backend/login          controllers.LoginController.login
-# An example controller showing how to use dependency injection
-GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
+#Get Methods
+#To Runs in Server
 GET     /app-backend/getStudent     controllers.StudentController.getStudent
-GET     /app-backend/getTurns       controllers.TurnController.getAllTurns
+GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
 GET     /app-backend/getTurn        controllers.TurnController.getTurn
+GET     /app-backend/getTurns       controllers.TurnController.getAllTurns
+GET     /app-backend/getPenalty     controllers.PenaltyController.getPenalty
+GET     /app-backend/getPenalties   controllers.PenaltyController.getAllPenalties
+GET     /app-backend/getPayment     controllers.PaymentController.getPayment
+GET     /app-backend/getPayments    controllers.PaymentController.getAllPayments
 
-GET     /getStudents                controllers.StudentController.getAllStudents
+#To Runs Local
 GET     /getStudent                 controllers.StudentController.getStudent
-GET     /getTurns                   controllers.TurnController.getAllTurns
+GET     /getStudents                controllers.StudentController.getAllStudents
 GET     /getTurn                    controllers.TurnController.getTurn
+GET     /getTurns                   controllers.TurnController.getAllTurns
+GET     /getPenalty                 controllers.PenaltyController.getPenalty
+GET     /getPenalties               controllers.PenaltyController.getAllPenalties
+GET     /getPayment                 controllers.PaymentController.getPayment
+GET     /getPayments                controllers.PaymentController.getAllPayments
 
-POST     /app-backend/login         controllers.LoginController.login
+#Post Methods
+#To Runs in Server
+POST    /app-backend/login         controllers.LoginController.login
+POST    /app-backend/addStudent    controllers.StudentController.addStudent
+POST    /app-backend/addTurn       controllers.TurnController.addTurn
+POST    /app-backend/addPenalty    controllers.PenaltyController.addPenalty
+POST    /app-backend/addPayment    controllers.PaymentController.addPayment
 
-POST     /addStudent                controllers.StudentController.addStudent
-
-POST     /addTurn                   controllers.TurnController.addTurn
-
-POST    /addPenalty                 controllers.PenaltyController.addPenalty
-
+#To Runs Local
+POST    /login                     controllers.LoginController.login
+POST    /addStudent                controllers.StudentController.addStudent
+POST    /addTurn                   controllers.TurnController.addTurn
+POST    /addPenalty                controllers.PenaltyController.addPenalty
+POST    /addPayment                controllers.PaymentController.addPayment
 
 
 # Map static resources from the /public folder to the /assets URL path

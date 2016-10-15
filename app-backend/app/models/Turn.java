@@ -22,7 +22,7 @@ public class Turn extends Model {
     public String description;
     public DateTime startTime;
     public DateTime endTime;
-    public BigDecimal penaltyCost;
+    public Integer penaltyCost;
 
     Turn() {
         student = new Student();
@@ -32,10 +32,10 @@ public class Turn extends Model {
         description = "";
         startTime = null;
         endTime = null;
-        penaltyCost = new BigDecimal(0);
+        penaltyCost = 0;
     }
 
-    public Turn(String description, DateTime startTime, DateTime endTime, BigDecimal penaltyCost){
+    public Turn(String description, DateTime startTime, DateTime endTime, Integer penaltyCost){
         student = new Student();
         administrative = new Administrative();
         comment = new Comment();
@@ -46,7 +46,7 @@ public class Turn extends Model {
         this.penaltyCost = penaltyCost;
     }
 
-    public Turn(Student student, Administrative administrative, Comment comment, Penalty penalty, String description, DateTime startTime, DateTime endTime, BigDecimal penaltyCost) {
+    public Turn(Student student, Administrative administrative, Comment comment, Penalty penalty, String description, DateTime startTime, DateTime endTime, Integer penaltyCost) {
         this.student = student;
         this.administrative = administrative;
         this.comment = comment;

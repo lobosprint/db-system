@@ -4,13 +4,11 @@ import static  play.libs.Json.toJson;
 import com.google.inject.Inject;
 import org.joda.time.DateTime;
 import play.data.FormFactory;
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.Student;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by cristian on 10-14-16.
@@ -23,7 +21,8 @@ public class StudentController extends Controller{
     public Result addStudent() {
         Student student = formFactory.form(Student.class).bindFromRequest().get();
         if(!student.mail.equals("") && !student.pass.equals("")){
-            return ok("Added STUDENT successfully" + student.name + " " + student.middleName + " " + student.lastName);
+            return ok(  "Added STUDENT successfully" + student.name + " " + student.middleName + " " +
+                        student.lastName);
         } else{
             return internalServerError("Must provide the STUDENT mail and password like minimum");
         }
