@@ -3,7 +3,7 @@
   <div class="panel-heading">Turnos All Jobs</div>
   <div class="panel-body">
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered" ng-controller=" AdminPendingTurnsCtrl">
                 <tr>
                     <th>RUM ID</th>
                     <th>Nombre</th>
@@ -11,37 +11,29 @@
                 </tr>
 
                 <tr>
-                    <td>802-12-5541</td>
-                    <td>Pepito Perez</td>
+                    <td>{{turns[0].student.rumId}}</td>
+                    <td>{{turns[0].student.name+ turns[0].student.middleName+turns[0].student.lastName}}</td>
                     <td>
                         <a ng-href="#/adminCurrentTurn" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno actual</a>
                     </td>
-                    </td>
+                    
                 </tr>
 
                 <tr>
-                    <td>802-12-5541</td>
-                    <td>Pepito Santiago</td>
+                      <td>{{turns[1].student.rumId}}</td>
+                    <td>{{turns[1].student.name+ turns[0].student.middleName+turns[0].student.lastName}}</td>
+                    
                     <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
                 </tr>
 
                 <tr>
-                    <td>802-12-5441</td>
-                    <td>Jose Lopez</td>
+                    <td>{{turns[2].student.rumId}}</td>
+                    <td>{{turns[2].student.name+ turns[0].student.middleName+turns[0].student.lastName}}</td>
+                    
                     <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
                 </tr>
 
-                <tr>
-                    <td>802-11-5541</td>
-                    <td>Victor Lopez</td>
-                    <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
-                </tr>
-
-                <tr>
-                    <td>841-11-5541</td>
-                    <td>Juan del Pueblo</td>
-                    <td><button class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Cancelar turno</button></td>
-                </tr>
+                
             </table>
         </div>
   </div>
