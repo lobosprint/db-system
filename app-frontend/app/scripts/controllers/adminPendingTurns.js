@@ -18,6 +18,6 @@ angular.module('appFrontApp')
  	$scope.turns=[];
  	$http.get('/app-backend/getTurns').success(function(data){
  			$scope.turns=data;
- 			$log.error(data);
+ 			// $log.error(data);
  		});
   }]);
