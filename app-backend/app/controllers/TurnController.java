@@ -35,7 +35,7 @@ public class TurnController extends Controller{
         Area area           =
                             new Area("ICOM");
         Job job             =
-                            new Job("Advisor", "I vahe to help and advise all students in your courses.");
+                            new Job(10, "Advisor", "I vahe to help and advise all students in your courses.");
         Location location   =
                             new Location("302", "Stefani", "18.209628" , "67.140002");
 
@@ -70,7 +70,7 @@ public class TurnController extends Controller{
             Area area           =
                     new Area("ICOM #"+ (i+1));
             Job job             =
-                    new Job(    "Advisor#"+ (i+1),
+                    new Job(    i, "Advisor#"+ (i+1),
                                 "I have to help and advise all students in your courses. #"+ (i+1));
             Location location   =
                     new Location("302-"+ (i+1), "Stefani #"+ (i+1), "18.209628" , "67.140002");
