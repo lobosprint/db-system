@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class Person extends Model{
+    public int      idPerson;
     public String   name;
     public String   middleName;
     public String   lastName;
@@ -22,6 +23,7 @@ public class Person extends Model{
     public String   rumId;
 
     Person(){
+        idPerson    = 0;
         name        = "";
         middleName  = "";
         lastName    = "";
@@ -32,8 +34,9 @@ public class Person extends Model{
         rumId       = "";
     }
 
-    Person(String name, String middleName, String lastName, DateTime birthDate,
+    Person(int idPerson, String name, String middleName, String lastName, DateTime birthDate,
                     String phone, String mail, String pass, String rumId){
+        this.idPerson = idPerson;
         this.name = name;
         this.middleName = middleName;
         this.lastName = lastName;

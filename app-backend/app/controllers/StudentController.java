@@ -30,7 +30,7 @@ public class StudentController extends Controller{
 
     public Result getStudent(){
         Student student;
-        student = new Student( "FName#123", "MName#123", "LName#123", new DateTime(),
+        student = new Student( 15, 1, "FName#123", "MName#123", "LName#123", new DateTime(),
                     "1234561", "FName123@test.com", "123451", "7891", false);
         return ok(toJson(student));
     }
@@ -41,7 +41,7 @@ public class StudentController extends Controller{
 
         for(int i = 0; i < 4; i++){
             Student student;
-            student = new Student( "FName#" + (i+1), "MName#" + (i+1), "LName#" + (i+1), new DateTime(),
+            student = new Student((i+1), (i+1), "FName#" + (i+1), "MName#" + (i+1), "LName#" + (i+1), new DateTime(),
                     "1234561", "FName" + (i+1) + "@test.com", "123451", "7891", false);
             studentsList.add(student);
         }

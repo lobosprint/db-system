@@ -9,11 +9,13 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Penalty extends Model {
+    public int      idPenalty;
     public Payment  payment;
     public String   description;
     public Integer  cost;
 
     Penalty(){
+        idPenalty       = 0;
         payment     = new Payment();
         description = "";
         cost        = 0;
@@ -24,9 +26,10 @@ public class Penalty extends Model {
         this.cost = cost;
     }
 
-    public Penalty(Payment payment, String description, Integer cost) {
-        this.payment = payment;
-        this.description = description;
-        this.cost = cost;
+    public Penalty(int idPenalty, Payment payment, String description, Integer cost) {
+        this.idPenalty      = idPenalty;
+        this.payment        = payment;
+        this.description    = description;
+        this.cost           = cost;
     }
 }

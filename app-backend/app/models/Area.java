@@ -9,14 +9,16 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Area extends Model {
-
-    public String name;
+    public int      idArea;
+    public String   name;
 
     Area(){
+        idArea = 0;
         name = "";
     }
 
-    public Area(String name) {
+    public Area(int idArea, String name) {
+        this.idArea = idArea;
         this.name = name;
     }
 }

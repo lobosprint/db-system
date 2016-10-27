@@ -9,18 +9,18 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Job extends Model {
-    public int id;
-    public String name;
-    public String description;
+    public int      idJob;
+    public String   name;
+    public String   description;
 
     Job(){
-        id          = 0;
+        idJob          = 0;
         name        = "";
         description = "";
     }
 
-    public Job(int id, String name, String description) {
-        this.id = id;
+    public Job(int idJob, String name, String description) {
+        this.idJob = idJob;
         this.name = name;
         this.description = description;
     }

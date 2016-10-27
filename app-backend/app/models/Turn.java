@@ -14,17 +14,18 @@ import java.math.BigDecimal;
  */
 @Entity
 public class Turn extends Model {
-
-    public Student student;
-    public Administrative administrative;
-    public Comment comment;
-    public Penalty penalty;
-    public String description;
-    public DateTime startTime;
-    public DateTime endTime;
-    public Integer penaltyCost;
+    public int              idTurn;
+    public Student          student;
+    public Administrative   administrative;
+    public Comment          comment;
+    public Penalty          penalty;
+    public String           description;
+    public DateTime         startTime;
+    public DateTime         endTime;
+    public Integer          penaltyCost;
 
     Turn() {
+        idTurn = 0;
         student = new Student();
         administrative = new Administrative();
         comment = new Comment();
@@ -46,7 +47,8 @@ public class Turn extends Model {
         this.penaltyCost = penaltyCost;
     }
 
-    public Turn(Student student, Administrative administrative, Comment comment, Penalty penalty, String description, DateTime startTime, DateTime endTime, Integer penaltyCost) {
+    public Turn(int idTurn, Student student, Administrative administrative, Comment comment, Penalty penalty, String description, DateTime startTime, DateTime endTime, Integer penaltyCost) {
+        this.idTurn = idTurn;
         this.student = student;
         this.administrative = administrative;
         this.comment = comment;

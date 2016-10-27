@@ -31,7 +31,7 @@ public class PaymentController extends Controller{
 
     public Result getPayment(){
         Payment payment;
-        payment = new Payment( 1230, new DateTime());
+        payment = new Payment(11, 1230, new DateTime());
         return ok(toJson(payment));
     }
 
@@ -42,7 +42,7 @@ public class PaymentController extends Controller{
         for(int i = 0; i < 4; i++){
             Payment payment;
 
-            payment = new Payment(147850+i, new DateTime());
+            payment = new Payment((i+1), 147850+i, new DateTime());
             paymentsList.add(payment);
         }
         return ok(toJson(paymentsList));

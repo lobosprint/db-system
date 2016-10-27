@@ -42,8 +42,8 @@ public class PenaltyController extends Controller{
             Penalty penalty;
             Payment payment;
 
-            payment = new Payment(147850+i, new DateTime());
-            penalty = new Penalty( payment, "Tiempo de espera agotado para el estudiante #" + (i+1), 10+i);
+            payment = new Payment((i+1), 47850+i, new DateTime());
+            penalty = new Penalty( (i+1), payment, "Tiempo de espera agotado para el estudiante #" + (i+1), 10+i);
 
             penaltiesList.add(penalty);
         }

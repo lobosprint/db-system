@@ -9,13 +9,16 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Comment extends Model {
-    public String description;
+    public int      idComment;
+    public String   description;
 
     Comment(){
+        idComment = 0;
         description = "";
     }
 
-    public Comment(String description){
+    public Comment(int idComment, String description){
+        this.idComment = idComment;
         this.description = description;
     }
 }

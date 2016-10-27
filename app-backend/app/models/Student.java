@@ -8,17 +8,19 @@ import org.joda.time.DateTime;
  */
 @Entity
 public class Student extends Person{
-    public boolean handiecap;
+    public int      idStudent;
+    public boolean  handiecap;
 
     Student(){
         super();
-        handiecap = false;
+        this.idStudent = 0;
+        this.handiecap = false;
     }
 
-    public Student( String name, String middleName, String lastName, DateTime birthDate, String phone, String mail,
+    public Student( int idPerson, int idStudent, String name, String middleName, String lastName, DateTime birthDate, String phone, String mail,
              String pass, String rumId, boolean handiecap ){
-
-        super(name, middleName, lastName, birthDate, phone, mail, pass, rumId);
+        super(idPerson, name, middleName, lastName, birthDate, phone, mail, pass, rumId);
+        this.idStudent = idStudent;
         this.handiecap = handiecap;
     }
 }

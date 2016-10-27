@@ -9,19 +9,22 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Location extends Model {
-    public String office;
-    public String building;
-    public String longitude;
-    public String latitude;
+    public int      idLocation;
+    public String   office;
+    public String   building;
+    public String   longitude;
+    public String   latitude;
 
     Location() {
+        idLocation  = 0;
         office      = "";
         building    = "";
         longitude   = "";
         latitude    = "";
     }
 
-    public Location(String office, String building, String longitude, String latitude) {
+    public Location(int idLocation, String office, String building, String longitude, String latitude) {
+        this.idLocation = idLocation;
         this.office = office;
         this.building = building;
         this.longitude = longitude;

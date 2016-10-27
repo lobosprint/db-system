@@ -10,15 +10,18 @@ import javax.persistence.Entity;
 
 @Entity
 public class Payment extends Model {
+    public int      idPayment;
     public Integer  confirmationNumber;
     public DateTime date;
 
     Payment(){
+        idPayment = 0;
         confirmationNumber = 0;
         date = null;
     }
 
-    public Payment(Integer confirmationNumber, DateTime date) {
+    public Payment(int idPayment, Integer confirmationNumber, DateTime date) {
+        this.idPayment = idPayment;
         this.confirmationNumber = confirmationNumber;
         this.date = date;
     }
