@@ -27,6 +27,7 @@
       $scope.studentName= $scope.turn.student.name+ " "+ $scope.turn.student.middleName+ " "+$scope.turn.student.lastName;
       $scope.adminArea= $scope.turn.administrative.position.area.name;
       $scope.adminName=$scope.turn.administrative.name+ " " +$scope.turn.administrative.middleName+" "+ $scope.turn.administrative.lastName;
+      $scope.turnList=$scope.turn.CommentList;
     });
 
 
