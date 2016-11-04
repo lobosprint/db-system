@@ -6,14 +6,14 @@
       <div class="table-responsive">
         <table class="table table-bordered">
           <tr>
-            <td><b>Turno de:</b> {{turn.student.name+ " "+ turn.student.middleName+ " "+turn.student.lastName}}</td>
-            <td><b>Turno para:</b> {{turn.administrative.position.area.name}} {{count}}</td>
-            <td><b>Turno con:</b> {{turn.administrative.name+ " " +turn.administrative.middleName+" "+ turn.administrative.lastName}}</td>
+            <td><b>Turno de:</b> {{studentName}}</td>
+            <td><b>Turno para:</b> {{adminArea}}</td>
+            <td><b>Turno con:</b> {{adminName}}</td>
           </tr>
           <tr>
-            <td><b>Número de comentarios:</b> {{1}}</td>
-            <td><b>Hora de comienzo:</b> 27-05-2016 | 12h 43min</td>
-            <td><b>Hora de comienzo:</b> 27-05-2016 | 12h 52min</td>
+            <td><b>Número de comentarios:</b> {{turn.CommentList.length}}</td>
+            <td><b>Hora de comienzo:</b>{{startDate}} </td>
+            <td><b>Hora de comienzo:</b> {{endDate}}</td>
           </tr>
 
         </table>
@@ -32,18 +32,12 @@
             <th># Comentario</th>
             <th>Descripción</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Pepito trajo carta de Registraduría y será archviada.</td>
+          <tr ng-repeat="turn in turn.CommentList" >
+            <td>{{turn.idComment}}</td>
+            <td>{{turn.description}}</td>
+
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Pepito reclamó nota de semestre pasado.</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Se le hará evaluación académica en próxima cita.</td>
-          </tr>
+
         </table>
       </div>
     </div>
