@@ -8,14 +8,14 @@
  * Controller of the appFrontApp
  */
  angular.module('appFrontApp')
- .controller('AdminCurrentTurnCtrl',['$http','$log','$scope', function ($http, $log,$scope) {
+ .controller('AdminCurrentTurnCtrl',['$http','$log','$scope','turnService', function ($http, $log,$scope,turnService) {
  	this.awesomeThings = [
  	'HTML5 Boilerplate',
  	'AngularJS',
  	'Karma'
  	];
-
-
+//turnVariable is shared between this and adminPendingTurns
+    $scope.turnVariable=turnService.sharedObject;
  	$scope.student=[];
  	$http.get('/app-backend/getTurn').success(function(data){
  			$scope.student=data;
