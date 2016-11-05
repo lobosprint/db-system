@@ -1,6 +1,8 @@
 package controllers;
 
 import static  play.libs.Json.toJson;
+
+import com.avaje.ebean.*;
 import com.google.inject.Inject;
 import models.Person;
 import org.joda.time.DateTime;
@@ -10,6 +12,7 @@ import play.mvc.Result;
 import models.Student;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by cristian on 10-14-16.
@@ -29,25 +32,38 @@ public class StudentController extends Controller{
         }
     }
 
-    public Result getStudent(){
-        Person person = new Student().findStudentById(2);
-        //Student student = new Student();
-//        student = new Student( 15, 1, "FName#123", "MName#123", "LName#123", new DateTime(),
-//                    "1234561", "FName123@test.com", "123451", "7891", false);
+    public Result getStudent(Integer id){
+        Person person = new Person().findPersonById(id);
         return ok(toJson(person));
     }
 
     public Result getAllStudents(){
-        ArrayList<Student> studentsList;
-        studentsList = new ArrayList<>();
-
-        for(int i = 0; i < 4; i++){
-            Student student;
-            student = new Student((i+1), (i+1), "FName#" + (i+1), "MName#" + (i+1), "LName#" + (i+1), new DateTime(),
-                    "1234561", "FName" + (i+1) + "@test.com", "123451", "7891", false);
-            studentsList.add(student);
+        Transaction t = Ebean.beginTransaction();
+        List<Person> persons = new ArrayList<>();
+        try {
+            String sql = "SELECT id_person, first_name, middle_name, last_name, date_birth, phone, email, rum_id FROM person";
+            RawSql rawSql = RawSqlBuilder.parse(sql)
+                    .columnMapping("id_person", "idPerson")
+                    .columnMapping("first_name", "name")
+                    .columnMapping("middle_name", "middleName")
+                    .columnMapping("last_name", "lastName")
+                    .columnMapping("date_birth", "birthDate")
+                    .columnMapping("phone", "phone")
+                    .columnMapping("email", "mail")
+                    .columnMapping("rum_id", "rumId")
+                    .create();
+            Query<Person> query = Ebean.find(Person.class);
+            query.setRawSql(rawSql);
+            persons = query.findList();
+            t.commit();
+        } catch (Exception e) {
+        } finally {
+            t.end();
         }
-        return ok(toJson(studentsList));
+        for(int i = 0; i < persons.size(); i++){
+            System.out.println("Informacion que retorna first_name: " + persons.get(i).name + " middle_name: " + persons.get(i).middleName + " last_name: " + persons.get(i).lastName);
+        }
+        return ok(toJson(persons));
     }
 
 }
