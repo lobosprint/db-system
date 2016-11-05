@@ -1,6 +1,6 @@
 package models;
 
-import com.avaje.ebean.Model;
+import com.avaje.ebean.*;
 
 import org.joda.time.DateTime;
 
@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 /**
  * Created by cristian on 10-14-16.
  */
-
 @Entity
 public class Person extends Model{
     public int      idPerson;
@@ -47,4 +46,25 @@ public class Person extends Model{
         this.rumId = rumId;
     }
 
+    public Person findStudentById(Integer id) {
+        Transaction t = Ebean.beginTransaction();
+        Person person = new Person();
+        try {
+            String sql = "SELECT sfirst, slast FROM student WHERE sid = :id";
+            RawSql rawSql = RawSqlBuilder.parse(sql)
+                    .columnMapping("sfirst", "name")
+                    .columnMapping("slast", "lastName")
+                    .create();
+            Query<Person> query = Ebean.find(Person.class);
+            query.setRawSql(rawSql)
+                    .setParameter("id", id);
+            person = query.findUnique();
+            t.commit();
+        } catch (Exception e) {
+        } finally {
+            t.end();
+        }
+        System.out.println("Informacion que retorna SName: " + person.name + "LName: " + person.lastName);
+        return person;
+    }
 }
