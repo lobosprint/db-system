@@ -37,6 +37,7 @@ public class StudentController extends Controller{
         return ok(toJson(person));
     }
 
+    
     public Result getAllStudents(){
         Transaction t = Ebean.beginTransaction();
         List<Person> persons = new ArrayList<>();
