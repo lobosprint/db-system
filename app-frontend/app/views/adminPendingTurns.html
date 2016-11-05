@@ -1,57 +1,55 @@
 <div class="panel panel-default" ng-init="job=-1">
-    <!-- Default panel contents -->
-    <div class="panel-heading" ng-click="job=-1; active:job==-1;" >Turnos All Jobs</div>
-    <ul class="nav nav-pills">
-        <li ng-click="job=-1" ng-class="{active:job==-1}"><a >All Jobs</a></li>
-        <li  ng-click="job=1" ng-class="{active:job==1}"><a>Job0</a></li>
-        <li  ng-click="job=2" ng-class="{active:job==2}"><a>Job1</a></li>     
-        <li  ng-click="job=3" ng-class="{active:job==3}"><a>Job2</a></li>
-    </ul>
+  <!-- Default panel contents -->
+  <div class="panel-heading" ng-click="job=-1;" >Turnos All Jobs</div>
+  <ul class="nav nav-pills">
+    <li ng-click="job=-1" ng-class="{active:job==-1}"><a >All Jobs</a></li>
+    <li  ng-click="job=1" ng-class="{active:job==1}"><a>Job0</a></li>
+    <li  ng-click="job=2" ng-class="{active:job==2}"><a>Job1</a></li>
+    <li  ng-click="job=3" ng-class="{active:job==3}"><a>Job2</a></li>
+  </ul>
 
-    <div class="panel-body" >
-        <div class="table-responsive" ng-show="job==-1">
-            <table class="table table-bordered" ng-controller=" AdminPendingTurnsCtrl" >
+  <div class="panel-body" >
+    <div class="table-responsive" ng-show="job==-1">
+      <table class="table table-bordered" ng-controller=" AdminPendingTurnsCtrl" >
+        <tr>
+          <th>RUM ID</th>
+          <th>Nombre</th>
+          <th>Job</th>
+          <th>Acción</th>
+        </tr>
 
-                <tr>
-                    <th>RUM ID</th>
-                    <th>Nombre</th>
-                    <th>Job</th>
-                    <th>Acción</th>
-                </tr>
+        <tr ng-repeat="currentTurn in turns " >
+          <td>{{currentTurn.student.rumId}}</td>
+          <td>{{currentTurn.student.name+ currentTurn.student.middleName+currentTurn.student.lastName}}</td>
+          <td> {{currentTurn.administrative.position.job.name}}</td>
+          <td>
+            <a ng-href="#/adminCurrentTurn" class="btn btn-success" ng-click="turnVariable.turnID=currentTurn.idTurn"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno actual</a>
+          </td>
+        </tr>
 
-                <tr ng-repeat="currentTurn in turns " >
-                    <td>{{currentTurn.student.rumId}}</td>
-                    <td>{{currentTurn.student.name+ currentTurn.student.middleName+currentTurn.student.lastName}}</td>
-                    <td> {{currentTurn.administrative.position.job.name}}</td>
-                    <td>
-                        <a ng-href="#/adminCurrentTurn" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno actual</a>
-                    </td>                    
-                </tr>
-
-            </table>
-        </div>
-        <div class="table-responsive" ng-show="job>-1">
-            <table class="table table-bordered" ng-controller=" AdminPendingTurnsCtrl" >
-
-                <tr>
-                    <th>RUM ID</th>
-                    <th>Nombre</th>
-                    <th>Acción</th>
-                </tr>
-
-                <tr ng-repeat="currentTurn in turns " ng-show="currentTurn.administrative.position.job.idJob==job" >
-                    <td >{{currentTurn.student.rumId}}</td>
-                    <td>{{currentTurn.student.name+ currentTurn.student.middleName+currentTurn.student.lastName}}</td>
-                    <td> {{currentTurn.administrative.position.job.name}}</td>
-                    <td>
-                        <a ng-href="#/adminCurrentTurn" class="btn btn-success"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno actual</a>
-                    </td>                    
-                </tr>
-
-            </table>
-        </div>
+      </table>
     </div>
-</div>
+    <div class="table-responsive" ng-show="job>-1">
+      <table class="table table-bordered" ng-controller=" AdminPendingTurnsCtrl" >
 
+        <tr>
+          <th>RUM ID</th>
+          <th>Nombre</th>
+          <th>Acción</th>
+        </tr>
 
+        <tr ng-repeat="currentTurn in turns " ng-show="currentTurn.administrative.position.job.idJob==job" >
+          <td >{{currentTurn.student.rumId}}</td>
+          <td>{{currentTurn.student.name+ currentTurn.student.middleName+currentTurn.student.lastName}}</td>
+          <td>
+            <a ng-href="#/adminCurrentTurn" class="btn btn-success" ng-click="turnVariable.turnID=currentTurn.idTurn"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno actual</a>
+          </td>
+        </tr>
 
+      </table>
+
+    </div>
+  </div>
+  {{turnVariable.turnID}}
+  <a class="btn btn-success" ng-click="turnVariable.turnID=1"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">
+  </div>
