@@ -2,6 +2,7 @@ package controllers;
 
 import static  play.libs.Json.toJson;
 import com.google.inject.Inject;
+import models.Person;
 import org.joda.time.DateTime;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -29,10 +30,11 @@ public class StudentController extends Controller{
     }
 
     public Result getStudent(){
-        Student student;
-        student = new Student( 15, 1, "FName#123", "MName#123", "LName#123", new DateTime(),
-                    "1234561", "FName123@test.com", "123451", "7891", false);
-        return ok(toJson(student));
+        Person person = new Student().findStudentById(2);
+        //Student student = new Student();
+//        student = new Student( 15, 1, "FName#123", "MName#123", "LName#123", new DateTime(),
+//                    "1234561", "FName123@test.com", "123451", "7891", false);
+        return ok(toJson(person));
     }
 
     public Result getAllStudents(){
