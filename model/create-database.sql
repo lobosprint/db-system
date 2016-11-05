@@ -37,10 +37,9 @@ rum_id varchar(20)
 
 CREATE TABLE student
 (
-id_student serial,
-id_person int references person(id_person),
-handiecap boolean,
-PRIMARY KEY (id_student, id_person)
+id_student serial primary key,
+id_person int references person(id_person) unique,
+handiecap boolean
 );
 
 CREATE TABLE job
@@ -69,50 +68,51 @@ id_position serial,
 id_area int,
 id_job int,
 id_place int,
-PRIMARY KEY (id_position, id_area, id_job, id_place),
+PRIMARY KEY (id_position),
 FOREIGN KEY (id_area) references area (id_area),
 FOREIGN KEY (id_job) references job (id_job),
 FOREIGN KEY (id_place) references place (id_place)
 );
 CREATE TABLE administrative
 (
-id_administrative serial,
-id_person int,
-id_position int,
-PRIMARY KEY (id_person, id_position),
+id_administrative serial primary key,
+id_person int unique,
+id_position int unique,
 FOREIGN KEY (id_person) references person (id_person),
 FOREIGN KEY (id_position) references position_type (id_position)
 );
-CREATE TABLE commentary
-(
-id_comment serial primary key,
-description varchar(250)
-);
 
-CREATE TABLE penalty
+CREATE TABLE turn
 (
-id_penalty serial primary key,
-id_payment int,
-description varchar(250)
+id_turn serial primary key,
+id_student int,
+id_administrative int,
+time_min int,
+penalty_cost int,
+FOREIGN KEY (id_student) references student (id_student),
+FOREIGN KEY (id_administrative) references administrative (id_administrative)
 );
 
 CREATE TABLE payment
 (
 id_payment serial primary key,
 confirmation_number int,
-date_payment datetime
+date_payment date
 );
-CREATE TABLE turn
+
+CREATE TABLE penalty
 (
-id_turn serial primary key,
-id_student int references student(id_student),
-id_administrative int references administrative(id_administrative),
-id_comment int references commentary(id_comment),
-id_penalty datetime references penalty(id_penalty),
-end_time datetime,
-penalty_cost int,
-FOREIGN KEY (id_student) references student (id_student),
-FOREIGN KEY (id_administrative) references administrative (id_administrative),
-FOREIGN KEY (id_comment) references commentary (id_comment),
-FOREIGN KEY (id_penalty) references penalty (id_penalty)
+id_penalty serial primary key,
+id_payment int,
+id_turn int,
+FOREIGN KEY (id_payment) references payment (id_payment),
+FOREIGN KEY (id_turn) references turn (id_turn)
+);
+
+CREATE TABLE commentary
+(
+id_comment serial primary key,
+id_turn int,
+description varchar(250),
+FOREIGN KEY (id_turn) references turn (id_turn)
 );
