@@ -1,48 +1,43 @@
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Turno pasado</div>
-  <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <tr>
-                    <td><b>Turno de:</b> Pepito Perez</td>
-                    <td><b>Turno para:</b> ICOM</td>
-                    <td><b>Turno con:</b> Manuel Rodriguez</td>
-                </tr>
-                <tr>
-                    <td><b>Número de comentarios:</b> 3</td>
-                    <td><b>Hora de comienzo:</b> 27-05-2016 | 12h 43min</td>
-                    <td><b>Hora de comienzo:</b> 27-05-2016 | 12h 52min</td>
-                </tr>
+<div class ="container" ngcontroller="AdminPassTurnCtrl as adminpasturnctrl" >
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Turno pasado</div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <td><b>Turno de:</b> {{studentName}}</td>
+            <td><b>Turno para:</b> {{adminArea}}</td>
+            <td><b>Turno con:</b> {{adminName}}</td>
+          </tr>
+          <tr>
+            <td><b>Número de comentarios:</b> {{turn.CommentList.length}}</td>
+            <td><b>Hora de comienzo:</b>{{startDate}} </td>
+            <td><b>Hora de comienzo:</b> {{endDate}}</td>
+          </tr>
 
-            </table>
-        </div>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Notas del turno pasado</div>
-  <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <tr>
-                    <th># Comentario</th>
-                    <th>Descripción</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Pepito trajo carta de Registraduría y será archviada.</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Pepito reclamó nota de semestre pasado.</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Se le hará evaluación académica en próxima cita.</td>
-                </tr>
-            </table>
-        </div>
+  <div class="panel panel-default">
+
+    <!-- Default panel contents -->
+    <div class="panel-heading">Notas del turno pasado</div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th># Comentario</th>
+            <th>Descripción</th>
+          </tr>
+          <tr ng-repeat="turn in turnList" >
+            <td>{{turn.idComment}}</td>
+            <td>{{turn.description}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

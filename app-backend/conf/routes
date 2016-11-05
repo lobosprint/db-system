@@ -12,6 +12,7 @@ GET     /app-backend/getPenalty     controllers.PenaltyController.getPenalty
 GET     /app-backend/getPenalties   controllers.PenaltyController.getAllPenalties
 GET     /app-backend/getPayment     controllers.PaymentController.getPayment
 GET     /app-backend/getPayments    controllers.PaymentController.getAllPayments
+GET     /                           controllers.PaymentController.getAllPayments
 
 #To Runs Local
 GET     /getStudent                 controllers.StudentController.getStudent
@@ -21,6 +22,7 @@ GET     /getTurns                   controllers.TurnController.getAllTurns
 GET     /getPenalty                 controllers.PenaltyController.getPenalty
 GET     /getPenalties               controllers.PenaltyController.getAllPenalties
 GET     /getPayment                 controllers.PaymentController.getPayment
+GET     /getPayments                controllers.PaymentController.getAllPayments
 GET     /                           controllers.PaymentController.getAllPayments
 
 #Post Methods

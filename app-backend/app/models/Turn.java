@@ -8,6 +8,7 @@ import scala.Function1;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  * Created by cristian on 10-14-16.
@@ -17,29 +18,31 @@ public class Turn extends Model {
     public int              idTurn;
     public Student          student;
     public Administrative   administrative;
-    public Comment          comment;
+
     public Penalty          penalty;
     public String           description;
     public DateTime         startTime;
     public DateTime         endTime;
     public Integer          penaltyCost;
+    public ArrayList<Comment>      CommentList ;
 
     Turn() {
         idTurn = 0;
         student = new Student();
         administrative = new Administrative();
-        comment = new Comment();
+        CommentList = new  ArrayList<Comment>();
         penalty = new Penalty();
         description = "";
         startTime = null;
         endTime = null;
         penaltyCost = 0;
+
     }
 
     public Turn(String description, DateTime startTime, DateTime endTime, Integer penaltyCost){
         student = new Student();
         administrative = new Administrative();
-        comment = new Comment();
+        CommentList = new  ArrayList<Comment>();
         penalty = new Penalty();
         this.description = description;
         this.startTime = startTime;
@@ -51,7 +54,8 @@ public class Turn extends Model {
         this.idTurn = idTurn;
         this.student = student;
         this.administrative = administrative;
-        this.comment = comment;
+        CommentList = new  ArrayList<Comment>();
+        CommentList.add(comment);
         this.penalty = penalty;
         this.description = description;
         this.startTime = startTime;
