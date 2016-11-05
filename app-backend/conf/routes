@@ -21,7 +21,7 @@ GET     /getTurns                   controllers.TurnController.getAllTurns
 GET     /getPenalty                 controllers.PenaltyController.getPenalty
 GET     /getPenalties               controllers.PenaltyController.getAllPenalties
 GET     /getPayment                 controllers.PaymentController.getPayment
-GET     /getPayments                controllers.PaymentController.getAllPayments
+GET     /                           controllers.PaymentController.getAllPayments
 
 #Post Methods
 #To Runs in Server

@@ -1,17 +1,18 @@
 package models;
 
-import javax.persistence.Entity;
+import com.avaje.ebean.*;
 import org.joda.time.DateTime;
+import javax.persistence.Entity;
 
 /**
  * Created by cristian on 10-14-16.
  */
-@Entity
+
 public class Student extends Person{
     public int      idStudent;
     public boolean  handiecap;
 
-    Student(){
+    public Student(){
         super();
         this.idStudent = 0;
         this.handiecap = false;
@@ -23,4 +24,5 @@ public class Student extends Person{
         this.idStudent = idStudent;
         this.handiecap = handiecap;
     }
+
 }
