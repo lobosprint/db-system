@@ -61,7 +61,7 @@ angular
       })
       .when('/adminPassTurn', {
         templateUrl: 'views/adminPassTurn.html',
-        controller: 'AminPassTurnCtrl',
+        controller: 'AdminPassTurnCtrl',
         controllerAs: 'adminPassTurn'
       })
       .when('/adminTurnQueue', {
