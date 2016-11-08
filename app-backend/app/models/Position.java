@@ -9,10 +9,10 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Position extends Model {
-    public int      idPosition;
-    public Area     area;
-    public Job      job;
-    public Location location;
+    private int      idPosition;
+    private Area     area;
+    private Job      job;
+    private Location location;
 
     Position(){
         idPosition = 0;
@@ -25,6 +25,38 @@ public class Position extends Model {
         this.idPosition = idPosition;
         this.area = area;
         this.job = job;
+        this.location = location;
+    }
+
+    public int getIdPosition() {
+        return idPosition;
+    }
+
+    public void setIdPosition(int idPosition) {
+        this.idPosition = idPosition;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
         this.location = location;
     }
 }

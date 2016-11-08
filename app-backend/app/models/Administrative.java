@@ -9,8 +9,8 @@ import javax.persistence.Entity;
  * Created by cristian on 10-14-16.
  */
 public class Administrative extends Person{
-    public int      idAdministrative;
-    public Position position;
+    private int      idAdministrative;
+    private Position position;
 
     Administrative(){
         super();
@@ -23,5 +23,21 @@ public class Administrative extends Person{
         super(idPerson, name, middleName, lastName, birthDate, phone, mail, pass, rumId);
         this.idAdministrative   = idAdministrative;
         this.position           = position;
+    }
+
+    public int getIdAdministrative() {
+        return idAdministrative;
+    }
+
+    public void setIdAdministrative(int idAdministrative) {
+        this.idAdministrative = idAdministrative;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }

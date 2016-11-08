@@ -4,9 +4,9 @@
 
 #Get Methods
 #To Runs in Server
-#GET     /app-backend/getStudent     controllers.StudentController.getStudent(Integer)
+GET     /app-backend/getStudent/:id controllers.StudentController.getStudent(id: Integer)
 GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
-GET     /app-backend/getTurn        controllers.TurnController.getTurn
+GET     /app-backend/getTurn/:id    controllers.TurnController.getTurn(id: Integer)
 GET     /app-backend/getTurns       controllers.TurnController.getAllTurns
 GET     /app-backend/getPenalty     controllers.PenaltyController.getPenalty
 GET     /app-backend/getPenalties   controllers.PenaltyController.getAllPenalties
@@ -17,7 +17,7 @@ GET     /                           controllers.PaymentController.getAllPayments
 #To Runs Local
 GET     /getStudent/:id             controllers.StudentController.getStudent(id: Integer)
 GET     /getStudents                controllers.StudentController.getAllStudents
-GET     /getTurn                    controllers.TurnController.getTurn
+GET     /getTurn/:id                controllers.TurnController.getTurn(id: Integer)
 GET     /getTurns                   controllers.TurnController.getAllTurns
 GET     /getPenalty                 controllers.PenaltyController.getPenalty
 GET     /getPenalties               controllers.PenaltyController.getAllPenalties
