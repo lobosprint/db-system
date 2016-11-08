@@ -5,6 +5,8 @@ import com.avaje.ebean.*;
 import org.joda.time.DateTime;
 
 import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by cristian on 10-14-16.
@@ -21,7 +23,7 @@ public class Person extends Model{
     public String   pass;
     public String   rumId;
 
-    Person(){
+    public Person(){
         idPerson    = 0;
         name        = "";
         middleName  = "";
@@ -46,14 +48,19 @@ public class Person extends Model{
         this.rumId = rumId;
     }
 
-    public Person findStudentById(Integer id) {
+    public Person findPersonById(Integer id) {
         Transaction t = Ebean.beginTransaction();
         Person person = new Person();
         try {
-            String sql = "SELECT sfirst, slast FROM student WHERE sid = :id";
+            String sql = "SELECT first_name, middle_name, last_name, date_birth, phone, email, rum_id FROM person WHERE id_person = :id";
             RawSql rawSql = RawSqlBuilder.parse(sql)
-                    .columnMapping("sfirst", "name")
-                    .columnMapping("slast", "lastName")
+                    .columnMapping("first_name", "name")
+                    .columnMapping("middle_name", "middleName")
+                    .columnMapping("last_name", "lastName")
+                    .columnMapping("date_birth", "birthDate")
+                    .columnMapping("phone", "phone")
+                    .columnMapping("email", "mail")
+                    .columnMapping("rum_id", "rumId")
                     .create();
             Query<Person> query = Ebean.find(Person.class);
             query.setRawSql(rawSql)
@@ -64,7 +71,35 @@ public class Person extends Model{
         } finally {
             t.end();
         }
-        System.out.println("Informacion que retorna SName: " + person.name + "LName: " + person.lastName);
+        System.out.println("Informacion que retorna first_name: " + person.name + " middle_name: " + person.middleName + " last_name: " + person.lastName);
         return person;
     }
+
+//    public List<Person> findAllPersons() {
+//        Transaction t = Ebean.beginTransaction();
+//        List<Person> persons = new ArrayList<>();
+//        try {
+//            String sql = "SELECT first_name, middle_name, last_name, date_birth, phone, email, rum_id FROM person";
+//            RawSql rawSql = RawSqlBuilder.parse(sql)
+//                    .columnMapping("first_name", "name")
+//                    .columnMapping("middle_name", "middleName")
+//                    .columnMapping("last_name", "lastName")
+//                    .columnMapping("date_birth", "birthDate")
+//                    .columnMapping("phone", "phone")
+//                    .columnMapping("email", "mail")
+//                    .columnMapping("rum_id", "rumId")
+//                    .create();
+//            Query<Person> query = Ebean.find(Person.class);
+//            query.setRawSql(rawSql);
+//            persons = query.findList();
+//            t.commit();
+//        } catch (Exception e) {
+//        } finally {
+//            t.end();
+//        }
+//        for(int i = 0; i < persons.size(); i++){
+//            System.out.println("Informacion que retorna first_name: " + persons.get(i).name + " middle_name: " + persons.get(i).middleName + " last_name: " + persons.get(i).lastName);
+//        }
+//        return persons;
+//    }
 }

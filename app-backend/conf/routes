@@ -4,18 +4,18 @@
 
 #Get Methods
 #To Runs in Server
-GET     /app-backend/getStudent     controllers.StudentController.getStudent
-GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
-GET     /app-backend/getTurn        controllers.TurnController.getTurn
-GET     /app-backend/getTurns       controllers.TurnController.getAllTurns
-GET     /app-backend/getPenalty     controllers.PenaltyController.getPenalty
-GET     /app-backend/getPenalties   controllers.PenaltyController.getAllPenalties
-GET     /app-backend/getPayment     controllers.PaymentController.getPayment
-GET     /app-backend/getPayments    controllers.PaymentController.getAllPayments
-GET     /                           controllers.PaymentController.getAllPayments
+GET     /app-backend/getStudent/:id     controllers.StudentController.getStudent(id: Integer)
+GET     /app-backend/getStudents        controllers.StudentController.getAllStudents
+GET     /app-backend/getTurn            controllers.TurnController.getTurn
+GET     /app-backend/getTurns           controllers.TurnController.getAllTurns
+GET     /app-backend/getPenalty         controllers.PenaltyController.getPenalty
+GET     /app-backend/getPenalties       controllers.PenaltyController.getAllPenalties
+GET     /app-backend/getPayment         controllers.PaymentController.getPayment
+GET     /app-backend/getPayments        controllers.PaymentController.getAllPayments
+GET     /                               controllers.PaymentController.getAllPayments
 
 #To Runs Local
-GET     /getStudent                 controllers.StudentController.getStudent
+GET     /getStudent/:id             controllers.StudentController.getStudent(id: Integer)
 GET     /getStudents                controllers.StudentController.getAllStudents
 GET     /getTurn                    controllers.TurnController.getTurn
 GET     /getTurns                   controllers.TurnController.getAllTurns
