@@ -2,15 +2,18 @@ package models;
 
 import com.avaje.ebean.*;
 import org.joda.time.DateTime;
+import play.mvc.Result;
+
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by cristian on 10-14-16.
  */
 
 public class Student extends Person{
-    public int      idStudent;
-    public boolean  handiecap;
+    private int      idStudent;
+    private boolean  handiecap;
 
     public Student(){
         super();
@@ -25,4 +28,19 @@ public class Student extends Person{
         this.handiecap = handiecap;
     }
 
+    public int getIdStudent() {
+        return idStudent;
+    }
+
+    public void setIdStudent(int idStudent) {
+        this.idStudent = idStudent;
+    }
+
+    public boolean isHandiecap() {
+        return handiecap;
+    }
+
+    public void setHandiecap(boolean handiecap) {
+        this.handiecap = handiecap;
+    }
 }

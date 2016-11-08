@@ -68,6 +68,14 @@ create table turn (
   penalty_cost                  integer
 );
 
+create table turn_db (
+  id_turn                       integer,
+  id_student                    integer,
+  id_administrative             integer,
+  time_min                      integer,
+  penalty_cost                  integer
+);
+
 
 # --- !Downs
 
@@ -90,4 +98,6 @@ drop table if exists person cascade;
 drop table if exists position cascade;
 
 drop table if exists turn cascade;
+
+drop table if exists turn_db cascade;
 
