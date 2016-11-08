@@ -41,6 +41,7 @@ public class StudentController extends Controller{
         return ok(toJson((Student) daoStudent.getObjectById(id)));
     }
 
+    
     public Result getAllStudents(){
         return ok(toJson((List<Student>) daoStudent.getAllObjetcs()));
     }
