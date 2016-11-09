@@ -91,6 +91,7 @@ time_start timestamp,
 time_finish timestamp,
 penalty_cost int,
 description varchar(255),
+attended boolean,
 FOREIGN KEY (id_student) references student (id_student),
 FOREIGN KEY (id_administrative) references administrative (id_administrative)
 );
