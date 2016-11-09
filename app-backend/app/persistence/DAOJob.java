@@ -1,16 +1,19 @@
 package persistence;
 
+import models.Administrative;
 import models.Job;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by cristian on 11-08-16.
  */
 public class DAOJob implements DAOGeneric{
+
     @Override
     public Object getAllObjetcs() {
         return null;
@@ -45,7 +48,7 @@ public class DAOJob implements DAOGeneric{
                 se.printStackTrace();
             }
         }
-        System.out.println("Informacion que retorna Nombre: " + job.getName() + " Description: " + job.getDescription() + " ID JOB: " + job.getIdJob());
+//        System.out.println("Informacion que retorna Nombre: " + job.getName() + " Description: " + job.getDescription() + " ID JOB: " + job.getIdJob());
         return job;
     }
 
@@ -58,4 +61,5 @@ public class DAOJob implements DAOGeneric{
     public void deleteObject(Object object) {
 
     }
+
 }

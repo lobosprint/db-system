@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Created by cristian on 11-07-16.
  */
 public class DAOPerson implements DAOGeneric{
+
     @Override
     public ArrayList<Student> getAllObjetcs() {
         return null;

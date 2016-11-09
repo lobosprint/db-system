@@ -1,19 +1,50 @@
 package persistence;
 
 import models.Area;
+import models.Job;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by cristian on 11-08-16.
  */
 public class DAOArea implements DAOGeneric{
+
     @Override
     public Object getAllObjetcs() {
-        return null;
+        ArrayList<Area> areas = new ArrayList<Area>();
+        Connection conn = DbConnection.getConnection();
+        Statement stmt = null;
+        try {
+            stmt = conn.createStatement();
+            String sql =    "SELECT id_area, name_area FROM area";
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                areas.add(new Area(rs.getInt("id_area"), rs.getString("name_area")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+//
+//        for(int i = 0; i < students.size(); i++){
+//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
+//        }
+        return areas;
     }
 
     @Override
@@ -58,4 +89,44 @@ public class DAOArea implements DAOGeneric{
     public void deleteObject(Object object) {
 
     }
+
+    public Object getAllJobsOfArea(Integer id) {
+        ArrayList<Job> jobs = new ArrayList<Job>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "SELECT b.id_job as id_job, b.name_job as name_job, b.description as description " +
+                    "FROM position_type as a " +
+                    "INNER JOIN job as b ON a.id_job = b.id_job " +
+                    "WHERE id_area = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                jobs.add(new Job(rs.getInt("id_job"), rs.getString("name_job"), rs.getString("description")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+//
+//        for(int i = 0; i < students.size(); i++){
+//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
+//        }
+        return jobs;
+    }
+
 }

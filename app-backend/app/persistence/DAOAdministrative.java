@@ -1,7 +1,6 @@
 package persistence;
 
 import models.Administrative;
-import models.Area;
 import models.Position;
 import org.joda.time.DateTime;
 
@@ -9,12 +8,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by cristian on 11-08-16.
  */
 public class DAOAdministrative implements DAOGeneric{
-    DAOGeneric daoPosition = new DAOPosition();
+    DAOPosition daoPosition = new DAOPosition();
 
     @Override
     public Object getAllObjetcs() {
@@ -67,4 +67,41 @@ public class DAOAdministrative implements DAOGeneric{
     public void deleteObject(Object object) {
 
     }
+
+    public Object getAllAdministrativesOfJob(Integer id) {
+        ArrayList<Administrative> admins = new ArrayList<Administrative>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "SELECT id_administrative FROM administrative NATURAL JOIN position_type WHERE id_job = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                admins.add((Administrative) this.getObjectById(rs.getInt("id_administrative")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+//
+//        for(int i = 0; i < students.size(); i++){
+//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
+//        }
+        return admins;
+    }
+
 }

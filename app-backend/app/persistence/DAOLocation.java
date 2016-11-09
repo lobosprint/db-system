@@ -1,7 +1,6 @@
 package persistence;
 
 import models.Location;
-import org.joda.time.DateTime;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +11,6 @@ import java.sql.SQLException;
  * Created by cristian on 11-08-16.
  */
 public class DAOLocation implements DAOGeneric {
-
     @Override
     public Object getAllObjetcs() {
         return null;
@@ -59,4 +57,5 @@ public class DAOLocation implements DAOGeneric {
     public void deleteObject(Object object) {
 
     }
+
 }

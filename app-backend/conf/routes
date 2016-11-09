@@ -4,26 +4,34 @@
 
 #Get Methods
 #To Runs in Server
-GET     /app-backend/getStudent/:id controllers.StudentController.getStudent(id: Integer)
-GET     /app-backend/getStudents    controllers.StudentController.getAllStudents
-GET     /app-backend/getTurn/:id    controllers.TurnController.getTurn(id: Integer)
-GET     /app-backend/getTurns       controllers.TurnController.getAllTurns
-GET     /app-backend/getPenalty     controllers.PenaltyController.getPenalty
-GET     /app-backend/getPenalties   controllers.PenaltyController.getAllPenalties
-GET     /app-backend/getPayment     controllers.PaymentController.getPayment
-GET     /app-backend/getPayments    controllers.PaymentController.getAllPayments
-GET     /                           controllers.PaymentController.getAllPayments
+GET     /app-backend/getStudent/:id             			controllers.StudentController.getStudent(id: Integer)
+GET     /app-backend/getStudents                			controllers.StudentController.getAllStudents
+GET     /app-backend/getTurn/:id                			controllers.TurnController.getTurn(id: Integer)
+GET     /app-backend/getTurns                   			controllers.TurnController.getAllTurns
+GET     /app-backend/getAreas                   			controllers.TurnController.getAllAreas
+GET     /app-backend/getJobsByArea/:id          			controllers.TurnController.getAllJobsOfArea(id: Integer)
+GET     /app-backend/getAdminsByJob/:id         			controllers.TurnController.getAllAdministrativesOfJob(id: Integer)
+GET     /app-backend/getWaitQueue/:idArea/:idJob/:idAdmin   controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
+GET     /app-backend/getPenalty                 			controllers.PenaltyController.getPenalty
+GET     /app-backend/getPenalties               			controllers.PenaltyController.getAllPenalties
+GET     /app-backend/getPayment                 			controllers.PaymentController.getPayment
+GET     /app-backend/getPayments                			controllers.PaymentController.getAllPayments
+GET     /                          							controllers.PaymentController.getAllPayments
 
 #To Runs Local
-GET     /getStudent/:id             controllers.StudentController.getStudent(id: Integer)
-GET     /getStudents                controllers.StudentController.getAllStudents
-GET     /getTurn/:id                controllers.TurnController.getTurn(id: Integer)
-GET     /getTurns                   controllers.TurnController.getAllTurns
-GET     /getPenalty                 controllers.PenaltyController.getPenalty
-GET     /getPenalties               controllers.PenaltyController.getAllPenalties
-GET     /getPayment                 controllers.PaymentController.getPayment
-GET     /getPayments                controllers.PaymentController.getAllPayments
-GET     /                           controllers.PaymentController.getAllPayments
+GET     /getStudent/:id                             controllers.StudentController.getStudent(id: Integer)
+GET     /getStudents                                controllers.StudentController.getAllStudents
+GET     /getTurn/:id                                controllers.TurnController.getTurn(id: Integer)
+GET     /getTurns                                   controllers.TurnController.getAllTurns
+GET     /getAreas                                   controllers.TurnController.getAllAreas
+GET     /getJobsByArea/:id                          controllers.TurnController.getAllJobsOfArea(id: Integer)
+GET     /getAdminsByJob/:id                         controllers.TurnController.getAllAdministrativesOfJob(id: Integer)
+GET     /getWaitQueue/:idArea/:idJob/:idAdmin       controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
+GET     /getPenalty                                 controllers.PenaltyController.getPenalty
+GET     /getPenalties                               controllers.PenaltyController.getAllPenalties
+GET     /getPayment                                 controllers.PaymentController.getPayment
+GET     /getPayments                                controllers.PaymentController.getAllPayments
+GET     /                                           controllers.PaymentController.getAllPayments
 
 #Post Methods
 #To Runs in Server

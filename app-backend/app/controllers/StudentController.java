@@ -25,7 +25,7 @@ public class StudentController extends Controller{
     @Inject
     private FormFactory formFactory;
 
-    DAOGeneric daoStudent = new DAOStudent();
+    private DAOGeneric daoStudent = new DAOStudent();
 
     public Result addStudent() {
         Student student = formFactory.form(Student.class).bindFromRequest().get();

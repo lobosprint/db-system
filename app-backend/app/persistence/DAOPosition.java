@@ -1,22 +1,19 @@
 package persistence;
 
-import models.Area;
-import models.Job;
-import models.Location;
-import models.Position;
+import models.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by cristian on 11-08-16.
  */
 public class DAOPosition implements DAOGeneric {
-    DAOGeneric DaoArea = new DAOArea();
-    DAOGeneric DaoJob = new DAOJob();
-    DAOGeneric DaoLocation = new DAOLocation();
+
+    DAOArea daoArea = new DAOArea();
+    DAOJob daoJob  = new DAOJob();
+    DAOLocation daoLocation = new DAOLocation();
+
     @Override
     public Object getAllObjetcs() {
         return null;
@@ -33,7 +30,8 @@ public class DAOPosition implements DAOGeneric {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                position = new Position(id, (Area) DaoArea.getObjectById(rs.getInt("id_area")), (Job) DaoJob.getObjectById(rs.getInt("id_job")), (Location) DaoLocation.getObjectById(rs.getInt("id_place")));
+                position = new Position(id, (Area) daoArea.getObjectById(rs.getInt("id_area")), (Job) daoJob.getObjectById(rs.getInt("id_job")),
+                                            (Location) daoLocation.getObjectById(rs.getInt("id_place")));
             }
             rs.close();
         } catch (Exception e){
@@ -61,6 +59,6 @@ public class DAOPosition implements DAOGeneric {
 
     @Override
     public void deleteObject(Object object) {
-
     }
+
 }

@@ -12,4 +12,6 @@ public interface DAOGeneric {
     public Object getObjectById(Integer id);
     public void updateObject(Object object);
     public void deleteObject(Object object);
+//    public Object getAllJobsOfArea(Integer id);
+//    public Object getAllAdministrativesOfJob(Integer id);
 }

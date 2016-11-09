@@ -17,6 +17,7 @@ public class Turn extends Model {
     private DateTime             startTime;
     private DateTime             endTime;
     private Integer              penaltyCost;
+    private boolean              attended;
 
     public Turn() {
         idTurn = 0;
@@ -37,7 +38,7 @@ public class Turn extends Model {
         this.penaltyCost = penaltyCost;
     }
 
-    public Turn(int idTurn, Student student, Administrative administrative, String description, DateTime startTime, DateTime endTime, Integer penaltyCost) {
+    public Turn(int idTurn, Student student, Administrative administrative, String description, DateTime startTime, DateTime endTime, Integer penaltyCost, boolean attended) {
         this.idTurn = idTurn;
         this.student = student;
         this.administrative = administrative;
@@ -45,6 +46,7 @@ public class Turn extends Model {
         this.startTime = startTime;
         this.endTime = endTime;
         this.penaltyCost = penaltyCost;
+        this.attended = attended;
     }
 
     public int getIdTurn() {
@@ -103,4 +105,11 @@ public class Turn extends Model {
         this.penaltyCost = penaltyCost;
     }
 
+    public boolean isAttended() {
+        return attended;
+    }
+
+    public void setAttended(boolean attended) {
+        this.attended = attended;
+    }
 }
