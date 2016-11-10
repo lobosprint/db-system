@@ -55,4 +55,7 @@ public class TurnController extends Controller{
     public Result getAllPeopleInLineByAdmin(Integer idArea, Integer idJob, Integer idAdmin){
         return ok(toJson((List<Turn>) daoTurn.getAllPeopleInLineByAdmin(idArea, idJob, idAdmin)));
     }
+
+    public Result getAllTurnspPendingByStudent(Integer idStudent){ return ok(toJson((List<Turn>) daoTurn.getAllTurnspPendingByStudent(idStudent))); }
+
 }

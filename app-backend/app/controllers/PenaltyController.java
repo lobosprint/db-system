@@ -3,12 +3,15 @@ package controllers;
 import com.google.inject.Inject;
 import models.Payment;
 import models.Penalty;
+import models.Turn;
 import org.joda.time.DateTime;
+import persistence.DAOPenalty;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static play.libs.Json.toJson;
 
@@ -17,21 +20,18 @@ import static play.libs.Json.toJson;
  */
 public class PenaltyController extends Controller{
 
+    DAOPenalty daoPenalty = new DAOPenalty();
+
     @Inject
     private FormFactory formFactory;
 
     public Result addPenalty (){
-        Penalty penalty = formFactory.form(Penalty.class).bindFromRequest().get();
-        if(!penalty.description.equals("1")){
-            return ok("Added PENALTY successfully " + penalty.description);
-        } else {
-            return  internalServerError("Must provide the PENALTY description like minimum");
-        }
+        return null;
     }
 
     public Result getPenalty(){
         Penalty penalty;
-        penalty = new Penalty( "Tiempo de espera agotado", 10);
+        penalty = new Penalty();
         return ok(toJson(penalty));
     }
 
@@ -43,11 +43,15 @@ public class PenaltyController extends Controller{
             Payment payment;
 
             payment = new Payment((i+1), 47850+i, new DateTime());
-            penalty = new Penalty( (i+1), payment, "Tiempo de espera agotado para el estudiante #" + (i+1), 10+i);
+            penalty = new Penalty((i+1), new Payment(), new Turn());
 
             penaltiesList.add(penalty);
         }
         return ok(toJson(penaltiesList));
+    }
+
+    public Result getPenaltiesByStudent(Integer idStudent){
+        return ok(toJson((List<Penalty>) daoPenalty.getPenaltiesByStudent(idStudent)));
     }
 
 }

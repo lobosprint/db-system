@@ -14,7 +14,7 @@ public class Payment extends Model {
     public Integer  confirmationNumber;
     public DateTime date;
 
-    Payment(){
+    public Payment(){
         idPayment = 0;
         confirmationNumber = 0;
         date = null;

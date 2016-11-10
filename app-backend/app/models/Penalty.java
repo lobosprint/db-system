@@ -11,25 +11,17 @@ import javax.persistence.Entity;
 public class Penalty extends Model {
     public int      idPenalty;
     public Payment  payment;
-    public String   description;
-    public Integer  cost;
+    public Turn     turn;
 
-    Penalty(){
-        idPenalty       = 0;
+    public Penalty(){
+        idPenalty   = 0;
         payment     = new Payment();
-        description = "";
-        cost        = 0;
+        turn        = new Turn();
     }
 
-    public Penalty(String description, Integer cost) {
-        this.description = description;
-        this.cost = cost;
-    }
-
-    public Penalty(int idPenalty, Payment payment, String description, Integer cost) {
-        this.idPenalty      = idPenalty;
-        this.payment        = payment;
-        this.description    = description;
-        this.cost           = cost;
+    public Penalty(int idPenalty, Payment payment, Turn turn) {
+        this.idPenalty = idPenalty;
+        this.payment = payment;
+        this.turn = turn;
     }
 }

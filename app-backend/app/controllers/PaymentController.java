@@ -4,11 +4,13 @@ import com.google.inject.Inject;
 import models.Payment;
 import models.Payment;
 import org.joda.time.DateTime;
+import persistence.DAOPayment;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static play.libs.Json.toJson;
 
@@ -16,6 +18,8 @@ import static play.libs.Json.toJson;
  * Created by cristian on 10-14-16.
  */
 public class PaymentController extends Controller{
+
+    DAOPayment daoPayment = new DAOPayment();
 
     @Inject
     private FormFactory formFactory;
@@ -29,10 +33,8 @@ public class PaymentController extends Controller{
         }
     }
 
-    public Result getPayment(){
-        Payment payment;
-        payment = new Payment(11, 1230, new DateTime());
-        return ok(toJson(payment));
+    public Result getPayment(Integer id){
+        return ok(toJson(daoPayment.getObjectById(id)));
     }
 
     public Result getAllPayments(){
@@ -46,6 +48,10 @@ public class PaymentController extends Controller{
             paymentsList.add(payment);
         }
         return ok(toJson(paymentsList));
+    }
+
+    public Result getPaymentsByStudent(Integer idStudent){
+        return ok(toJson((List<Payment>) daoPayment.getPenaltiesByStudent(idStudent)));
     }
 
 }
