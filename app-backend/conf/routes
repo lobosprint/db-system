@@ -27,7 +27,9 @@ GET     /getAreas                                   controllers.TurnController.g
 GET     /getJobsByArea/:id                          controllers.TurnController.getAllJobsOfArea(id: Integer)
 GET     /getAdminsByJob/:id                         controllers.TurnController.getAllAdministrativesOfJob(id: Integer)
 GET     /getWaitQueue/:idArea/:idJob/:idAdmin       controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
-GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnspPendingByStudent(idStudent: Integer)
+GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
+GET     /getTurnsByAdmin/:idAdmin                   controllers.TurnController.getAllTurnsPendingByAdmin(idAdmin: Integer)
+GET     /getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
 GET     /getPenalty                                 controllers.PenaltyController.getPenalty
 GET     /getPenalties                               controllers.PenaltyController.getAllPenalties
 GET     /getPenalByStudent/:idStudent               controllers.PenaltyController.getPenaltiesByStudent(idStudent: Integer)

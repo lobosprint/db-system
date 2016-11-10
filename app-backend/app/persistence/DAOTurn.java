@@ -110,7 +110,7 @@ public class DAOTurn implements DAOGeneric {
         return turns;
     }
 
-    public Object getAllTurnspPendingByStudent(Integer idStudent){
+    public Object getAllTurnsPendingByStudent(Integer idStudent){
         ArrayList<Turn> turns = new ArrayList<Turn>();
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
@@ -119,6 +119,88 @@ public class DAOTurn implements DAOGeneric {
                             "WHERE attended = FALSE AND id_student = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idStudent);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")), (Administrative) daoAdministrative.getObjectById(rs.getInt("id_administrative")) ,
+                        rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
+                        rs.getBoolean("attended")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+//
+//        for(int i = 0; i < students.size(); i++){
+//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
+//        }
+        return turns;
+    }
+
+    public Object getAllTurnsPendingByAdmin(Integer idAdministrative){
+        ArrayList<Turn> turns = new ArrayList<Turn>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "SELECT id_turn, id_student, id_administrative, penalty_cost, start_time, finish_time, description, attended FROM turn " +
+                            "WHERE attended = FALSE AND id_administrative = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idAdministrative);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")), (Administrative) daoAdministrative.getObjectById(rs.getInt("id_administrative")) ,
+                        rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
+                        rs.getBoolean("attended")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+//
+//        for(int i = 0; i < students.size(); i++){
+//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
+//        }
+        return turns;
+    }
+
+    public Object getAllTurnsPendingByAdminJob(Integer idAdministrative, Integer idJob){
+        ArrayList<Turn> turns = new ArrayList<Turn>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "SELECT id_turn, id_student, a.id_administrative as id_administrative, penalty_cost, start_time, finish_time, description, attended " +
+                            "FROM turn as a " +
+                            "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
+                            "INNER JOIN position_type as c ON b.id_position = c.id_position " +
+                            "WHERE a.id_administrative = ? AND c.id_job = ? AND attended = FALSE";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idAdministrative);
+            stmt.setInt(2, idJob);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")), (Administrative) daoAdministrative.getObjectById(rs.getInt("id_administrative")) ,

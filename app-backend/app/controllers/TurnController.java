@@ -56,6 +56,10 @@ public class TurnController extends Controller{
         return ok(toJson((List<Turn>) daoTurn.getAllPeopleInLineByAdmin(idArea, idJob, idAdmin)));
     }
 
-    public Result getAllTurnspPendingByStudent(Integer idStudent){ return ok(toJson((List<Turn>) daoTurn.getAllTurnspPendingByStudent(idStudent))); }
+    public Result getAllTurnsPendingByStudent(Integer idStudent){ return ok(toJson((List<Turn>) daoTurn.getAllTurnsPendingByStudent(idStudent))); }
+
+    public Result getAllTurnsPendingByAdmin(Integer idAdministrative){ return ok(toJson((List<Turn>) daoTurn.getAllTurnsPendingByAdmin(idAdministrative))); }
+
+    public Result getAllTurnsPendingByAdminJob(Integer idAdministrative, Integer idJob){ return ok(toJson((List<Turn>) daoTurn.getAllTurnsPendingByAdminJob(idAdministrative, idJob))); }
 
 }
