@@ -25,7 +25,7 @@ CREATE TABLE person
 (
 id_person serial primary key,
 first_name varchar(100),
-middle_name varchar(100) default ' ',
+middle_name varchar(100),
 last_name varchar(100),
 date_birth date,
 phone varchar(50),

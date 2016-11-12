@@ -127,6 +127,24 @@ values ((select id_person from person order by id_person desc limit 1), (select 
 insert into turn
 (id_student, id_administrative, start_time, finish_time, penalty_cost,description)
 values ((select id_student from student order by id_student asc limit 1),(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016');
+insert into turn
+(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
+values ((select id_student from student order by id_student asc limit 1) + 1,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Me gustaría ver el examen parcial de ICOM 5016');
+insert into turn
+(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
+values ((select id_student from student order by id_student asc limit 1) + 2,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Revisión de examen de ICOM 5016');
+insert into turn
+(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
+values ((select id_student from student order by id_student asc limit 1) + 3,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'No estoy de acuerdo con mi nota del parcial de ICOM 5016');
+insert into turn
+(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
+values ((select id_student from student order by id_student asc limit 1) + 4,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Habían dos puntos del examen parcial que tengo bien de ICOM 5016');
+insert into turn
+(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
+values ((select id_student from student order by id_student asc limit 1) + 5,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Los ejercicios de clase no los he entendido de ICOM 5016');
+insert into turn
+(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
+values ((select id_student from student order by id_student asc limit 1) + 6,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'La materia de clase es fácil y quiero más ejercicios de ICOM 5016');
 
 /*** INSERT PENALTIES ***/
 insert into penalty
