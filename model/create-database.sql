@@ -19,7 +19,6 @@
 --DROP TABLE area;
 --DROP TABLE job;
 --DROP TABLE student;
---DROP TABLE place;
 --DROP TABLE person;
 
 CREATE TABLE person
@@ -52,27 +51,23 @@ description varchar(250)
 CREATE TABLE area
 (
 id_area serial primary key,
-name_area varchar(100)
-);
-CREATE TABLE place
-(
-id_place serial primary key,
+name_area varchar(100),
 office varchar(50),
 building varchar(100),
 longitude varchar(100),
 latitude varchar(100)
 );
+
 CREATE TABLE position_type
 (
 id_position serial,
 id_area int,
 id_job int,
-id_place int,
 PRIMARY KEY (id_position),
 FOREIGN KEY (id_area) references area (id_area),
-FOREIGN KEY (id_job) references job (id_job),
-FOREIGN KEY (id_place) references place (id_place)
+FOREIGN KEY (id_job) references job (id_job)
 );
+
 CREATE TABLE administrative
 (
 id_administrative serial primary key,
