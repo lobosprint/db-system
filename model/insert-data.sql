@@ -1,11 +1,11 @@
 /***** INSERT JOBS *****/
 insert into job
 (name_job, description)
-values ('Secretario', 'El puesto de secretario se encarga de recibir al público interesado en ser atendido por el servicio administrativo. Son los encargados de administrar y tramitar las peticiones para ser atendidos.');
+values ('Profesor', 'El puesto de profeso consiste en atender a los alumnos por los distintos motivos que sean necesario como podrían ser las tutorías, revisión de notas, justificar ausencias y más temas académicos.');
 
 insert into job
 (name_job, description)
-values ('Profesor', 'El puesto de profeso consiste en atender a los alumnos por los distintos motivos que sean necesario como podrían ser las tutorías, revisión de notas, justificar ausencias y más temas académicos.');
+values ('Secretario', 'El puesto de secretario se encarga de recibir al público interesado en ser atendido por el servicio administrativo. Son los encargados de administrar y tramitar las peticiones para ser atendidos.');
 
 insert into job
 (name_job, description)
@@ -99,52 +99,77 @@ values ((select id_person from person order by id_person desc limit 1), false);
 
 /***** INSERT ADMIN ******/
 
-insert into position_type
-(id_area, id_job)
-values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Profesor' limit 1));
-
 insert into person
 (first_name, middle_name, last_name, date_birth, phone, email, password, rum_id)
 values ('Humberto', 'Pepinillo', 'Blas', '1993-07-14', '7872224412', 'pepinillo.blas@upr.edu', md5('pass1234'), '702160349');
 
 insert into administrative
-(id_person, id_position)
-values ((select id_person from person order by id_person desc limit 1), (select id_position from position_type order by id_position desc limit 1));
+(id_person)
+values ((select id_person from person order by id_person desc limit 1));
+
+insert into position_type
+(id_area,id_administrative, id_job)
+values ((select id_area from area where name_area = 'ININ' limit 1), 1 ,(select id_job from job where name_job = 'Profesor' limit 1));
+
+insert into position_type
+(id_area,id_administrative, id_job)
+values ((select id_area from area where name_area = 'ININ' limit 1),1 ,(select id_job from job where name_job = 'Profesor' limit 1)+1);
 
 insert into person
 (first_name, middle_name, last_name, date_birth, phone, email, password, rum_id)
 values ('Colifornio', 'Jangueador', 'Amo', '1981-04-17', '7872224411', 'jangueador.amo@upr.edu', md5('pass1234'), '702160310');
 
-insert into position_type
-(id_area, id_job)
-values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Secretario' limit 1));
-
 insert into administrative
-(id_person, id_position)
-values ((select id_person from person order by id_person desc limit 1), (select id_position from position_type order by id_position desc limit 1));
+(id_person)
+values ((select id_person from person order by id_person desc limit 1));
+
+insert into position_type
+(id_area, id_administrative, id_job)
+values ((select id_area from area where name_area = 'ININ' limit 1), 2, (select id_job from job where name_job = 'Secretario' limit 1));
 
 /** INSER TURN **/
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
-values ((select id_student from student order by id_student asc limit 1),(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016');
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (1, (select id_student from student order by id_student asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016');
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
-values ((select id_student from student order by id_student asc limit 1) + 1,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Me gustaría ver el examen parcial de ICOM 5016');
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (1, (select id_student from student order by id_student asc limit 1) + 1,now(),now(),52,'Me gustaría ver el examen parcial de ICOM 5016');
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
-values ((select id_student from student order by id_student asc limit 1) + 2,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Revisión de examen de ICOM 5016');
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (1, (select id_student from student order by id_student asc limit 1) + 2,now(),now(),52,'Revisión de examen de ICOM 5016');
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
-values ((select id_student from student order by id_student asc limit 1) + 3,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'No estoy de acuerdo con mi nota del parcial de ICOM 5016');
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (2, (select id_student from student order by id_student asc limit 1) + 3,now(),now(),52,'No estoy de acuerdo con mi nota del parcial de ICOM 5016');
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
-values ((select id_student from student order by id_student asc limit 1) + 4,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Habían dos puntos del examen parcial que tengo bien de ICOM 5016');
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (1, (select id_student from student order by id_student asc limit 1) + 4,now(),now(),52,'Habían dos puntos del examen parcial que tengo bien de ICOM 5016');
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
-values ((select id_student from student order by id_student asc limit 1) + 5,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Los ejercicios de clase no los he entendido de ICOM 5016');
+(id_position, id_student, start_time, finish_time, penalty_cost,description, attended)
+values (1, (select id_student from student order by id_student asc limit 1) + 5,now(),now(),52,'Los ejercicios de clase no los he entendido de ICOM 5016', true);
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
-values ((select id_student from student order by id_student asc limit 1) + 6,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'La materia de clase es fácil y quiero más ejercicios de ICOM 5016');
+(id_position, id_student, start_time, finish_time, penalty_cost,description,attended)
+values (1, (select id_student from student order by id_student asc limit 1) + 6,now(),now(),52,'La materia de clase es fácil y quiero más ejercicios de ICOM 5016', true);
+insert into turn
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (1, (select id_student from student order by id_student asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016');
+insert into turn
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (2, (select id_student from student order by id_student asc limit 1) + 1,now(),now(),52,'Quiero cambiar las asignaturas que tengo');
+insert into turn
+(id_position, id_student, start_time, finish_time, penalty_cost,description, attended)
+values (2, (select id_student from student order by id_student asc limit 1) + 2,now(),now(),52,'Me gustaria entrar en la clase de ICOM4051', true);
+insert into turn
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (2, (select id_student from student order by id_student asc limit 1) + 3,now(),now(),52,'Desapuntarme de la clase ADMIN1523');
+insert into turn
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (2, (select id_student from student order by id_student asc limit 1) + 4,now(),now(),52,'No se como encontrar mi horario');
+insert into turn
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (2, (select id_student from student order by id_student asc limit 1) + 5,now(),now(),52,'Los requerimientos para ICOM654 los tengo pero no me deja matricularme');
+insert into turn
+(id_position, id_student, start_time, finish_time, penalty_cost,description)
+values (1, (select id_student from student order by id_student asc limit 1) + 6,now(),now(),52,'Estoy interesado en el puesto de ayudante que se ha enviado por cartero');
 
 /*** INSERT PENALTIES ***/
 insert into penalty
@@ -159,10 +184,12 @@ update penalty set id_payment = (select id_payment from payment order by id_paym
 
 insert into commentary
 (id_turn, description)
-values((select id_turn from turn order by id_turn desc limit 1), 'No ha traido los papeles necesarios');
+values((select id_turn from turn order by id_turn asc limit 1), 'No ha traido los papeles necesarios');
+
 insert into commentary
 (id_turn, description)
-values((select id_turn from turn order by id_turn desc limit 1), 'Tiene que hablar menos de su vida');
+values((select id_turn from turn order by id_turn asc limit 1), 'Tiene que hablar menos de su vida');
+
 insert into commentary
 (id_turn, description)
-values((select id_turn from turn order by id_turn desc limit 1), 'Es un pesado');
+values((select id_turn from turn order by id_turn asc limit 1), 'Es un pesado');

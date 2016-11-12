@@ -58,37 +58,37 @@ longitude varchar(100),
 latitude varchar(100)
 );
 
-CREATE TABLE position_type
-(
-id_position serial,
-id_area int,
-id_job int,
-PRIMARY KEY (id_position),
-FOREIGN KEY (id_area) references area (id_area),
-FOREIGN KEY (id_job) references job (id_job)
-);
-
 CREATE TABLE administrative
 (
 id_administrative serial primary key,
 id_person int unique,
-id_position int unique,
-FOREIGN KEY (id_person) references person (id_person),
-FOREIGN KEY (id_position) references position_type (id_position)
+FOREIGN KEY (id_person) references person (id_person)
+);
+
+CREATE TABLE position_type
+(
+id_position serial,
+id_area int,
+id_administrative int,
+id_job int,
+PRIMARY KEY (id_position),
+FOREIGN KEY (id_area) references area (id_area),
+FOREIGN KEY (id_administrative) references administrative (id_administrative),
+FOREIGN KEY (id_job) references job (id_job)
 );
 
 CREATE TABLE turn
 (
 id_turn serial primary key,
 id_student int,
-id_administrative int,
+id_position int,
 start_time timestamp,
 finish_time timestamp,
 penalty_cost int,
 description varchar(255),
 attended boolean default false,
 FOREIGN KEY (id_student) references student (id_student),
-FOREIGN KEY (id_administrative) references administrative (id_administrative)
+FOREIGN KEY (id_position) references position_type (id_position)
 );
 
 CREATE TABLE payment
