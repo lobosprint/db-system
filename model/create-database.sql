@@ -82,11 +82,11 @@ CREATE TABLE turn
 id_turn serial primary key,
 id_student int,
 id_administrative int,
-time_start timestamp,
-time_finish timestamp,
+start_time timestamp,
+finish_time timestamp,
 penalty_cost int,
 description varchar(255),
-attended boolean,
+attended boolean default false,
 FOREIGN KEY (id_student) references student (id_student),
 FOREIGN KEY (id_administrative) references administrative (id_administrative)
 );
