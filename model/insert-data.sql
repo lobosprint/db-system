@@ -14,21 +14,47 @@ values ('Consejero', 'El puesto de consejero es un personal especializado en aco
 
 /***** INSERT AREA *****/
 insert into area
-(name_area, office, building, longitude, latitude)
-values ('ADMIN', '156-AE', 'Administración de Empresas', '18.210287', '-67.140331');
+(name_area)
+values ('ADMIN');
 
 insert into area
-(name_area, office, building, longitude, latitude)
-values ('ICOM', '223-S', 'Luis Stefani', '18.210287', '-67.140331');
+(name_area)
+values ('ICOM');
 
 insert into area
-(name_area, office, building, longitude, latitude)
-values ('COMP', '22-M', 'Luis Monzón', '18.210287', '-67.140331');
+(name_area)
+values ('COMP');
 
 insert into area
-(name_area, office, building, longitude, latitude)
-values ('ININ','15-CM', 'Coliseo Mangual', '18.210287', '-67.140331');
+(name_area)
+values ('ININ');
 /***** END INSERT AREA *****/
+
+/***** INSERT PLACE *****/
+insert into place
+(office, building, longitude, latitude)
+values ('223-S', 'Luis Stefani', '18.210287', '-67.140331');
+
+insert into place
+(office, building, longitude, latitude)
+values ('2-S', 'Luis Stefani', '18.210287', '-67.140331');
+
+insert into place
+(office, building, longitude, latitude)
+values ('165-S', 'Luis Stefani', '18.210287', '-67.140331');
+
+insert into place
+(office, building, longitude, latitude)
+values ('22-M', 'Luis Monzón', '18.210287', '-67.140331');
+
+insert into place
+(office, building, longitude, latitude)
+values ('15-CM', 'Coliseo Mangual', '18.210287', '-67.140331');
+
+insert into place
+(office, building, longitude, latitude)
+values ('156-AE', 'Administración de Empresas', '18.210287', '-67.140331');
+/***** END INSERT PLACE *****/
 
 /***** INSERT STUDENT *****/
 insert into person
@@ -97,11 +123,52 @@ values ((select id_person from person order by id_person desc limit 1), false);
 /***** END INSERT STUDENTS *****/
 
 
+/** Puestos de trabajo **/
+/**
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ADMIN' limit 1), (select id_job from job where name_job = 'Profesor' limit 1), (select id_place from place where office='156-AE' limit 1));
+
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ADMIN' limit 1), (select id_job from job where name_job = 'Secretario' limit 1), (select id_place from place where office='156-AE' limit 1));
+
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ADMIN' limit 1), (select id_job from job where name_job = 'Consejero' limit 1), (select id_place from place where office='156-AE' limit 1));
+
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ICOM' limit 1), (select id_job from job where name_job = 'Profesor' limit 1), (select id_place from place where office='223-S' limit 1));
+
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ICOM' limit 1), (select id_job from job where name_job = 'Secretario' limit 1), (select id_place from place where office='223-S' limit 1));
+
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Profesor' limit 1), (select id_place from place where office='15-M' limit 1));
+
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'COMP' limit 1), (select id_job from job where name_job = 'Secretario' limit 1), (select id_place from place where office='22-M' limit 1));
+
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'COMP' limit 1), (select id_job from job where name_job = 'Consejero' limit 1), (select id_place from place where office='22-M' limit 1));
+**/
+
+
+
+
+
+
+
 /***** INSERT ADMIN ******/
 
 insert into position_type
-(id_area, id_job)
-values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Profesor' limit 1));
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Profesor' limit 1), (select id_place from place where office='15-M' limit 1));
 
 insert into person
 (first_name, middle_name, last_name, date_birth, phone, email, password, rum_id)
@@ -116,8 +183,8 @@ insert into person
 values ('Colifornio', 'Jangueador', 'Amo', '1981-04-17', '7872224411', 'jangueador.amo@upr.edu', md5('pass1234'), '702160310');
 
 insert into position_type
-(id_area, id_job)
-values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Secretario' limit 1));
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Secretario' limit 1), (select id_place from place where office='15-M' limit 1));
 
 insert into administrative
 (id_person, id_position)
@@ -125,7 +192,7 @@ values ((select id_person from person order by id_person desc limit 1), (select 
 
 /** INSER TURN **/
 insert into turn
-(id_student, id_administrative, start_time, finish_time, penalty_cost,description)
+(id_student, id_administrative, time_start, time_finish, penalty_cost,description)
 values ((select id_student from student order by id_student asc limit 1),(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016');
 
 /*** INSERT PENALTIES ***/
