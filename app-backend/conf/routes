@@ -16,6 +16,7 @@ GET     /app-backend/getPenalty                 			controllers.PenaltyController
 GET     /app-backend/getPenalties               			controllers.PenaltyController.getAllPenalties
 GET     /app-backend/getPayment/:id                         controllers.PaymentController.getPayment(id: Integer)
 GET     /app-backend/getPayments                			controllers.PaymentController.getAllPayments
+GET     /app-backend/getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
 GET     /                          							controllers.PaymentController.getAllPayments
 
 #To Runs Local
