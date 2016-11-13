@@ -18,7 +18,7 @@ public class DbConnection {
         }
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/turn4u", "turn4u", "turn4u");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/turn4u", "turn4u", "turn4u");
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
             e.printStackTrace();
