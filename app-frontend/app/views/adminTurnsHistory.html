@@ -5,9 +5,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Buscar por...">
+                   <input ng-model="searchedID"  class="form-control"  placeholder="Buscar por ID del RUM">
                     <span class="input-group-btn">
-                        <button class="btn btn-success margin-bottom-xs" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
+                        <button class="btn btn-success margin-bottom-xs" type="button" ng-click="getTurnHistory()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
                     </span>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
@@ -15,36 +15,22 @@
 
         <div class="table-responsive">
             <table class="table table-bordered">
-                <tr>
+                <tr ng-show="turns.length">
                     <th>RUM ID</th>
                     <th>Hora</th>
                     <th>Acción</th>
                 </tr>
 
-                <tr>
-                    <td>{{turns[0].student.rumId}}</td>
-                    <td>{{turns[0].startTime.hourOfDay+":"+turns[0].startTime.minuteOfHour}}</td>
+                <tr ng-repeat="currentTurn in turns">
+                    <td>{{currentTurn.student.rumId}}</td>
+                    <td>{{currentTurn.startTime.hourOfDay+":"+currentTurn.startTime.minuteOfHour}}</td>
                     <td><a ng-href="#/adminPassTurn">
                             <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver</button>
                         </a></td>
                     </td>
                 </tr>
 
-                <tr>
-                    <td>{{turns[1].student.rumId}}</td>
-                    <td>{{turns[1].startTime.hourOfDay+":"+turns[0].startTime.minuteOfHour}}</td>
-                    <td><a ng-href="#/adminPassTurn">
-                            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver</button>
-                        </a></td>
-                </tr>
 
-                <tr>
-                    <td>{{turns[2].student.rumId}}</td>
-                    <td>{{turns[2].startTime.hourOfDay+":"+turns[0].startTime.minuteOfHour}}</td>
-                    <td><a ng-href="#/adminPassTurn">
-                            <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver</button>
-                        </a></td>
-                </tr>
             </table>
         </div>
   </div>
