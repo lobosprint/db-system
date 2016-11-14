@@ -17,13 +17,10 @@
 //turnVariable is shared between this and adminPendingTurns
     $scope.turnVariable=turnService.sharedObject;
  	$scope.student=[];
- 	$http.get('/app-backend/getTurn').success(function(data){
+ 	$http.get('/app-backend/getTurn/'.concat($scope.turnVariable.turnID)).success(function(data){
  			$scope.student=data;
  			//$log.error(data);
  		});
-
-
-
  }]);
 
  // (function(){
