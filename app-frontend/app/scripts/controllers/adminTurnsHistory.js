@@ -16,7 +16,6 @@ angular.module('appFrontApp')
   ];
   $scope.turns=[];
   $scope.searchedID="";
-  $scope.testString="/app-backend/getAllTurnsByStudentNumber/".concat($scope.searchedID);
   $scope.getTurnHistory =function(){
     $http.get("/app-backend/getAllTurnsByStudentNumber/".concat($scope.searchedID)).success(function(data){
     //var getTurnHistory = $http.get('/app-backend/getTurnsByAdmin/1'.concat($scope.searchedID)).success(function(data){
