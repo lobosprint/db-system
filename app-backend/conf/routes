@@ -4,6 +4,7 @@
 
 #Get Methods
 #To Runs in Server
+GET     /app-backend/getTurnsByAdmin/:idAdmin                   controllers.TurnController.getAllTurnsPendingByAdmin(idAdmin: Integer)
 GET     /app-backend/getStudent/:id             			controllers.StudentController.getStudent(id: Integer)
 GET     /app-backend/getStudents                			controllers.StudentController.getAllStudents
 GET     /app-backend/getTurn/:id                			controllers.TurnController.getTurn(id: Integer)
