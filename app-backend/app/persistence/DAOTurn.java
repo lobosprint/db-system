@@ -231,4 +231,47 @@ public class DAOTurn implements DAOGeneric {
         return turns;
     }
 
+    public Object getAllTurnsByStudentNumber(Integer idStudent){
+        ArrayList<Turn> turns = new ArrayList<Turn>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "SELECT id_turn, t.id_student, id_administrative,"+
+                    "penalty_cost, start_time, finish_time, description, attended "+
+                    "FROM turn as t "+
+                    "INNER JOIN student as s on t.id_student=s.id_student "+
+                    "INNER JOIN person as p on s.id_person=p.id_person " +
+                    "WHERE attended = FALSE AND rum_id = ?  ";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, Integer.toString(idStudent));
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")), (Administrative) daoAdministrative.getObjectById(rs.getInt("id_administrative")) ,
+                        rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
+                        rs.getBoolean("attended")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+//
+//        for(int i = 0; i < students.size(); i++){
+//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
+//        }
+        return turns;
+    }
+
 }
