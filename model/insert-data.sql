@@ -193,10 +193,12 @@ values ((select id_person from person order by id_person desc limit 1), (select 
 /** INSER TURN **/
 insert into turn
 (id_student, id_administrative, start_time, finish_time, penalty_cost,description, attended)
-values ((select id_student from student order by id_student asc limit 1),(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016', false);
+values (2,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la nota del examen parcial de ICOM 5016', true);
 insert into turn
 (id_student, id_administrative, start_time, finish_time, penalty_cost,description, attended)
-values ((select id_student from student order by id_student asc limit 1),(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016', false);
+values (2,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016', false);
+(id_student, id_administrative, start_time, finish_time, penalty_cost,description, attended)
+values (1,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Ejercicios revisión de ICOM 5016', false);
 
 /*** INSERT PENALTIES ***/
 insert into penalty
