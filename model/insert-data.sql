@@ -59,7 +59,7 @@ values ('156-AE', 'Administración de Empresas', '18.210287', '-67.140331');
 /***** INSERT STUDENT *****/
 insert into person
 (first_name, middle_name, last_name, date_birth, phone, email, password, rum_id)
-values ('Marcos', null, 'Antolí', '1995-08-22', '7872224400', 'marcos.antoli@upr.edu', md5('pass1234'), '702160341');
+values ('Marcos', 'Pepito', 'Antolí', '1995-08-22', '7872224400', 'marcos.antoli@upr.edu', md5('pass1234'), '702160341');
 
 insert into student
 (id_person, handiecap)
