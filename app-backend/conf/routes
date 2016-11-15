@@ -13,13 +13,13 @@ GET     /app-backend/getTurn/:id                			controllers.TurnController.ge
 GET     /app-backend/getTurns                   			controllers.TurnController.getAllTurns
 GET     /app-backend/getAreas                   			controllers.TurnController.getAllAreas
 GET     /app-backend/getJobsByArea/:id          			controllers.TurnController.getAllJobsOfArea(id: Integer)
-GET     /app-backend/getAdminsByJob/:id         			controllers.TurnController.getAllAdministrativesOfJob(id: Integer)
+GET     /app-backend/getAdminsByJob/:idArea/:idJob          controllers.TurnController.getAllAdministrativesOfJob(idArea: Integer, idJob: Integer)
 GET     /app-backend/getWaitQueue/:idArea/:idJob/:idAdmin   controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
 GET     /app-backend/getPenalty                 			controllers.PenaltyController.getPenalty
 GET     /app-backend/getPenalties               			controllers.PenaltyController.getAllPenalties
 GET     /app-backend/getPayment/:id                         controllers.PaymentController.getPayment(id: Integer)
 GET     /app-backend/getPayments                			controllers.PaymentController.getAllPayments
-GET     /app-backend/getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
+GET     /app-backend/getTurnsByAdminJob/:idAdmin/:idJob     controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
 GET     /                          							controllers.PaymentController.getAllPayments
 
 #To Runs Local
@@ -29,7 +29,7 @@ GET     /getTurn/:id                                controllers.TurnController.g
 GET     /getTurns                                   controllers.TurnController.getAllTurns
 GET     /getAreas                                   controllers.TurnController.getAllAreas
 GET     /getJobsByArea/:id                          controllers.TurnController.getAllJobsOfArea(id: Integer)
-GET     /getAdminsByJob/:id                         controllers.TurnController.getAllAdministrativesOfJob(id: Integer)
+GET     /getAdminsByJob/:idArea/:idJob              controllers.TurnController.getAllAdministrativesOfJob(idArea: Integer, idJob: Integer)
 GET     /getWaitQueue/:idArea/:idJob/:idAdmin       controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
 GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
 GET     /getTurnsByAdmin/:idAdmin                   controllers.TurnController.getAllTurnsPendingByAdmin(idAdmin: Integer)

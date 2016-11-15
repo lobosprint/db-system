@@ -50,7 +50,7 @@ public class TurnController extends Controller{
         return ok(toJson((List<Job>) daoArea.getAllJobsOfArea(id)));
     }
 
-    public Result getAllAdministrativesOfJob(Integer id){ return ok(toJson((List<Administrative>) daoAdministrative.getAllAdministrativesOfJob(id))); }
+    public Result getAllAdministrativesOfJob(Integer idArea, Integer idJob){ return ok(toJson((List<Administrative>) daoAdministrative.getAllAdministrativesOfJob(idArea, idJob))); }
 
     public Result getAllPeopleInLineByAdmin(Integer idArea, Integer idJob, Integer idAdmin){
         return ok(toJson((List<Turn>) daoTurn.getAllPeopleInLineByAdmin(idArea, idJob, idAdmin)));
