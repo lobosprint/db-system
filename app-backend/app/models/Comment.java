@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Entity
 public class Comment extends Model {
     public int      idComment;
-    public String   description;
+        public String   description;
 
     Comment(){
         idComment = 0;

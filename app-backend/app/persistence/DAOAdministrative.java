@@ -68,14 +68,17 @@ public class DAOAdministrative implements DAOGeneric{
 
     }
 
-    public Object getAllAdministrativesOfJob(Integer id) {
+    public Object getAllAdministrativesOfJob(Integer idArea, Integer idJob) {
         ArrayList<Administrative> admins = new ArrayList<Administrative>();
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            String sql = "SELECT id_administrative FROM administrative NATURAL JOIN position_type WHERE id_job = ?";
+            String sql = "SELECT  DISTINCT id_administrative FROM administrative as a " +
+                         "INNER JOIN position_type as b ON a.id_position = b.id_position " +
+                         "WHERE id_area = ? AND id_job = ?";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setInt(1, idArea);
+            stmt.setInt(2, idJob);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 admins.add((Administrative) this.getObjectById(rs.getInt("id_administrative")));
