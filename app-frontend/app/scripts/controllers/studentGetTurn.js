@@ -25,7 +25,7 @@ angular.module('appFrontApp')
   });
 
   $scope.getJob= function(){
-    $http.get('/app-backend/getJobsByArea/4').success(function(data){
+    $http.get('/app-backend/getJobsByArea/'.concat( $scope.sharedVariable.studentGetTurnAreaID)).success(function(data){
       $scope.jobs=data;
   });
 };
