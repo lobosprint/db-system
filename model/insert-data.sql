@@ -177,6 +177,13 @@ values ('Humberto', 'Pepinillo', 'Blas', '1993-07-14', '7872224412', 'pepinillo.
 insert into administrative
 (id_person, id_position)
 values ((select id_person from person order by id_person desc limit 1), (select id_position from position_type order by id_position desc limit 1));
+insert into position_type
+(id_area, id_job, id_place)
+values ((select id_area from area where name_area = 'ININ' limit 1), (select id_job from job where name_job = 'Secretario' limit 1), (select id_place from place where office='15-M' limit 1));
+
+insert into administrative
+(id_person, id_position)
+values ((select id_person from person order by id_person desc limit 1), (select id_position from position_type order by id_position desc limit 1));
 
 insert into person
 (first_name, middle_name, last_name, date_birth, phone, email, password, rum_id)

@@ -76,8 +76,8 @@ FOREIGN KEY (id_place) references place (id_place)
 CREATE TABLE administrative
 (
 id_administrative serial primary key,
-id_person int unique,
-id_position int unique,
+id_person int,
+id_position int,
 FOREIGN KEY (id_person) references person (id_person),
 FOREIGN KEY (id_position) references position_type (id_position)
 );
