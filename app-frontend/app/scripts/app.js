@@ -113,7 +113,13 @@ app.config(function ($routeProvider) {
 app.factory("turnService", function(){
 
   return {
-    sharedObject: { turnID: '0' }
+    sharedObject: { turnID: '0'},
+    studentGetTurnSharedObject: {
+      studentGetTurnAreaName: 0,
+      studentGetTurnAreaID:0,
+      studentGetTurnJobName:0,
+      studentGetTurnJobID:0
+    }
   };
 
 });
