@@ -197,6 +197,7 @@ values (2,(select id_administrative from administrative order by id_administrati
 insert into turn
 (id_student, id_administrative, start_time, finish_time, penalty_cost,description, attended)
 values (2,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Quiero ver la revisión del examen parcial de ICOM 5016', false);
+insert into turn
 (id_student, id_administrative, start_time, finish_time, penalty_cost,description, attended)
 values (1,(select id_administrative from administrative order by id_administrative asc limit 1),now(),now(),52,'Ejercicios revisión de ICOM 5016', false);
 
