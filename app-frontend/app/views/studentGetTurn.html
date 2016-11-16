@@ -12,9 +12,9 @@
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <table class="table table-striped">
         <tr class="sucess"  align="center" ng-repeat= "currentArea in areas" ng-show="$index%3==0">
-          <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAreaName=currentArea.name;sharedVariable.studentGetTurnAreaID=currentArea.idArea; ">{{currentArea.name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+1].name; sharedVariable.studentGetTurnAreaID=areas[$index+1].idArea">{{areas[$index+1].name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+2)" ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+2].name; sharedVariable.studentGetTurnAreaID=areas[$index+2].idArea">{{areas[$index+2].name}}</button></td>
+          <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAreaName=currentArea.name;sharedVariable.studentGetTurnAreaID=currentArea.idArea; getJob(); openJobs();">{{currentArea.name}}</button></td>
+          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+1].name; sharedVariable.studentGetTurnAreaID=areas[$index+1].idArea; getJob(); openJobs();">{{areas[$index+1].name}}</button></td>
+          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+2)" ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+2].name; sharedVariable.studentGetTurnAreaID=areas[$index+2].idArea; getJob(); openJobs();">{{areas[$index+2].name}}</button></td>
         </tr>
       </table>
     </div>
@@ -23,25 +23,49 @@
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" autofocus=""
-        ng-click="getJob()"
+
         >
         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Jobs
       </button>
-        <span ng-hide="sharedVariable.studentGetTurnJobName==0">{{""+sharedVariable.studentGetTurnJobName+sharedVariable.studentGetTurnJobID}}</span>
+      <span ng-hide="sharedVariable.studentGetTurnJobName==0">{{""+sharedVariable.studentGetTurnJobName+sharedVariable.studentGetTurnJobID}}</span>
     </h4>
   </div>
   <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
     <div class="panel-body">
       <table class="table table-striped">
         <tr class="sucess"  align="center" ng-repeat= "currentJob in jobs" ng-show="$index%3==0">
-          <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnJobName=currentJob.name; sharedVariable.studentGetTurnJobID=currentJob.idJob; ">{{currentJob.name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+1)"  ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+1].name; sharedVariable.studentGetTurnJobID=jobs[$index+1].idJob">{{jobs[$index+1].name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+2)" ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+2].name; sharedVariable.studentGetTurnJobID=jobs[$index+2].idJob">{{jobs[$index+2].name}}</button></td>
+          <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnJobName=currentJob.name; sharedVariable.studentGetTurnJobID=currentJob.idJob;  getAdministrative(); openAdministrative();">{{currentJob.name}}</button></td>
+          <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+1)"  ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+1].name; sharedVariable.studentGetTurnJobID=jobs[$index+1].idJob; getAdministrative(); openAdministrative();">{{jobs[$index+1].name}}</button></td>
+          <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+2)" ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+2].name; sharedVariable.studentGetTurnJobID=jobs[$index+2].idJob;  getAdministrative(); openAdministrative();">{{jobs[$index+2].name}}</button></td>
         </tr>
 
       </table>
     </div>
   </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="headingTwo">
+    <h4 class="panel-title">
+      <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" autofocus=""
+
+      >
+      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Administrative
+    </button>
+    <span ng-hide="sharedVariable.studentGetTurnJobName==0">{{""+sharedVariable.studentGetTurnAdminName+sharedVariable.studentGetTurnAdminID+$scope.getAdminsByJobRoute}}</span>
+  </h4>
+</div>
+<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+  <div class="panel-body">
+    <table class="table table-striped">
+      <tr class="sucess"  align="center" ng-repeat= "currentAdmin in admins" ng-show="$index%3==0">
+        <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAdminName=currentAdmin.name; sharedVariable.studentGetTurnAdminID=currentAdmin.idJob; openDescription();">{{currentAdmin.name}}</button></td>
+        <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAdminName=jobs[$index+1].name; sharedVariable.studentGetTurnAdminID=admins[$index+1].idJob; openDescription();">{{admins[$index+1].name}}</button></td>
+        <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+2)" ng-click="sharedVariable.studentGetTurnAdminName=jobs[$index+2].name; sharedVariable.studentGetTurnAdminID=admins[$index+2].idJob; openDescription();">{{admins[$index+2].name}}</button></td>
+      </tr>
+
+    </table>
+  </div>
+</div>
 </div>
 <div class="panel panel-default">
   <div class="panel-heading" role="tab" id="headingThree">
@@ -51,7 +75,7 @@
       </button>
     </h4>
   </div>
-  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
     <div class="panel-body col-md-offset-2">
       <div class="form-group">
         <label class="col-md-4 control-label">Description:</label>
