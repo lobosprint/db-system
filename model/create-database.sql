@@ -75,11 +75,12 @@ FOREIGN KEY (id_place) references place (id_place)
 );
 CREATE TABLE administrative
 (
-id_administrative serial primary key,
+id_administrative serial,
 id_person int,
 id_position int,
 FOREIGN KEY (id_person) references person (id_person),
-FOREIGN KEY (id_position) references position_type (id_position)
+FOREIGN KEY (id_position) references position_type (id_position),
+PRIMARY KEY (id_administrative, id_position)
 );
 
 CREATE TABLE turn
@@ -87,20 +88,24 @@ CREATE TABLE turn
 id_turn serial primary key,
 id_student int,
 id_administrative int,
+id_position int,
 start_time timestamp,
 finish_time timestamp,
 penalty_cost int,
 description varchar(255),
 attended boolean default false,
 FOREIGN KEY (id_student) references student (id_student),
-FOREIGN KEY (id_administrative) references administrative (id_administrative)
+FOREIGN KEY (id_administrative, id_position) references administrative (id_administrative, id_position)
 );
 
 CREATE TABLE payment
 (
 id_payment serial primary key,
 confirmation_number int,
-date_payment date
+date_payment date,
+type_card varchar(50),
+numbers_card int,
+expiration_card date
 );
 
 CREATE TABLE penalty
