@@ -1,22 +1,34 @@
 <div class="panel panel-success">
   <div class="panel-heading">Pending Turns</div>
   <div class="panel-body">
-    <table class="table table-striped">
-      <tr class="sucess" align="left">
-        <th>Area</th>
-        <th>Job</th>
-        <th>Administrator Name</th>
-        <th>Date & time</th>
-        <th>Actions</th>
-      </tr>
-      <tr align="left" ng-repeat="currentTurn in turns">
-        <td>{{currentTurn.administrative.position.area.name}}</td>
-        <td>{{currentTurn.administrative.position.job.name}}</td>
-        <td>{{currentTurn.administrative.name}} {{turns[0].administrative.middleName}}  {{turns[0].administrative.lastName}}</td>
-        <td>{{currentTurn.startTime.year}}/{{turns[0].startTime.monthOfYear}}/{{turns[0].startTime.dayOfMonth}}-{{turns[0].startTime.hourOfDay}}:{{turns[0].startTime.minuteOfHour}}:{{turns[0].startTime.secondOfMinute}}</td>
-        <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-      </tr>
 
-    </table>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="description">ID:</label>
+      <div class="col-md-4">
+        <input ng-model="ID" type="text" class="form-control" id="description" rows="3"> </input>
+      </div>
+
+      <div class="form-group col-md-4">
+        <a ><button ng-click="getPendingTurns()" type="button" class="btn btn-success" style="margin: 10px;"><span class="glyphicon glyphicon-ok"></span> Consultar</button></a>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <tr class="sucess" align="left">
+          <th>Area</th>
+          <th>Job</th>
+          <th>Administrator Name</th>
+          <th>Date & time</th>
+          <th>Actions</th>
+        </tr>
+        <tr align="left" ng-repeat="currentTurn in turns">
+          <td>{{currentTurn.administrative.position.area.name}}</td>
+          <td>{{currentTurn.administrative.position.job.name}}</td>
+          <td>{{currentTurn.administrative.name}} {{turns[0].administrative.middleName}}  {{turns[0].administrative.lastName}}</td>
+          <td>{{currentTurn.startTime.year}}/{{turns[0].startTime.monthOfYear}}/{{turns[0].startTime.dayOfMonth}}-{{turns[0].startTime.hourOfDay}}:{{turns[0].startTime.minuteOfHour}}:{{turns[0].startTime.secondOfMinute}}</td>
+          <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+        </tr>
+
+      </table>
+    </div>
   </div>
-</div>
