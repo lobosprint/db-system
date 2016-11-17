@@ -2,34 +2,21 @@
   <div class="panel-heading">Pending Turns</div>
   <div class="panel-body">
     <table class="table table-striped">
-      <tr class="sucess" align="center">
+      <tr class="sucess" align="left">
         <th>Area</th>
         <th>Job</th>
         <th>Administrator Name</th>
         <th>Date & time</th>
         <th>Actions</th>
       </tr>
-      <tr align="center">
-        <td>{{turns[0].administrative.position.area.name}}</td>
-        <td>{{turns[0].administrative.position.job.name}}</td>
-        <td>{{turns[0].administrative.name}} {{turns[0].administrative.middleName}}  {{turns[0].administrative.lastName}}</td>
-        <td>{{turns[0].startTime.year}}/{{turns[0].startTime.monthOfYear}}/{{turns[0].startTime.dayOfMonth}}-{{turns[0].startTime.hourOfDay}}:{{turns[0].startTime.minuteOfHour}}:{{turns[0].startTime.secondOfMinute}}</td>
+      <tr align="left" ng-repeat="currentTurn in turns">
+        <td>{{currentTurn.administrative.position.area.name}}</td>
+        <td>{{currentTurn.administrative.position.job.name}}</td>
+        <td>{{currentTurn.administrative.name}} {{turns[0].administrative.middleName}}  {{turns[0].administrative.lastName}}</td>
+        <td>{{currentTurn.startTime.year}}/{{turns[0].startTime.monthOfYear}}/{{turns[0].startTime.dayOfMonth}}-{{turns[0].startTime.hourOfDay}}:{{turns[0].startTime.minuteOfHour}}:{{turns[0].startTime.secondOfMinute}}</td>
         <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
       </tr>
-      <tr align="center">
-        <td>{{turns[1].administrative.position.area.name}}</td>
-        <td>{{turns[1].administrative.position.job.name}}</td>
-        <td>{{turns[1].administrative.name}} {{turns[1].administrative.middleName}}  {{turns[1].administrative.lastName}}</td>
-        <td>{{turns[1].startTime.year}}/{{turns[1].startTime.monthOfYear}}/{{turns[1].startTime.dayOfMonth}}-{{turns[1].startTime.hourOfDay}}:{{turns[1].startTime.minuteOfHour}}:{{turns[1].startTime.secondOfMinute}}</td>
-        <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-      </tr>
-      <tr align="center">
-        <td>{{turns[2].administrative.position.area.name}}</td>
-        <td>{{turns[2].administrative.position.job.name}}</td>
-        <td>{{turns[2].administrative.name}} {{turns[2].administrative.middleName}}  {{turns[2].administrative.lastName}}</td>
-        <td>{{turns[2].startTime.year}}/{{turns[2].startTime.monthOfYear}}/{{turns[2].startTime.dayOfMonth}}-{{turns[2].startTime.hourOfDay}}:{{turns[2].startTime.minuteOfHour}}:{{turns[2].startTime.secondOfMinute}}</td>
-        <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
-      </tr>
+
     </table>
   </div>
 </div>
