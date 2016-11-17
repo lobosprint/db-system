@@ -26,26 +26,56 @@ angular.module('appFrontApp')
   });
 
   $scope.openJobs=function(){
-    $('#collapseOne').removeClass("in");
-    $('#collapseTwo').addClass("in");
-    $('#collapseTwo').removeAttr("style");
+     $('#collapseOne').collapse('hide');
+     $('#collapseTwo').collapse('show');
+     $('#collapseThree').collapse('hide');
+     $('#collapseFour').collapse('hide');
+     $scope.sharedVariable.studentGetTurnJobID="";
+     $scope.sharedVariable.studentGetTurnJobName="";
+    // $('#collapseOne').removeClass("in");
+    // $('#collapseTwo').addClass("in");
+    // $('#collapseTwo').removeAttr("style");
+
   };
 
   $scope.openAdministrative=function(){
-    $('#collapseOne').removeClass("in");
-    $('#collapseTwo').removeClass("in");
-    $('#collapseThree').addClass("in");
-    $('#collapseThree').removeAttr("style");
+    $('#collapseOne').collapse('hide');
+    $('#collapseTwo').collapse('hide');
+    $('#collapseThree').collapse('show');
+    $('#collapseFour').collapse('hide');
+    $scope.sharedVariable.studentGetTurnAdminID="";
+    $scope.sharedVariable.studentGetTurnAdminName="";
+    // $('#collapseOne').removeClass("in");
+    // $('#collapseTwo').removeClass("in");
+    // $('#collapseThree').addClass("in");
+    // $('#collapseThree').removeAttr("style");
 
   };
   $scope.getAdminsByJobRoute='';
   $scope.openDescription=function(){
+    $('#collapseOne').collapse('hide');
+    $('#collapseTwo').collapse('hide');
+    $('#collapseThree').collapse('hide');
+    $('#collapseFour').collapse('show');
     //  $scope.getAdminsByJobRoute= '/app-backend/getAdminsByJob/'.concat( $scope.sharedVariable.studentGetTurnAreaID.concat('/'.concat($scope.sharedVariable.studentGetTurnJobID)));
-    $('#collapseOne').removeClass("in");
-    $('#collapseTwo').removeClass("in");
-    $('#collapseThree').removeClass("in");
-    $('#collapseFour').addClass("in");
-    $('#collapseFour').removeAttr("style");
+    // $('#collapseOne').removeClass("in");
+    // $('#collapseTwo').removeClass("in");
+    // $('#collapseThree').removeClass("in");
+    // $('#collapseFour').addClass("in");
+    // $('#collapseFour').removeAttr("style");
+  };
+
+  $scope.openArea=function(){
+    $('#collapseOne').collapse('show');
+    $('#collapseTwo').collapse('hide');
+    $('#collapseThree').collapse('hide');
+    $('#collapseFour').collapse('hide');
+    //  $scope.getAdminsByJobRoute= '/app-backend/getAdminsByJob/'.concat( $scope.sharedVariable.studentGetTurnAreaID.concat('/'.concat($scope.sharedVariable.studentGetTurnJobID)));
+    // $('#collapseOne').removeClass("in");
+    // $('#collapseTwo').removeClass("in");
+    // $('#collapseThree').removeClass("in");
+    // $('#collapseFour').addClass("in");
+    // $('#collapseFour').removeAttr("style");
   };
 
   $scope.getJob= function(){
