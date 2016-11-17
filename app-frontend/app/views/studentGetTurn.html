@@ -56,9 +56,9 @@
       <div class="panel-body">
         <table class="table table-striped">
           <tr class="sucess"  align="center" ng-repeat= "currentAdmin in admins" ng-show="$index%3==0">
-            <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAdminName=currentAdmin.name; sharedVariable.studentGetTurnAdminID=currentAdmin.idAdmin; openDescription();">{{currentAdmin.name}}</button></td>
-            <td ><button type="button"class="btn btn-default" ng-show="admins.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAdminName=admins[$index+1].name; sharedVariable.studentGetTurnAdminID=admins[$index+1].idAdmin; openDescription();">{{admins[$index+1].name}}</button></td>
-            <td ><button type="button"class="btn btn-default" ng-show="admins.length>($index+2)" ng-click="sharedVariable.studentGetTurnAdminName=admins[$index+2].name; sharedVariable.studentGetTurnAdminID=admins[$index+2].idAdmin; openDescription();">{{admins[$index+2].name}}</button></td>
+            <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAdminName=currentAdmin.name; sharedVariable.studentGetTurnAdminID=currentAdmin.idAdministrative; openDescription();">{{currentAdmin.name}}</button></td>
+            <td ><button type="button"class="btn btn-default" ng-show="admins.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAdminName=admins[$index+1].name; sharedVariable.studentGetTurnAdminID=admins[$index+1].idAdministrative; openDescription();">{{admins[$index+1].name}}</button></td>
+            <td ><button type="button"class="btn btn-default" ng-show="admins.length>($index+2)" ng-click="sharedVariable.studentGetTurnAdminName=admins[$index+2].name; sharedVariable.studentGetTurnAdminID=admins[$index+2].idAdministrative; openDescription();">{{admins[$index+2].name}}</button></td>
           </tr>
 
         </table>
