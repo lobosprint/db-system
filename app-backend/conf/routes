@@ -14,6 +14,17 @@ GET     /app-backend/getAdminsByJob/:idArea/:idJob              controllers.Turn
 GET     /app-backend/getWaitQueue/:idArea/:idJob/:idAdmin       controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
 GET     /app-backend/getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
 GET     /app-backend/getTurnsByAdmin/:idAdmin                   controllers.TurnController.getAllTurnsPendingByAdmin(idAdmin: Integer)
+GET     /app-backend/getStudent/:id             			controllers.StudentController.getStudent(id: Integer)
+GET     /app-backend/getStudents                			controllers.StudentController.getAllStudents
+GET     /app-backend/getTurn/:id                			controllers.TurnController.getTurn(id: Integer)
+GET     /app-backend/getTurns                   			controllers.TurnController.getAllTurns
+GET     /app-backend/getAreas                   			controllers.TurnController.getAllAreas
+GET     /app-backend/getJobsByArea/:id          			controllers.TurnController.getAllJobsOfArea(id: Integer)
+GET     /app-backend/getAdminsByJob/:idArea/:idJob          controllers.TurnController.getAllAdministrativesOfJob(idArea: Integer, idJob: Integer)
+GET     /app-backend/getWaitQueue/:idArea/:idJob/:idAdmin   controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
+GET     /app-backend/getTurnsByStudent/:idStudent                       controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
+
+GET     /                          							controllers.PaymentController.getAllPayments
 GET     /app-backend/getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
 GET     /app-backend/getLogin/:typeJob/:mail/:pass              controllers.LoginController.getLogin(typeJob: String, mail: String, pass: String)
 GET     /app-backend/getPenalty                                 controllers.PenaltyController.getPenalty

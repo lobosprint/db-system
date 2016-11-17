@@ -16,8 +16,8 @@ angular.module('appFrontApp')
     ];
 
     $scope.penalties=[];
-    $http.get('/app-backend/getPenalties').success(function(data){
+    $http.get('/app-backend/getPenalByStudent/1').success(function(data){
       $scope.penalties=data;
-      $log.error(data);
+      //$log.error(data);
     });
   }]);
