@@ -2,9 +2,13 @@ package controllers;
 
 import com.google.inject.Inject;
 import models.Login;
+import persistence.DAOLogin;
+import persistence.DAOPerson;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import static play.libs.Json.toJson;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -15,13 +19,13 @@ public class LoginController extends Controller {
     @Inject
     private FormFactory formFactory;
 
-    public Result login() {
-        Login login = formFactory.form(Login.class).bindFromRequest().get();
-        if(login.mail.equals("abc@abc.com") && login.pass.equals("abc")){
-            return ok("Login successfully, \n Mail: " + login.mail + " Password: " + login.pass);
-        } else{
-            return internalServerError("User don't have permission...");
-        }
+    DAOLogin daoLogin = new DAOLogin();
+
+    public Result getLogin(String table, String mail, String password) {
+        Object login = daoLogin.getLogin(table, mail, password);
+        if(login.equals(null)){
+            return internalServerError("User don't register yet... PLEASE CHECK");
+        }else return ok(toJson(login));
     }
 
 

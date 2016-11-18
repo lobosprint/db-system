@@ -34,24 +34,27 @@ GET     /getWaitQueue/:idArea/:idJob/:idAdmin       controllers.TurnController.g
 GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
 GET     /getTurnsByAdmin/:idAdmin                   controllers.TurnController.getAllTurnsPendingByAdmin(idAdmin: Integer)
 GET     /getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
+GET     /getLogin/:typeJob/:mail/:pass              controllers.LoginController.getLogin(typeJob: String, mail: String, pass: String)
 GET     /getPenalty                                 controllers.PenaltyController.getPenalty
 GET     /getPenalties                               controllers.PenaltyController.getAllPenalties
 GET     /getPenalByStudent/:idStudent               controllers.PenaltyController.getPenaltiesByStudent(idStudent: Integer)
 GET     /getPayment/:id                             controllers.PaymentController.getPayment(id: Integer)
 GET     /getPayments                                controllers.PaymentController.getAllPayments
 GET     /getPaymentsByStud/:idStudent               controllers.PaymentController.getPaymentsByStudent(idStudent: Integer)
+GET     /getPayments                                controllers.PaymentController.getAllPayments
+
 GET     /                                           controllers.PaymentController.getAllPayments
 
 #Post Methods
 #To Runs in Server
-POST    /app-backend/login         controllers.LoginController.login
+#POST    /app-backend/login         controllers.LoginController.getLogin
 POST    /app-backend/addStudent    controllers.StudentController.addStudent
 POST    /app-backend/addTurn       controllers.TurnController.addTurn
 POST    /app-backend/addPenalty    controllers.PenaltyController.addPenalty
 POST    /app-backend/addPayment    controllers.PaymentController.addPayment
 
 #To Runs Local
-POST    /login                     controllers.LoginController.login
+#POST    /login                     controllers.LoginController.getLogin
 POST    /addStudent                controllers.StudentController.addStudent
 POST    /addTurn                   controllers.TurnController.addTurn
 POST    /addPenalty                controllers.PenaltyController.addPenalty
