@@ -2,19 +2,21 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <button class="btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Area
+        <button class="btn btn-default" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"  ng-click="openArea()" aria-controls="collapseOne">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true">
+          </span>
+          Area
         </button>
-        <span ng-hide="sharedVariable.studentGetTurnAreaName==0">{{""+sharedVariable.studentGetTurnAreaName+sharedVariable.studentGetTurnAreaID}}</span>
-
+        <span ng-hide="sharedVariable.studentGetTurnAreaName==0">{{""+sharedVariable.studentGetTurnAreaName+sharedVariable.studentGetTurnAreaID}}
+        </span>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <table class="table table-striped">
         <tr class="sucess"  align="center" ng-repeat= "currentArea in areas" ng-show="$index%3==0">
-          <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAreaName=currentArea.name;sharedVariable.studentGetTurnAreaID=currentArea.idArea; ">{{currentArea.name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+1].name; sharedVariable.studentGetTurnAreaID=areas[$index+1].idArea">{{areas[$index+1].name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+2)" ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+2].name; sharedVariable.studentGetTurnAreaID=areas[$index+2].idArea">{{areas[$index+2].name}}</button></td>
+          <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAreaName=currentArea.name;sharedVariable.studentGetTurnAreaID=currentArea.idArea; getJob(); openJobs();">{{currentArea.name}}</button></td>
+          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+1].name; sharedVariable.studentGetTurnAreaID=areas[$index+1].idArea; getJob(); openJobs();">{{areas[$index+1].name}}</button></td>
+          <td ><button type="button"class="btn btn-default" ng-show="areas.length>($index+2)" ng-click="sharedVariable.studentGetTurnAreaName=areas[$index+2].name; sharedVariable.studentGetTurnAreaID=areas[$index+2].idArea; getJob(); openJobs();">{{areas[$index+2].name}}</button></td>
         </tr>
       </table>
     </div>
@@ -22,53 +24,69 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
-        <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" autofocus=""
-        ng-click="getJob()"
-        >
-        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Jobs
-      </button>
+        <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" ng-click = "openJobs()"autofocus="">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Jobs
+        </button>
         <span ng-hide="sharedVariable.studentGetTurnJobName==0">{{""+sharedVariable.studentGetTurnJobName+sharedVariable.studentGetTurnJobID}}</span>
-    </h4>
-  </div>
-  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-    <div class="panel-body">
-      <table class="table table-striped">
-        <tr class="sucess"  align="center" ng-repeat= "currentJob in jobs" ng-show="$index%3==0">
-          <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnJobName=currentJob.name; sharedVariable.studentGetTurnJobID=currentJob.idJob; ">{{currentJob.name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+1)"  ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+1].name; sharedVariable.studentGetTurnJobID=jobs[$index+1].idJob">{{jobs[$index+1].name}}</button></td>
-          <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+2)" ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+2].name; sharedVariable.studentGetTurnJobID=jobs[$index+2].idJob">{{jobs[$index+2].name}}</button></td>
-        </tr>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <table class="table table-striped">
+          <tr class="sucess"  align="center" ng-repeat= "currentJob in jobs" ng-show="$index%3==0">
+            <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnJobName=currentJob.name; sharedVariable.studentGetTurnJobID=currentJob.idJob;  getAdministrative(); openAdministrative();">{{currentJob.name}}</button></td>
+            <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+1)"  ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+1].name; sharedVariable.studentGetTurnJobID=jobs[$index+1].idJob; getAdministrative(); openAdministrative();">{{jobs[$index+1].name}}</button></td>
+            <td ><button type="button"class="btn btn-default" ng-show="jobs.length>($index+2)" ng-click="sharedVariable.studentGetTurnJobName=jobs[$index+2].name; sharedVariable.studentGetTurnJobID=jobs[$index+2].idJob;  getAdministrative(); openAdministrative();">{{jobs[$index+2].name}}</button></td>
+          </tr>
 
-      </table>
-    </div>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading" role="tab" id="headingThree">
-    <h4 class="panel-title">
-      <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Description
-      </button>
-    </h4>
-  </div>
-  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-    <div class="panel-body col-md-offset-2">
-      <div class="form-group">
-        <label class="col-md-4 control-label">Description:</label>
-        <div class="col-md-8">
-          <input class="form-control" id="description" type="text" name="middleName" placeholder="Description">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-md-4 control-label" text-align="right">Whatever:</label>
-        <div class="col-md-8">
-          <input class="form-control" type="text" name="middleName" placeholder="Whatever">
-        </div>
-      </div>
-      <div class="form-group col-md-offset-4">
-        <a ng-href="#/studentConfirmTicket"><button type="button" class="btn btn-success" style="margin: 10px;"><span class="glyphicon glyphicon-ok"></span> Get a ticket !!!</button></a>
+        </table>
       </div>
     </div>
   </div>
-</div>
-</div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" autofocus="" ng-click = "openAdministrative()">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Administrative
+        </button>
+        <span ng-hide="sharedVariable.studentGetTurnJobName==0">{{""+sharedVariable.studentGetTurnAdminName+sharedVariable.studentGetTurnAdminID+$scope.getAdminsByJobRoute}}</span>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <table class="table table-striped">
+          <tr class="sucess"  align="center" ng-repeat= "currentAdmin in admins" ng-show="$index%3==0">
+            <td ><button type="button" class="btn btn-default" ng-click="sharedVariable.studentGetTurnAdminName=currentAdmin.name; sharedVariable.studentGetTurnAdminID=currentAdmin.idAdministrative; openDescription();">{{currentAdmin.name}}</button></td>
+            <td ><button type="button"class="btn btn-default" ng-show="admins.length>($index+1)"  ng-click="sharedVariable.studentGetTurnAdminName=admins[$index+1].name; sharedVariable.studentGetTurnAdminID=admins[$index+1].idAdministrative; openDescription();">{{admins[$index+1].name}}</button></td>
+            <td ><button type="button"class="btn btn-default" ng-show="admins.length>($index+2)" ng-click="sharedVariable.studentGetTurnAdminName=admins[$index+2].name; sharedVariable.studentGetTurnAdminID=admins[$index+2].idAdministrative; openDescription();">{{admins[$index+2].name}}</button></td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" autofocus="" ng-click = "openDescription()">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Description
+        </button>
+      </div>
+      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+        <div class="panel-body">
+          <div class="panel-body col-md-offset-2">
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="description">Description:</label>
+              <div class="col-md-8">
+                <textarea class="form-control" id="description" rows="3"> </textarea>
+              </div>
+            </div>
+            <div class="form-group col-md-offset-4">
+              <a ng-href="#/studentConfirmTicket"><button type="button" class="btn btn-success" style="margin: 10px;"><span class="glyphicon glyphicon-ok"></span> Get a ticket !!!</button></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>

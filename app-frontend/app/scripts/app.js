@@ -118,7 +118,9 @@ app.factory("turnService", function(){
       studentGetTurnAreaName: 0,
       studentGetTurnAreaID:0,
       studentGetTurnJobName:0,
-      studentGetTurnJobID:0
+      studentGetTurnJobID:0,
+      studentGetTurnAdminName:0,
+      studentGetTurnAdminID:0
     }
   };
 

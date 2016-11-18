@@ -25,3 +25,8 @@ a>button:hover {
 .space-xs {
     margin: 10px;
 }
+
+.panel-default > .panel-heading{
+  background-color: #45b128;
+  color: white;
+}
