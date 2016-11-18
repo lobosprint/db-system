@@ -24,6 +24,7 @@ GET     /app-backend/getPenalByStudent/:idStudent               controllers.Pena
 GET     /app-backend/getPayment/:id                             controllers.PaymentController.getPayment(id: Integer)
 GET     /app-backend/getPayments                                controllers.PaymentController.getAllPayments
 GET     /app-backend/getPaymentsByStud/:idStudent               controllers.PaymentController.getPaymentsByStudent(idStudent: Integer)
+GET     /app-backend/getAllTurnsByStudentNumber/:idStudent                   controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
 
 #To Runs Local
 GET     /getStudent/:id                             controllers.StudentController.getStudent(id: Integer)
@@ -45,6 +46,8 @@ GET     /getPenalByStudent/:idStudent               controllers.PenaltyControlle
 GET     /getPayment/:id                             controllers.PaymentController.getPayment(id: Integer)
 GET     /getPayments                                controllers.PaymentController.getAllPayments
 GET     /getPaymentsByStud/:idStudent               controllers.PaymentController.getPaymentsByStudent(idStudent: Integer)
+GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
+GET     /getAllTurnsByStudentNumber/:idStudent                   controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
 
 GET     /                                           controllers.PaymentController.getAllPayments
 
