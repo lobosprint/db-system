@@ -42,9 +42,7 @@ public class TurnController extends Controller{
         return ok(toJson(TurnsList));
     }
 
-    public Result getAllAreas(){
-        return ok(toJson((List<Area>) daoArea.getAllObjetcs()));
-    }
+    public Result getAllAreas(){ return ok(toJson((List<Area>) daoArea.getAllObjetcs()));}
 
     public Result getAllJobsOfArea(Integer id){
         return ok(toJson((List<Job>) daoArea.getAllJobsOfArea(id)));
@@ -61,6 +59,8 @@ public class TurnController extends Controller{
     public Result getAllTurnsByStudentNumber(Integer idStudent){ return ok(toJson((List<Turn>) daoTurn.getAllTurnsByStudentNumber(idStudent))); }
 
     public Result getAllTurnsPendingByAdmin(Integer idAdministrative){ return ok(toJson((List<Turn>) daoTurn.getAllTurnsPendingByAdmin(idAdministrative))); }
+
+    public Result getAllJobsofTurnsPendingByAdmin(Integer idAdministrative){ return ok(toJson((List<Job>) daoTurn.getAllJobsofTurnsPendingByAdmin(idAdministrative))); }
 
     public Result getAllTurnsPendingByAdminJob(Integer idAdministrative, Integer idJob){ return ok(toJson((List<Turn>) daoTurn.getAllTurnsPendingByAdminJob(idAdministrative, idJob))); }
 

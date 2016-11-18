@@ -1,6 +1,7 @@
 package persistence;
 
 import models.Administrative;
+import models.Job;
 import models.Student;
 import models.Turn;
 import org.joda.time.DateTime;
@@ -186,6 +187,43 @@ public class DAOTurn implements DAOGeneric {
 //            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
 //        }
         return turns;
+    }
+
+    public Object getAllJobsofTurnsPendingByAdmin(Integer idAdministrative){
+        ArrayList<Job> jobs = new ArrayList<Job>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "SELECT DISTINCT d.id_job as id_job, name_job, d.description as description " +
+                            "FROM turn as a " +
+                            "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
+                            "INNER JOIN position_type as c ON b.id_position = c.id_position  " +
+                            "INNER JOIN job as d ON c.id_job = d.id_job " +
+                            "WHERE attended = FALSE AND a.id_administrative = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idAdministrative);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                jobs.add(new Job(rs.getInt("id_job"), rs.getString("name_job"), rs.getString("description")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return jobs;
     }
 
     public Object getAllTurnsPendingByAdminJob(Integer idAdministrative, Integer idJob){
