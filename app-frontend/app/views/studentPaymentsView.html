@@ -1,60 +1,35 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Pagos realizados</div>
-    <div class="panel-body">
-        <table class="table table-bordered">
-            <tr class="success">
-                <th>
-                    #
-                </th>
-
-                <th>
-                    Descripción
-                </th>
-
-                <th>
-                    Precio
-                </th>
-
-                <th>
-                    Número Confirmación
-                </th>
-            </tr>
-
-            <tr>
-                <th>
-                    1
-                </th>
-
-                <th>
-                    ICOM - Miguel Anguel
-                </th>
-
-                <th>
-                    2$
-                </th>
-
-                <th>
-                    56865165
-                </th>
-            </tr>
-
-            <tr>
-                <th>
-                    2
-                </th>
-
-                <th>
-                    SICI - Angela Romero
-                </th>
-
-                <th>
-                    1$
-                </th>
-
-                <th>
-                    56865165
-                </th>
-            </tr>
-        </table>
-    </div>
+  <div class="panel-heading">Pagos realizados</div>
+  <div class="panel-body">
+    <table class="table table-bordered">
+      <tr class="success">
+        <th>
+          Fecha
+        </th>
+        <th>
+          Numero de Confirmación
+        </th>
+        <th>
+          Tipo de Tarjeta
+        </th>
+        <th>
+          Últimos 4-Digitos de Pago
+        </th>
+      </tr>
+      <tr ng-repeat= "currentPayment in payments">
+        <td>
+          {{currentPayment.date.monthOfYear+"/"+currentPayment.date.dayOfMonth+"/"+currentPayment.date.year}}
+        </td>
+        <td>
+        {{currentPayment.confirmationNumber}}
+        </td>
+        <td>
+        Will be added on Backend, already in DB
+        </td>
+        <td>
+          Will be added on Backend, already in DB
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
