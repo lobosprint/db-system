@@ -17,6 +17,14 @@ angular.module('appFrontApp')
     $scope.payments=data;
     //$log.error(data);
   });
+
+  $scope.getPayments=function(){
+    $http.get('/app-backend/getPaymentsByStud/'.concat($scope.ID)).success(function(data){
+      $scope.payments=data;
+      $log.error(data);
+    });
+  }
+
 }]);
 
 // (function(){
