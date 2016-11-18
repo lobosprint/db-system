@@ -31,3 +31,13 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  if(!localStorage.getItem('loadStudent')) {
+     location.reload(); 
+  }
+  
+  localStorage.setItem('loadStudent', 'true');
+  localStorage.removeItem('loadHome');
+  localStorage.removeItem('loadAdmin');
+</script>

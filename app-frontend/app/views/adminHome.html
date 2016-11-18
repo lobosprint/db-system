@@ -13,3 +13,13 @@
         </a>
     </p>
 </div>
+
+<script type="text/javascript">
+  if(!localStorage.getItem('loadAdmin')) {
+     location.reload(); 
+  }
+  
+  localStorage.setItem('loadAdmin', 'true');
+  localStorage.removeItem('loadStudent');
+  localStorage.removeItem('loadHome');
+</script>

@@ -48,3 +48,13 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  if(!localStorage.getItem('loadHome')) {
+     location.reload(); 
+  }
+  
+  localStorage.setItem('loadHome', 'true');
+  localStorage.removeItem('loadStudent');
+  localStorage.removeItem('loadAdmin');
+</script>
