@@ -1,70 +1,87 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Pagar penalización</div>
-    <div class="panel-body">
-        <h1>Importe de 2$</h1>
+  <div class="panel-heading">Pagar penalización</div>
+  <div class="panel-body">
+    <h1>Importe de 2$</h1>
 
-        <form>
-            <div class="form-group">
-                <select class="form-control">
-                    <option>Tipo de tarjeta</option>
-                    <option>Visa</option>
-                    <option>Master Card</option>
-                </select>
-            </div>
+    <form>
+      <div class="form-group">
+        <select class="form-control">
+          <option>Tipo de tarjeta</option>
+          <option>Visa</option>
+          <option>Master Card</option>
+        </select>
+      </div>
 
-            <div class="form-group">
-                <label for="f1">Número de tarjeta</label>
-                <input type="text" class="form-control" id="f1">
-            </div>
+      <div class="form-group">
+        <label for="f1">Número de tarjeta</label>
+        <input type="text" class="form-control" id="f1">
+      </div>
 
-            <div class="form-group">
-                <label for="f2">Fecha de caducidad</label>
-                <input type="date" class="form-control" id="f2">
-            </div>
 
-            <div class="form-group">
-                <label for="f3">Código de seguridad</label>
-                <input type="text" class="form-control" id="f3">
-            </div>
+      <div class="form-group">
+          <label for="f3">Fecha de Expiracion</label>
+        <div class='input-group date' id='dtp-expiration'>
 
-            <div class="form-group">
-                <label for="f4">Titular de la tarjeta</label>
-                <input type="text" class="form-control" id="f4">
-            </div>
+          <input type='text' class="form-control" />
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label for="f5">Dirección</label>
-                <input type="text" class="form-control" id="f5">
-            </div>
+      <script type="text/javascript">
+      $(function () {
+        $('#dtp-expiration').datetimepicker(
+          {
+            format: 'YYYY-MM-DD',
+            minDate: new moment
+          }
+        );
+      });
+      </script>
+      <div class="form-group">
+        <label for="f3">Código de seguridad</label>
+        <input type="text" class="form-control" id="f3">
+      </div>
 
-            <div class="form-group">
-                <label for="f6">Ciudad</label>
-                <input type="text" class="form-control" id="f6">
-            </div>
+      <div class="form-group">
+        <label for="f4">Titular de la tarjeta</label>
+        <input type="text" class="form-control" id="f4">
+      </div>
 
-            <div class="form-group">
-                <label for="f7">Provincia</label>
-                <input type="text" class="form-control" id="f7">
-            </div>
+      <div class="form-group">
+        <label for="f5">Dirección</label>
+        <input type="text" class="form-control" id="f5">
+      </div>
 
-            <div class="form-group">
-                <label for="f8">Código Postal</label>
-                <input type="number" class="form-control" id="f8">
-            </div>
+      <div class="form-group">
+        <label for="f6">Ciudad</label>
+        <input type="text" class="form-control" id="f6">
+      </div>
 
-            <div class="row">
-                <div class="col-xs-6">
-                    <a ng-href="#/studentConfirmPayment">
-                        <button type="submit" class="btn btn-success  btn-lg">Pagar</button>
-                    </a>
-                </div>
+      <div class="form-group">
+        <label for="f7">Provincia</label>
+        <input type="text" class="form-control" id="f7">
+      </div>
 
-                <div class="col-xs-6">
-                    <a ng-href="#/studentPenaltiesView">
-                      <button type="submit" class="btn btn-danger  btn-lg">Cancelar</button>
-                    </a>
-                </div>
-            </div>
-        </form>
-    </div>
+      <div class="form-group">
+        <label for="f8">Código Postal</label>
+        <input type="number" class="form-control" id="f8">
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <a ng-href="#/studentConfirmPayment">
+            <button type="submit" class="btn btn-success  btn-lg">Pagar</button>
+          </a>
+        </div>
+
+        <div class="col-xs-6">
+          <a ng-href="#/studentPenaltiesView">
+            <button type="submit" class="btn btn-danger  btn-lg">Cancelar</button>
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
