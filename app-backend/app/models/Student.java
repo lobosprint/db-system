@@ -22,7 +22,7 @@ public class Student extends Person{
     }
 
     public Student( int idPerson, int idStudent, String name, String middleName, String lastName, DateTime birthDate, String phone, String mail,
-             String pass, String rumId, boolean handiecap ){
+             String pass, String rumId, boolean handiecap){
         super(idPerson, name, middleName, lastName, birthDate, phone, mail, pass, rumId);
         this.idStudent = idStudent;
         this.handiecap = handiecap;

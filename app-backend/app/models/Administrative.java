@@ -12,7 +12,7 @@ public class Administrative extends Person{
     private int      idAdministrative;
     private Position position;
 
-    Administrative(){
+    public Administrative(){
         super();
         idAdministrative    = 0;
         position            = new Position();
@@ -23,6 +23,12 @@ public class Administrative extends Person{
         super(idPerson, name, middleName, lastName, birthDate, phone, mail, pass, rumId);
         this.idAdministrative   = idAdministrative;
         this.position           = position;
+    }
+
+    public Administrative(int idPerson, int idAdministrative, String name, String middleName, String lastName, DateTime birthDate,
+                          String phone, String mail, String pass, String rumId){
+        super(idPerson, name, middleName, lastName, birthDate, phone, mail, pass, rumId);
+        this.idAdministrative   = idAdministrative;
     }
 
     public int getIdAdministrative() {
