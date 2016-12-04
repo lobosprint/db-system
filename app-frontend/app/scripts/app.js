@@ -26,6 +26,11 @@ app.config(function ($routeProvider) {
     controller: 'StudentConfirmTicketCtrl',
     controllerAs: 'studentConfirmTicket'
   })
+  .when('/closeSession', {
+    templateUrl: 'views/closeSession.html',
+    controller: 'CloseSessionCtrl',
+    controllerAs: 'CloseSession'
+  })
   .when('/studentConfirmPayment', {
     templateUrl: 'views/studentConfirmPayment.html',
     controller: 'StudentConfirmPaymentCtrl',
