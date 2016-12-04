@@ -19,7 +19,7 @@ angular.module('appFrontApp')
     else{
       var values = {
         mail : $scope.mail,
-        pass : $scope.pass
+        pass : md5($scope.pass)
       };
 
       //$log.error(values);

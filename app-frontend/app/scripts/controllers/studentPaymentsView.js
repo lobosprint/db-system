@@ -13,17 +13,12 @@ angular.module('appFrontApp')
 
   $scope.paymentsVariable=turnService.sharedObject;
   $scope.payments=[];
-  $http.get('/app-backend/getPaymentsByStud/1').success(function(data){
+  $http.get('/app-backend/getPaymentsByStud/'.concat(localStorage.getItem('id'))).success(function(data){
     $scope.payments=data;
     //$log.error(data);
   });
 
-  $scope.getPayments=function(){
-    $http.get('/app-backend/getPaymentsByStud/'.concat($scope.ID)).success(function(data){
-      $scope.payments=data;
-      $log.error(data);
-    });
-  }
+
 
 }]);
 

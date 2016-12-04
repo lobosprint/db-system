@@ -55,6 +55,7 @@ angular.module('appFrontApp')
     alert("Debe llenar todos los campos con asterisco.")
   }
   else {
+    $scope.sharedVariable.password=md5($scope.sharedVariable.password);
     $http.post('/app-backend/addStudent',$scope.sharedVariable,$scope.config).success(function(data){
       alert("It Worked");
       $('#form-registrer').html('<div class="panel panel-default">  <div class="panel-heading">Registro</div> <div class="panel-body">Te has registrado con éxito<br><center> <img style="max-height:100px;" src="./images/check.png" class="img-responsive" alt=""><div class="col-md-offset-4 col-md-6"> <a href="/#/"><button type="submit"  class="btn btn-success col-md-6" style="margin: 10px;">Iniciar Sesion</button></a> </div> </center> </div></div>');
