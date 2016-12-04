@@ -4,12 +4,16 @@ import models.Administrative;
 import models.Job;
 import models.Person;
 import models.Student;
+import play.mvc.Result;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static play.libs.Json.toJson;
+import static play.mvc.Results.ok;
 
 /**
  * Created by cristian on 11-15-16.
@@ -37,36 +41,24 @@ public class DAOLogin implements DAOGeneric{
     public void deleteObject(Object object) {
     }
 
-    public Object getLogin(String table, String mail, String password){
-        ArrayList<Object> returns = new ArrayList<Object>();
+    public Result getLogin(String mail, String pass){
+        Person person = new Person();
+        String tipoUser = "";
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            if (table.equals(table)) {
-                String sql = "SELECT DISTINCT id_person FROM person NATURAL JOIN administrative WHERE email = ? AND password = ?";
-                stmt = conn.prepareStatement(sql);
-                stmt.setString(1, mail);
-                stmt.setString(2, password);
-                ResultSet rs = stmt.executeQuery();
-                while (rs.next()) {
-                    System.out.println("........ENTROOOOOOOO PRIMER IF........");
-                    returns.add(daoAdministrative.getObjectByIdPerson(rs.getInt("id_person")));
-                }
-                rs.close();
-            }else{
-                String sql = "SELECT DISTINCT id_person FROM person NATURAL JOIN student WHERE email = ? AND password = ?";
-                stmt = conn.prepareStatement(sql);
-                stmt.setString(1, mail);
-                stmt.setString(2, password);
-                ResultSet rs = stmt.executeQuery();
-                while (rs.next()) {
-                    returns.add(daoStudent.getObjectByIdPerson(rs.getInt("id_person")));
-                    System.out.println("........ENTROOOOOOOO SEGUNDO IF........");
-                }
-                rs.close();
-            }
+//            String sql = "SELECT id_person, first_name, middle_name, last_name, date_birth, phone, email, password, rum_id FROM person WHERE id_person = ?";
+//            stmt = conn.prepareStatement(sql);
+//            stmt.setInt(1, idPerson);
+//            ResultSet rs = stmt.executeQuery();
+//            while (rs.next()) {
+//                student = new Student(  idPerson, rs.getInt("id_student"), rs.getString("first_name"), rs.getString("middle_name"), rs.getString("last_name"),
+//                        new DateTime(rs.getDate("date_birth")), rs.getString("phone"), rs.getString("email"), rs.getString("password"), rs.getString("rum_id"),
+//                        rs.getBoolean("handiecap"));
+//            }
+//            rs.close();
         } catch (Exception e){
-            System.out.println("Fallo iniciando la sesion");
+            System.out.println("Fallo iniciando la sesion, error: ");
             e.printStackTrace();
         }finally {
             try{
@@ -81,10 +73,6 @@ public class DAOLogin implements DAOGeneric{
                 se.printStackTrace();
             }
         }
-//
-//        for(int i = 0; i < students.size(); i++){
-//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
-//        }
-        return returns;
+        return ok(toJson(person));
     }
 }

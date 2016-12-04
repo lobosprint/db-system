@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import models.Login;
 import persistence.DAOLogin;
@@ -21,11 +22,11 @@ public class LoginController extends Controller {
 
     DAOLogin daoLogin = new DAOLogin();
 
-    public Result getLogin(String table, String mail, String password) {
-        Object login = daoLogin.getLogin(table, mail, password);
-        if(login.equals(null)){
-            return internalServerError("User don't register yet... PLEASE CHECK");
-        }else return ok(toJson(login));
+    public Result getLogin() {
+        JsonNode json = request().body().asJson();
+        String mail = json.findValue("mail").asText();
+        String pass = json.findValue("pass").asText();
+        return daoLogin.getLogin(mail, pass);
     }
 
 

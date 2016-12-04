@@ -16,7 +16,7 @@ angular.module('appFrontApp')
   ];
   $scope.turnVariable=turnService.sharedObject;
   $scope.turns=[];
-  $http.get('/app-backend/getTurnsByAdmin/1').success(function(data){
+  $http.get('/app-backend/getTurnsByAdmin/'.concat(localStorage.getItem('id'))).success(function(data){
     $scope.turns=data;
     //$log.error(data);
   });
