@@ -33,7 +33,7 @@ public class StudentController extends Controller{
         String first_name = json.findValue("first_name").asText();
         String middle_name = json.findValue("middle_name").asText();
         String last_name = json.findValue("last_name").asText();
-        String date_birth = json.findValue("date_birth").asText();
+        String date_birth = json.findValue("date_birth").asText().substring(0,10);
         String phone = json.findValue("phone").asText();
         String email = json.findValue("email").asText();
         String password = json.findValue("password").asText();
