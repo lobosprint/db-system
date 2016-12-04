@@ -44,7 +44,17 @@ angular.module('appFrontApp')
 
   $scope.registerUser= function(){
     $http.post('/app-backend/addStudent',$scope.sharedVariable,$scope.config).success(function(data){
-      $log.error(data);
+      alert("It Worked");
+      $('#form-registrer').html('<div class="panel panel-default"><div class="panel-heading">Registro</div><div class="panel-body">Te has registrado con éxito<br><center><img style="max-height:100px;" src="./images/check.png" class="img-responsive" alt=""></center></div></div>');
+
+
+    }).error(function(data){
+      $('.panel.panel-success').addClass('panel-danger');
+    $('.panel.panel-success').removeClass('panel-success');
+    $('.panel-heading').text("Registrar - El formulario tiene errores");
+
+
+      alert("Didnt' Work");
     });
 
   };
