@@ -38,8 +38,7 @@ public class StudentController extends Controller{
         String email = json.findValue("email").asText();
         String password = json.findValue("password").asText();
         String rum_id = json.findValue("rum_id").asText();
-        daoStudent.addStudent(handiecap, first_name, middle_name, last_name, date_birth, phone, email, password, rum_id);
-        return ok();
+        return daoStudent.addStudent(handiecap, first_name, middle_name, last_name, date_birth, phone, email, password, rum_id);
     }
 
     public Result getStudent(Integer id){

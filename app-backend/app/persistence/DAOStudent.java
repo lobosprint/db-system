@@ -2,8 +2,13 @@ package persistence;
 
 import models.Student;
 import org.joda.time.DateTime;
+import play.mvc.Result;
+
 import java.sql.*;
 import java.util.*;
+
+import static play.mvc.Results.badRequest;
+import static play.mvc.Results.ok;
 
 /**
  * Created by cristian on 11-07-16.
@@ -40,11 +45,6 @@ public class DAOStudent implements DAOGeneric{
                 se.printStackTrace();
             }
         }
-//
-//        for(int i = 0; i < students.size(); i++){
-//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
-//        }
-
         return students;
     }
 
@@ -78,8 +78,6 @@ public class DAOStudent implements DAOGeneric{
                 se.printStackTrace();
             }
         }
-//        System.out.println("Informacion que retorna first_name: " + student.getName() + " middle_name: " + student.getMiddleName() + " last_name: " + student.getLastName()
-//                + " IDSTUDENT: " + student.getIdStudent() + " IDPERSON: " + student.getIdPerson());
         return student;
     }
 
@@ -122,12 +120,10 @@ public class DAOStudent implements DAOGeneric{
                 se.printStackTrace();
             }
         }
-//        System.out.println("Informacion que retorna first_name: " + student.getName() + " middle_name: " + student.getMiddleName() + " last_name: " + student.getLastName()
-//                + " IDSTUDENT: " + student.getIdStudent() + " IDPERSON: " + student.getIdPerson());
         return student;
     }
 
-    public void addStudent(Boolean handiecap, String first_name, String middle_name, String last_name, String date_birth, String phone, String email, String password, String rum_id){
+    public Result addStudent(Boolean handiecap, String first_name, String middle_name, String last_name, String date_birth, String phone, String email, String password, String rum_id){
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -153,6 +149,7 @@ public class DAOStudent implements DAOGeneric{
                 stmt.executeUpdate();
             }
         } catch (Exception e){
+            return badRequest("Error agregando el estudiante, informacion mal ingresada");
         }finally {
             try{
                 if(stmt!=null)
@@ -166,5 +163,7 @@ public class DAOStudent implements DAOGeneric{
                 se.printStackTrace();
             }
         }
+        return ok("Estudiante agregado satisfactoriamente.");
     }
+
 }
