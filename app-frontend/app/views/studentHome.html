@@ -40,4 +40,9 @@
   localStorage.setItem('loadStudent', 'true');
   localStorage.removeItem('loadHome');
   localStorage.removeItem('loadAdmin');
+
+  if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'student') {
+    document.write('<h1>No tienes permiso para ver el contenido.</h1>');
+    window.stop();
+  }
 </script>

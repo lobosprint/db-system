@@ -32,3 +32,11 @@
       </table>
     </div>
   </div>
+</div>
+
+<script type="text/javascript">
+  if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'student') {
+    document.write('<h1>No tienes permiso para ver el contenido.</h1>');
+    window.stop();
+  }
+</script>
