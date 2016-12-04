@@ -68,7 +68,7 @@
 
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingFour">
-      <h4 class="panel-title">
+      <h4 class="panel-title"></h4>
         <button class="btn btn-default collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" autofocus="" ng-click = "openDescription()">
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Description
         </button>
@@ -90,3 +90,11 @@
         </div>
       </div>
     </div>
+  </div>
+
+<script type="text/javascript">
+  if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'student') {
+    document.write('<h1>No tienes permiso para ver el contenido.</h1>');
+    window.stop();
+  }
+</script>

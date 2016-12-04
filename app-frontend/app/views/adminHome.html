@@ -23,3 +23,11 @@
   localStorage.removeItem('loadStudent');
   localStorage.removeItem('loadHome');
 </script>
+
+
+<script type="text/javascript">
+  if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'administrative') {
+    document.write('<h1>No tienes permiso para ver el contenido.</h1>');
+    window.stop();
+  }
+</script>
