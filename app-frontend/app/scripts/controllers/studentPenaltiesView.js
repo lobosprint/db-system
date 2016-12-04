@@ -16,15 +16,11 @@ angular.module('appFrontApp')
     ];
 
     $scope.penalties=[];
-    $http.get('/app-backend/getPenalByStudent/1').success(function(data){
+    $http.get('/app-backend/getPenalByStudent/'.concat(localStorage.getItem('id'))).success(function(data){
       $scope.penalties=data;
       //$log.error(data);
     });
 
-    $scope.getPenalties=function(){
-      $http.get('/app-backend/getPenalByStudent/'.concat($scope.ID)).success(function(data){
-        $scope.penalties=data;
-        $log.error(data);
-      });
+
     }
-  }]);
+]);
