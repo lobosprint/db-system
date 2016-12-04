@@ -2,19 +2,19 @@ package controllers;
 
 import static  play.libs.Json.toJson;
 
-import com.avaje.ebean.*;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
-import models.Person;
 import org.joda.time.DateTime;
 import persistence.DAOGeneric;
-import persistence.DAOPerson;
 import persistence.DAOStudent;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.Student;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,16 +25,21 @@ public class StudentController extends Controller{
     @Inject
     private FormFactory formFactory;
 
-    private DAOGeneric daoStudent = new DAOStudent();
+    private DAOStudent daoStudent = new DAOStudent();
 
     public Result addStudent() {
-        Student student = formFactory.form(Student.class).bindFromRequest().get();
-        if(!student.getMail().equals("") && !student.getPass().equals("")){
-            return ok(  "Added STUDENT successfully" + student.getName() + " " + student.getMiddleName() + " " +
-                        student.getLastName());
-        } else{
-            return internalServerError("Must provide the STUDENT mail and password like minimum");
-        }
+        JsonNode json = request().body().asJson();
+        Boolean handiecap = json.findValue("handiecap").asBoolean();
+        String first_name = json.findValue("first_name").asText();
+        String middle_name = json.findValue("middle_name").asText();
+        String last_name = json.findValue("last_name").asText();
+        String date_birth = json.findValue("date_birth").asText();
+        String phone = json.findValue("phone").asText();
+        String email = json.findValue("email").asText();
+        String password = json.findValue("password").asText();
+        String rum_id = json.findValue("rum_id").asText();
+        daoStudent.addStudent(handiecap, first_name, middle_name, last_name, date_birth, phone, email, password, rum_id);
+        return ok();
     }
 
     public Result getStudent(Integer id){

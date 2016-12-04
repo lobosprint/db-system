@@ -2,9 +2,8 @@ package persistence;
 
 import models.Student;
 import org.joda.time.DateTime;
-
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Created by cristian on 11-07-16.
@@ -126,5 +125,46 @@ public class DAOStudent implements DAOGeneric{
 //        System.out.println("Informacion que retorna first_name: " + student.getName() + " middle_name: " + student.getMiddleName() + " last_name: " + student.getLastName()
 //                + " IDSTUDENT: " + student.getIdStudent() + " IDPERSON: " + student.getIdPerson());
         return student;
+    }
+
+    public void addStudent(Boolean handiecap, String first_name, String middle_name, String last_name, String date_birth, String phone, String email, String password, String rum_id){
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO person(first_name, middle_name, last_name, date_birth, phone, email, password, rum_id) " +
+                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            stmt = conn.prepareStatement(sql, stmt.RETURN_GENERATED_KEYS);
+            stmt.setString(1, first_name);
+            stmt.setString(2, middle_name);
+            stmt.setString(3, last_name);
+            stmt.setString(4, date_birth);
+            stmt.setString(5, phone);
+            stmt.setString(6, email);
+            stmt.setString(7, password);
+            stmt.setString(8, rum_id);
+            stmt.executeUpdate();
+            ResultSet personInsert = stmt.getGeneratedKeys();
+            if (personInsert.next()) {
+                String sql2 = "INSERT INTO student(id_person, handiecap) " +
+                        "VALUES (?, ?)";
+                stmt = conn.prepareStatement(sql2);
+                stmt.setInt(1,personInsert.getInt(1));
+                stmt.setBoolean(2, handiecap);
+                stmt.executeUpdate();
+            }
+        } catch (Exception e){
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
     }
 }
