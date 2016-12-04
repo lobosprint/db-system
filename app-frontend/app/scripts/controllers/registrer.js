@@ -50,8 +50,8 @@ angular.module('appFrontApp')
 
     }).error(function(data){
       $('.panel.panel-success').addClass('panel-danger');
-    $('.panel.panel-success').removeClass('panel-success');
-    $('.panel-heading').text("Registrar - El formulario tiene errores");
+      $('.panel.panel-success').removeClass('panel-success');
+      $('.panel-heading').text("Registrar - El formulario tiene errores");
 
 
       alert("Didnt' Work");
