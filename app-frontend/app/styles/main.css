@@ -30,3 +30,23 @@ a>button:hover {
   background-color: #45b128;
   color: white;
 }
+
+.btn.btn-danger.close-header:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+.btn.btn-danger.close-header-small:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+.btn.btn-danger.close-header {
+  margin-right: 20px;
+}
+
+.btn.btn-danger.close-header-small {
+  color: #fff;
+}

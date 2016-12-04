@@ -66,6 +66,7 @@
         <script src="scripts/controllers/studentListTurns.js"></script>
         <script src="scripts/controllers/studentPenaltiesView.js"></script>
         <script src="scripts/controllers/studentPaymentsView.js"></script>
+        <script src="scripts/controllers/closeSession.js"></script>
         <script src="scripts/vendor/md5.js"></script>
         <!-- endbuild -->
   </head>
@@ -98,6 +99,7 @@
                           <li role="presentation" class="admin-home"><a ng-href="#/adminHome">Inicio</a></li>
                           <li role="presentation" class="admin-turns"><a ng-href="#/adminPendingTurns">Turnos pendientes</a></li>
                           <li role="presentation" class="historial"><a ng-href="#/adminTurnsHistory">Historial</a></li>
+                          <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession">Salir</a></li>
                         </ul>
                     </div>
                 </div>
@@ -121,6 +123,7 @@
                       <li role="presentation"><a ng-href="#/adminCurrentTurn">Turno actual</a></li>
                       <li role="presentation"><a ng-href="#/adminPendingTurns">Turnos pendientes</a></li>
                       <li role="presentation"><a ng-href="#/adminTurnsHistory">Historial</a></li>
+                      <li role="presentation" ><a class="btn btn-danger close-header-small" ng-href="#/closeSession">Salir</a></li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -142,6 +145,7 @@
                         <li role="presentation" class="student-ask-turn"><a ng-href="#/studentGetTurn">Solicitar turno</a></li>
                         <li role="presentation" class="student-show-penalties"><a ng-href="#/studentPenaltiesView">Ver penalizaciones</a></li>
                         <li role="presentation" class="student-show-payment"><a ng-href="#/studentPaymentsView">Ver pagos</a></li>
+                        <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession">Salir</a></li>
                       </ul>
                   </div>
               </div>
@@ -166,6 +170,7 @@
                         <li role="presentation"><a ng-href="#/studentGetTurn">Solicitar turno</a></li>
                         <li role="presentation"><a ng-href="#/studentPenaltiesView">Ver penalizaciones</a></li>
                         <li role="presentation"><a ng-href="#/studentPaymentsView">Ver pagos</a></li>
+                        <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession">Salir</a></li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
