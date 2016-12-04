@@ -14,17 +14,15 @@ GET     /app-backend/getAdminsByJob/:idArea/:idJob              controllers.Turn
 GET     /app-backend/getWaitQueue/:idArea/:idJob/:idAdmin       controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
 GET     /app-backend/getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
 GET     /app-backend/getTurnsByAdmin/:idAdmin                   controllers.TurnController.getAllTurnsPendingByAdmin(idAdmin: Integer)
-GET     /                          							    controllers.PaymentController.getAllPayments
+#GET     /                          							    controllers.PaymentController.getAllPayments
 GET     /app-backend/getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
 GET     /app-backend/getJobsofTurnsAdmin/:idAdmin               controllers.TurnController.getAllJobsofTurnsPendingByAdmin(idAdmin: Integer)
 GET     /app-backend/getLogin/:typeJob/:mail/:pass              controllers.LoginController.getLogin(typeJob: String, mail: String, pass: String)
 GET     /app-backend/getPenalty                                 controllers.PenaltyController.getPenalty
-GET     /app-backend/getPenalties                               controllers.PenaltyController.getAllPenalties
 GET     /app-backend/getPenalByStudent/:idStudent               controllers.PenaltyController.getPenaltiesByStudent(idStudent: Integer)
 GET     /app-backend/getPayment/:id                             controllers.PaymentController.getPayment(id: Integer)
-GET     /app-backend/getPayments                                controllers.PaymentController.getAllPayments
 GET     /app-backend/getPaymentsByStud/:idStudent               controllers.PaymentController.getPaymentsByStudent(idStudent: Integer)
-GET     /app-backend/getAllTurnsByStudentNumber/:idStudent                   controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
+GET     /app-backend/getAllTurnsByStudentNumber/:idStudent      controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
 
 #To Runs Local
 GET     /getStudent/:id                             controllers.StudentController.getStudent(id: Integer)
@@ -41,15 +39,13 @@ GET     /getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.g
 GET     /getJobsofTurnsAdmin/:idAdmin               controllers.TurnController.getAllJobsofTurnsPendingByAdmin(idAdmin: Integer)
 GET     /getLogin/:typeJob/:mail/:pass              controllers.LoginController.getLogin(typeJob: String, mail: String, pass: String)
 GET     /getPenalty                                 controllers.PenaltyController.getPenalty
-GET     /getPenalties                               controllers.PenaltyController.getAllPenalties
 GET     /getPenalByStudent/:idStudent               controllers.PenaltyController.getPenaltiesByStudent(idStudent: Integer)
 GET     /getPayment/:id                             controllers.PaymentController.getPayment(id: Integer)
-GET     /getPayments                                controllers.PaymentController.getAllPayments
 GET     /getPaymentsByStud/:idStudent               controllers.PaymentController.getPaymentsByStudent(idStudent: Integer)
 GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
-GET     /getAllTurnsByStudentNumber/:idStudent                   controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
+GET     /getAllTurnsByStudentNumber/:idStudent      controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
 
-GET     /                                           controllers.PaymentController.getAllPayments
+#GET     /                                           controllers.PaymentController.getAllPayments
 
 #Post Methods
 #To Runs in Server
