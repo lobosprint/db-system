@@ -12,7 +12,7 @@
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="name" type="text" name="name" placeholder="Name">
+                <input class="form-control" id="name" ng-model="sharedVariable.first_name"type="text" name="name" placeholder="Name">
               </div>
             </div>
           </div>
@@ -24,7 +24,7 @@
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="middleName" type="text" name="middleName" placeholder="Middle Name">
+                <input class="form-control" id="middleName"  ng-model="sharedVariable.middle_name" type="text" name="middleName" placeholder="Middle Name">
               </div>
             </div>
           </div>
@@ -36,7 +36,7 @@
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="lastName" type="text" name="lastName" placeholder="Last Name">
+                <input class="form-control" id="lastName" type="text" name="lastName"  ng-model="sharedVariable.last_name" placeholder="Last Name">
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="rumIdNumber" type="text" name="RumIdNumber" placeholder="RUM ID Number">
+                <input class="form-control" id="rumIdNumber" type="text"  ng-model="sharedVariable.rum_id" name="RumIdNumber" placeholder="RUM ID Number">
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="birthDate" type="date" name="birthDate">
+                <input class="form-control" id="birthDate"  ng-model="sharedVariable.date_birth" type="date" name="birthDate">
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="phone" type="text" name="phone" placeholder="(_ _ _)  _ _ _  _ _ _ _">
+                <input class="form-control" id="phone" type="text"  ng-model="sharedVariable.phone" name="phone" placeholder="(_ _ _)  _ _ _  _ _ _ _">
               </div>
             </div>
           </div>
@@ -84,8 +84,7 @@
               </div>
 
               <div class="col-md-8">
-                <input type="checkbox" value="" id="handicap" ng-model="ctr.handicap"> Handicap
-                <input class="form-control" id="inputHandicap" type="text" name="handicap" placeholder="Handicap Description" ng-model="ctr.inputHandicap" ng-disabled = "!ctr.handicap">
+                <input type="checkbox" value="" id="handicap"  ng-model="sharedVariable.handiecap"> Handicap
               </div>
             </div>
           </div>
@@ -93,11 +92,11 @@
           <div class="form-group">
             <div class="row padding-aside">
               <div class="col-md-4">
-                <label class="control-label">Mail:</label>
+                <label class="control-label">Email:</label>
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="mail" type="mail" name="mail" placeholder="my.mail@upr.edu">
+                <input class="form-control" id="mail" type="mail"  ng-model="sharedVariable.email" name="mail" placeholder="my.mail@upr.edu">
               </div>
             </div>
           </div>
@@ -109,14 +108,14 @@
               </div>
 
               <div class="col-md-8">
-                <input class="form-control" id="pass" type="password" name="pass">
+                <input class="form-control" id="pass" ng-model="sharedVariable.password" type="password" name="pass">
               </div>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-offset-4 col-md-6">
-              <button type="submit" class="btn btn-success col-md-6" style="margin: 10px;">Register</button>
+              <button type="submit" ng-click="registerUser()" class="btn btn-success col-md-6" style="margin: 10px;">Register</button>
             </div>
           </div>
         </form>
