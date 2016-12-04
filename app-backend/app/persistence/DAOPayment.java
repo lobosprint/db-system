@@ -27,12 +27,13 @@ public class DAOPayment implements DAOGeneric {
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            String sql = "SELECT id_payment, confirmation_number, date_payment FROM payment WHERE id_payment = ?";
+            String sql = "SELECT id_payment, confirmation_number, date_payment, type_card, numbers_card, expiration_card FROM payment WHERE id_payment = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                payment = new Payment(id, rs.getInt("confirmation_number"), new DateTime(rs.getDate("date_payment")));
+                payment =   new Payment(id, rs.getInt("confirmation_number"), new DateTime(rs.getDate("date_payment")), rs.getString("type_card"), rs.getDouble("numbers_card"),
+                            new DateTime(rs.getDate("expiration_card")));
             }
             rs.close();
         } catch (Exception e){
@@ -69,7 +70,7 @@ public class DAOPayment implements DAOGeneric {
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            String sql =    "SELECT d.id_payment as id_payment, d.confirmation_number as confirmation_number, d.date_payment as date_payment " +
+            String sql =    "SELECT d.id_payment as id_payment, confirmation_number, date_payment, type_card, numbers_card, expiration_card " +
                             "FROM penalty as a " +
                             "INNER JOIN turn as b ON a.id_turn = b.id_turn " +
                             "INNER JOIN student as c ON b.id_Student = c.id_Student " +
@@ -79,7 +80,8 @@ public class DAOPayment implements DAOGeneric {
             stmt.setInt(1, idStudent);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                payments.add(new Payment(rs.getInt("id_payment"), rs.getInt("confirmation_number") , new DateTime(rs.getDate("date_payment"))));
+                payments.add(new Payment(rs.getInt("id_payment"), rs.getInt("confirmation_number"), new DateTime(rs.getDate("date_payment")), rs.getString("type_card"), rs.getDouble("numbers_card"),
+                        new DateTime(rs.getDate("expiration_card"))));
             }
             rs.close();
         } catch (Exception e){

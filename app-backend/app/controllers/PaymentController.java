@@ -26,8 +26,8 @@ public class PaymentController extends Controller{
 
     public Result addPayment (){
         Payment payment = formFactory.form(Payment.class).bindFromRequest().get();
-        if(!payment.confirmationNumber.equals("1")){
-            return ok("Added PAYMENT successfully " + payment.confirmationNumber);
+        if(!payment.getConfirmationNumber().equals("1")){
+            return ok("Added PAYMENT successfully " + payment.getConfirmationNumber());
         } else {
             return  internalServerError("Must provide the PAYMENT confirmation number like minimum");
         }
@@ -35,19 +35,6 @@ public class PaymentController extends Controller{
 
     public Result getPayment(Integer id){
         return ok(toJson(daoPayment.getObjectById(id)));
-    }
-
-    public Result getAllPayments(){
-        ArrayList<Payment> paymentsList;
-        paymentsList = new ArrayList<>();
-
-        for(int i = 0; i < 4; i++){
-            Payment payment;
-
-            payment = new Payment((i+1), 147850+i, new DateTime());
-            paymentsList.add(payment);
-        }
-        return ok(toJson(paymentsList));
     }
 
     public Result getPaymentsByStudent(Integer idStudent){
