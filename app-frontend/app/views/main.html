@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12 col-lg-offset-3 col-lg-6">
     <div class="panel panel-success" >
-      <div class="panel-heading">Iniciar Sesión</div>
+      <div class="panel-heading"><b>Iniciar Sesión</b> <br> (Recuerde llenar campos con <font color=red>*</font> )</div>
       <div class="panel-body">
         <form name="signupForm" ng-submit="signup()" novalidate>
           <div class="form-group">
@@ -11,7 +11,7 @@
               </div>
 
               <div class="col-md-10">
-                <input class="form-control" id="mail" type="text" name="mail" ng-model="mail">
+                <input class="form-control" id="mail" type="email" name="mail" ng-model="mail">
               </div>
             </div>
           </div>
@@ -30,32 +30,36 @@
 
           <div class="row">
             <div class="col-xs-5 col-xs-offset-0 col-md-offset-2 col-md-4">
-            <button type="submit" class="btn btn-lg btn-success hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in" ng-click="signup()"></span> Sign in</button>
-            <button type="submit" class="btn btn-success visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span>Iniciar Sesión</button>
-            </div>
+              <center>
+                <button type="submit" class="btn btn-lg btn-success hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in" ng-click="signup()"></span> Sign in</button>
+                <button type="submit" class="btn btn-success visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span>Iniciar Sesión</button>
+                <center>
+                </div>
 
-            <div class="col-xs-7 col-md-4">
-              <a href='/#/registrer'>
-                <button type="button" class="btn-lg btn btn-info hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Crear Cuenta</button>
-                <button type="button" class="btn btn-info visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Crear Cuenta</button>
-              </a>
-            </div>
+                <div class="col-xs-7 col-md-4">
+                  <center>
+                    <a href='/#/registrer'>
+                      <button type="button" class="btn-lg btn btn-info hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Crear Cuenta</button>
+                      <button type="button" class="btn btn-info visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Crear Cuenta</button>
+                    </a>
+                  </center>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script type="text/javascript">
-  if(!localStorage.getItem('loadHome')) {
-     location.reload();
-  }
-  localStorage.setItem('loadHome', 'true');
-  localStorage.removeItem('loadStudent');
-  localStorage.removeItem('loadAdmin');
+    <script type="text/javascript">
+    if(!localStorage.getItem('loadHome')) {
+      location.reload();
+    }
+    localStorage.setItem('loadHome', 'true');
+    localStorage.removeItem('loadStudent');
+    localStorage.removeItem('loadAdmin');
 
-  localStorage.setItem('user', 'marcos');
-  localStorage.setItem('role', 'student');
-  localStorage.setItem('id', '1');
-</script>
+    localStorage.setItem('user', 'marcos');
+    localStorage.setItem('role', 'student');
+    localStorage.setItem('id', '1');
+    </script>
