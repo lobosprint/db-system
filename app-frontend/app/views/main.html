@@ -7,7 +7,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-md-2">
-                <label class="control-label">E-Mail:</label>
+                <label class="control-label">E-Mail:<font color="red">*</font></label>
               </div>
 
               <div class="col-md-10">
@@ -19,7 +19,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-md-2">
-                <label class="control-label" align="center">Password:</label>
+                <label class="control-label" align="center">Password:<font color="red">*</font></label>
               </div>
 
               <div class="col-md-10">
@@ -30,17 +30,13 @@
 
           <div class="row">
             <div class="col-xs-5 col-xs-offset-0 col-md-offset-2 col-md-4">
-              <a ng-href="#/studentHome">
-                <button type="submit" class="btn btn-lg btn-success hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
-                <button type="submit" class="btn btn-success visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
-              </a>
+            <button type="submit" class="btn btn-lg btn-success hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in" ng-click="signup()"></span> Sign in</button>
+            <button type="submit" class="btn btn-success visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
             </div>
 
             <div class="col-xs-7 col-md-4">
-              <a ng-href="#/registrer">
                 <button type="button" class="btn-lg btn btn-info hidden-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Create Account</button>
                 <button type="button" class="btn btn-info visible-xs" style="margin: 10px;"><span class="glyphicon glyphicon-wrench"></span> Create Account</button>
-              </a>
             </div>
           </div>
         </form>
@@ -51,13 +47,13 @@
 
 <script type="text/javascript">
   if(!localStorage.getItem('loadHome')) {
-     location.reload(); 
+     location.reload();
   }
   localStorage.setItem('loadHome', 'true');
   localStorage.removeItem('loadStudent');
   localStorage.removeItem('loadAdmin');
 
-  localStorage.setItem('user', 'marcos');  
-  localStorage.setItem('role', 'student');  
-  localStorage.setItem('id', '5');  
+  localStorage.setItem('user', 'marcos');
+  localStorage.setItem('role', 'student');
+  localStorage.setItem('id', '5');
 </script>
