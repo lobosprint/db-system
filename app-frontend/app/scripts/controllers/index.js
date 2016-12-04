@@ -13,7 +13,7 @@ angular.module('appFrontApp')
     $scope.navAdmin = false;
     $scope.navStudent = false;
 $log.error($location.path());
-    if ($location.path() == "/" || $location.path() == "/registrer") {
+    if ($location.path() == "/" || $location.path() == "/registrer" || $location.path() == "/closeSession") {
         $scope.navDefault = true;
         $scope.navAdmin = false;
         $scope.navStudent = false;

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 
 /**
@@ -110,7 +111,7 @@ public class DAOPayment implements DAOGeneric {
         return payments;
     }
 
-    public Result addPayment(Integer confirmation_number, String date_payment, String type_card, String numbers_card, String expiration_card) {
+    public Result addPayment(Integer confirmation_number, String date_payment, String type_card, Integer numbers_card, String expiration_card, Integer id_penalty) {
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -120,19 +121,19 @@ public class DAOPayment implements DAOGeneric {
             stmt.setInt(1, confirmation_number);
             stmt.setString(2, date_payment);
             stmt.setString(3, type_card);
-            stmt.setString(4, numbers_card);
+            stmt.setInt(4, numbers_card);
             stmt.setString(5, expiration_card);
             stmt.executeUpdate();
             ResultSet paymentInsert = stmt.getGeneratedKeys();
-//            if (paymentInsert.next()) {
-//                String sql2 =   "INSERT INTO public.penalty(id_penalty, id_payment, id_turn)\n" +
-//                        "VALUES (?, ?, ?);\n";
-//                stmt = conn.prepareStatement(sql2);
-//                stmt.setInt(1,personInsert.getInt(1));
-//                stmt.setBoolean(2, handiecap);
-//                stmt.executeUpdate();
-//            }
+            if (paymentInsert.next()) {
+                String sql2 =   "UPDATE penalty SET id_payment = ? WHERE id_penalty = ?";
+                stmt = conn.prepareStatement(sql2);
+                stmt.setInt(1,paymentInsert.getInt(1));
+                stmt.setInt(2, id_penalty);
+                stmt.executeUpdate();
+            }
         } catch (Exception e){
+            return badRequest("Error agregando el pago, informacion mal ingresada" + e.toString());
         }finally {
             try{
                 if(stmt!=null)

@@ -1,0 +1,24 @@
+<div class="panel panel-default">  <div class="panel-heading">Desconectar cuenta</div> <div class="panel-body">
+    Te has salido de tu sesión con éxito<br>
+    <center>
+      <img style="max-height:100px;" src="./images/check.png" class="img-responsive" alt="">
+    </center>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  if(!localStorage.getItem('loadHome')) {
+     location.reload(); 
+  }
+  localStorage.setItem('loadHome', 'true');
+  localStorage.removeItem('loadStudent');
+  localStorage.removeItem('loadAdmin');
+
+  localStorage.removeItem('user');
+  localStorage.removeItem('id');
+  localStorage.removeItem('role');
+
+
+</script>
+
