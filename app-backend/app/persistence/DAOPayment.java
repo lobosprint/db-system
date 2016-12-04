@@ -2,12 +2,15 @@ package persistence;
 
 import models.*;
 import org.joda.time.DateTime;
+import play.mvc.Result;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static play.mvc.Results.ok;
 
 /**
  * Created by cristian on 11-10-16.
@@ -106,4 +109,45 @@ public class DAOPayment implements DAOGeneric {
 //        }
         return payments;
     }
+
+    public Result addPayment(Integer confirmation_number, String date_payment, String type_card, String numbers_card, String expiration_card) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO payment( confirmation_number, date_payment, type_card, numbers_card, expiration_card) " +
+                         "VALUES (?, ?, ?, ?, ?)";
+            stmt = conn.prepareStatement(sql, stmt.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, confirmation_number);
+            stmt.setString(2, date_payment);
+            stmt.setString(3, type_card);
+            stmt.setString(4, numbers_card);
+            stmt.setString(5, expiration_card);
+            stmt.executeUpdate();
+            ResultSet paymentInsert = stmt.getGeneratedKeys();
+//            if (paymentInsert.next()) {
+//                String sql2 =   "INSERT INTO public.penalty(id_penalty, id_payment, id_turn)\n" +
+//                        "VALUES (?, ?, ?);\n";
+//                stmt = conn.prepareStatement(sql2);
+//                stmt.setInt(1,personInsert.getInt(1));
+//                stmt.setBoolean(2, handiecap);
+//                stmt.executeUpdate();
+//            }
+        } catch (Exception e){
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok("Pago agregado satisfactoriamente.");
+    }
+
+
 }
