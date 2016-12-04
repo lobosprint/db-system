@@ -1,8 +1,6 @@
 package persistence;
 
 import models.Administrative;
-import models.Job;
-import models.Person;
 import models.Student;
 import org.joda.time.DateTime;
 import play.mvc.Result;
@@ -11,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import static play.libs.Json.toJson;
 import static play.mvc.Results.badRequest;

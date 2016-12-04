@@ -3,6 +3,7 @@ package persistence;
 import models.Student;
 import org.joda.time.DateTime;
 import play.mvc.Result;
+import services.ExampleMail;
 
 import java.sql.*;
 import java.util.*;
@@ -124,6 +125,7 @@ public class DAOStudent implements DAOGeneric{
     }
 
     public Result addStudent(Boolean handiecap, String first_name, String middle_name, String last_name, String date_birth, String phone, String email, String password, String rum_id){
+        ExampleMail mail = new ExampleMail();
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -148,6 +150,7 @@ public class DAOStudent implements DAOGeneric{
                 stmt.setBoolean(2, handiecap);
                 stmt.executeUpdate();
             }
+            mail.sendGet(email, "Registro Turn4U", "Gracias por registrarte en nuestro sitio web esperamos sigas disfrutando de nuestros servicios.");
         } catch (Exception e){
             return badRequest("Error agregando el estudiante, informacion mal ingresada");
         }finally {
