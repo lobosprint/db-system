@@ -43,9 +43,21 @@ angular.module('appFrontApp')
 
 
   $scope.registerUser= function(){
+
+    if ( $scope.sharedVariable.first_name=="" ||
+    $scope.sharedVariable.last_name=="" ||
+    $scope.sharedVariable.date_birth=="" ||
+    $scope.sharedVariable.phone=="" ||
+    $scope.sharedVariable.email=="" ||
+    $scope.sharedVariable.password=="" ||
+    $scope.sharedVariable.rum_id==""
+  ){
+    alert("Debe llenar todos los campos con asterisco.")
+  }
+  else {
     $http.post('/app-backend/addStudent',$scope.sharedVariable,$scope.config).success(function(data){
       alert("It Worked");
-      $('#form-registrer').html('<div class="panel panel-default"><div class="panel-heading">Registro</div><div class="panel-body">Te has registrado con éxito<br><center><img style="max-height:100px;" src="./images/check.png" class="img-responsive" alt=""></center></div></div>');
+      $('#form-registrer').html('<div class="panel panel-default">  <div class="panel-heading">Registro</div> <div class="panel-body">Te has registrado con éxito<br><center> <img style="max-height:100px;" src="./images/check.png" class="img-responsive" alt=""><div class="col-md-offset-4 col-md-6"> <a href="/#/"><button type="submit"  class="btn btn-success col-md-6" style="margin: 10px;">Iniciar Sesion</button></a> </div> </center> </div></div>');
 
 
     }).error(function(data){
@@ -56,6 +68,6 @@ angular.module('appFrontApp')
 
       alert("Didnt' Work");
     });
-
-  };
+  }
+};
 }]);
