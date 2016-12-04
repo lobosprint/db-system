@@ -8,7 +8,7 @@
 
 <div class= "container">
     <p align="center">
-        <a ng-href="#/adminPendingTurns">
+        <a ng-href="#/adminTurnsHistory">
             <button type="button" class="btn btn-info">Historial de Turnos</button>
         </a>
     </p>
@@ -22,6 +22,10 @@
   localStorage.setItem('loadAdmin', 'true');
   localStorage.removeItem('loadStudent');
   localStorage.removeItem('loadHome');
+
+  $('.admin-home').addClass('active');
+  $('.admin-turns').removeClass('active');
+  $('.historial').removeClass('active');
 </script>
 
 
