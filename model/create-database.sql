@@ -1,6 +1,6 @@
 ﻿-- Database: turn4u
 
--- DROP DATABASE turn4u;
+--DROP DATABASE turn4u;
 
 --CREATE DATABASE turn4u
  -- WITH OWNER = postgres
@@ -10,17 +10,17 @@
      --  LC_CTYPE = 'es_PR.UTF-8'
       -- CONNECTION LIMIT = -1;
 
---DROP TABLE turn;
---DROP TABLE payment;
---DROP TABLE penalty;
---DROP TABLE commentary;
---DROP TABLE administrative;
---DROP TABLE position_type;
---DROP TABLE area;
---DROP TABLE job;
---DROP TABLE student;
---DROP TABLE place;
---DROP TABLE person;
+-- DROP TABLE turn;
+-- DROP TABLE payment;
+-- DROP TABLE penalty;
+-- DROP TABLE commentary;
+-- DROP TABLE administrative;
+-- DROP TABLE position_type;
+-- DROP TABLE area;
+-- DROP TABLE job;
+-- DROP TABLE student;
+-- DROP TABLE place;
+-- DROP TABLE person;
 
 CREATE TABLE person
 (
@@ -28,7 +28,7 @@ id_person serial primary key,
 first_name varchar(100),
 middle_name varchar(100),
 last_name varchar(100),
-date_birth date,
+date_birth varchar(10),
 phone varchar(50),
 email varchar(100),
 password varchar(255),
@@ -102,10 +102,10 @@ CREATE TABLE payment
 (
 id_payment serial primary key,
 confirmation_number int,
-date_payment date,
+date_payment varchar(10),
 type_card varchar(50),
 numbers_card int,
-expiration_card date
+expiration_card varchar(10)
 );
 
 CREATE TABLE penalty

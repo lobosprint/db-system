@@ -259,8 +259,8 @@ insert into penalty
 values(null,(select id_turn from turn order by id_turn desc limit 1));
 
 insert into payment
-(confirmation_number, date_payment)
-values(6564565,now());
+(confirmation_number, date_payment, type_card, numbers_card, expiration_card)
+values(6564565, '2016-12-06', 'VISA', 12345678, '2017-12-01');
 
 update penalty set id_payment = (select id_payment from payment order by id_payment limit 1) where id_penalty = (select id_penalty from penalty order by id_penalty limit 1);
 
