@@ -8,17 +8,9 @@
  * Controller of the appFrontApp
  */
 angular.module('appFrontApp')
-  .controller('StudentConfirmPaymentCtrl', ['$http','$log','$scope', function ($http, $log,$scope){
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('StudentConfirmPaymentCtrl', ['$http','$log','$scope','turnService', function ($http, $log,$scope, turnService){
 
-    $scope.pay=[];
-    $http.post('/app-backend/addPayment').success(function(data){
-      $scope.pay=data;
-      $log.error(data);
-    });
+$scope.paymentVariable=turnService.studentPaymentInfoSharedObject;
+
 
   }]);
