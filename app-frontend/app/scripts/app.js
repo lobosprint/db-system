@@ -9,11 +9,12 @@
 * Main module of the application.
 */
 var app= angular.module('appFrontApp',[  'ngAnimate',
-  'ngCookies',
-  'ngResource',
-  'ngRoute',
-  'ngSanitize',
-  'ngTouch']);
+'ngCookies',
+'ngResource',
+'ngRoute',
+'ngSanitize',
+'ngTouch',
+'ngMaterial']);
 app.config(function ($routeProvider) {
   $routeProvider
   .when('/', {
@@ -139,6 +140,15 @@ app.factory("turnService", function(){
       password:0,
       rum_id:0
 
+    },
+    studentPaymentInfoSharedObject:{
+      confirmation_number:0,
+      date_payment:0,
+      type_card:0,
+      numbers_card:0,
+      expiration_card:0,
+      id_penalty:0,
+      payment_amount:0
     }
   };
 
