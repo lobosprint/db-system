@@ -1,51 +1,32 @@
 <div class="panel panel-default">
   <div class="panel-heading">Pagar penalización</div>
   <div class="panel-body">
-    <h1>Importe de 2$</h1>
+    <h1>Penalizacion a pagar de {{paymentVariable.payment_amount|currency}}</h1>
 
     <form>
       <div class="form-group">
-        <select class="form-control">
-          <option>Tipo de tarjeta</option>
+        <label for="f1">Tipo de Tarjeta <font color=red>*</font></label>
+        <select class="form-control" ng-model="paymentVariable.type_card">
           <option>Visa</option>
           <option>Master Card</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="f1">Número de tarjeta</label>
-        <input type="text" class="form-control" id="f1">
+        <label for="f1">Número de tarjeta<font color=red>* (9 Digitos)</font></label>
+        <input type="text" ng-model="paymentVariable.numbers_card" class="form-control" id="f1">
       </div>
-
-
       <div class="form-group">
-          <label for="f3">Fecha de Expiracion</label>
-        <div class='input-group date' id='dtp-expiration'>
-
-          <input type='text' class="form-control" />
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-          </span>
-        </div>
+        <label for="f3">Fecha de Expiracion:<font color=red>*</font></label>
+        <md-datepicker ng-model="paymentVariable.expiration_card" md-placeholder="MM/DD/YYYY" md-min-date="minDate"></md-datepicker>
       </div>
-
-      <script type="text/javascript">
-      $(function () {
-        $('#dtp-expiration').datetimepicker(
-          {
-            format: 'YYYY-MM-DD',
-            minDate: new moment
-          }
-        );
-      });
-      </script>
       <div class="form-group">
-        <label for="f3">Código de seguridad</label>
+        <label for="f3">Código de seguridad<font color=red>*</font></label>
         <input type="text" class="form-control" id="f3">
       </div>
 
       <div class="form-group">
-        <label for="f4">Titular de la tarjeta</label>
+        <label for="f4">Titular de la tarjeta<font color=red>*</font></label>
         <input type="text" class="form-control" id="f4">
       </div>
 
@@ -65,20 +46,18 @@
       </div>
 
       <div class="form-group">
-        <label for="f8">Código Postal</label>
+        <label for="f8">Código Postal<font color=red>*</font></label>
         <input type="number" class="form-control" id="f8">
       </div>
 
       <div class="row">
         <div class="col-xs-6">
-          <a ng-href="#/studentConfirmPayment">
-            <button type="submit" class="btn btn-success  btn-lg">Pagar</button>
-          </a>
+          <center><button type="submit" class="btn btn-success  btn-lg"ng-click="payment()">Pagar</button></center>
         </div>
 
         <div class="col-xs-6">
           <a ng-href="#/studentPenaltiesView">
-            <button type="submit" class="btn btn-danger  btn-lg">Cancelar</button>
+            <center><button type="submit" class="btn btn-danger  btn-lg">Cancelar</button></center>
           </a>
         </div>
       </div>
@@ -87,13 +66,13 @@
 </div>
 
 <script type="text/javascript">
-  if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'student') {
-    document.write('<h1>No tienes permiso para ver el contenido.</h1>');
-    window.stop();
-  }
-  $('.student-turns').removeClass('active');
-  $('.student-ask-turn').removeClass('active');
-  $('.student-show-penalties').addClass('active');
-  $('.student-show-payment').removeClass('active');
-  $('.student-home').removeClass('active');
+if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'student') {
+  document.write('<h1>No tienes permiso para ver el contenido.</h1>');
+  window.stop();
+}
+$('.student-turns').removeClass('active');
+$('.student-ask-turn').removeClass('active');
+$('.student-show-penalties').addClass('active');
+$('.student-show-payment').removeClass('active');
+$('.student-home').removeClass('active');
 </script>

@@ -8,17 +8,17 @@
  * Controller of the appFrontApp
  */
 angular.module('appFrontApp')
-  .controller('StudentPenaltiesViewCtrl', ['$http','$log','$scope', function ($http, $log,$scope){
+  .controller('StudentPenaltiesViewCtrl', ['$http','$log','$scope', 'turnService', function ($http, $log,$scope, turnService){
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-
+    $scope.studentPaymentInfoSharedObject=turnService.studentPaymentInfoSharedObject;
     $scope.penalties=[];
     $http.get('/app-backend/getPenalByStudent/'.concat(localStorage.getItem('id'))).success(function(data){
       $scope.penalties=data;
-      //$log.error(data);
+      $log.error(data);
     });
 
 

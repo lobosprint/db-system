@@ -2,7 +2,7 @@
     <div class="panel-heading">Penalizaciones pendientes</div>
     <div class="panel-body">
 
-    
+
 
 
         <table class="table table-bordered">
@@ -30,7 +30,8 @@
 
                 <td>
                     <a ng-href="#/studentPayPenalty">
-                        <button type="button" class="btn btn-success">Pagar</button>
+                        <button type="button"lass="btn btn-success"
+                        ng-click="studentPaymentInfoSharedObject.id_penalty=currentPenalty.idPenalty; studentPaymentInfoSharedObject.payment_amount= currentPenalty.turn.penaltyCost;">Pagar</button>
                     </a>
                 </td>
             </tr>
