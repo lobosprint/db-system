@@ -1,16 +1,23 @@
 package persistence;
 
+import com.avaje.ebeaninternal.server.type.ScalarTypeUtilDate;
+import com.fasterxml.jackson.core.format.InputAccessor;
 import models.Administrative;
 import models.Job;
 import models.Student;
 import models.Turn;
 import org.joda.time.DateTime;
+import play.mvc.Result;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static play.libs.Json.toJson;
+import static play.mvc.Results.badRequest;
+import static play.mvc.Results.ok;
 
 /**
  * Created by cristian on 11-07-16.
@@ -312,4 +319,40 @@ public class DAOTurn implements DAOGeneric {
         return turns;
     }
 
+    public Result addTurn(Integer id_student, Integer id_administrative, Integer id_position, Integer penalty_cost, String description) {
+        Turn turn = new Turn();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "INSERT INTO public.turn( id_student, id_administrative, id_position, penalty_cost, description, attended) " +
+                            "VALUES (?, ?, ?, ?, ?, FALSE)";
+            stmt = conn.prepareStatement(sql, stmt.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, id_student);
+            stmt.setInt(2, id_administrative);
+            stmt.setInt(3, id_position);
+            stmt.setInt(4, penalty_cost);
+            stmt.setString(5, description);
+            stmt.executeUpdate();
+            ResultSet TurnInsert = stmt.getGeneratedKeys();
+            if (TurnInsert.next()) {
+                turn = new Turn(   TurnInsert.getInt(1), (Student) daoStudent.getObjectById(id_student),
+                                        (Administrative) daoAdministrative.getObjectByIdAndPosition(id_administrative, id_position), description, penalty_cost, Boolean.FALSE);
+            }
+        } catch (Exception e){
+            return badRequest("Error agregando el turno, informacion mal ingresada");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok(toJson(turn));
+    }
 }

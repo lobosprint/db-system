@@ -1,6 +1,8 @@
 package controllers;
 
 import static  play.libs.Json.toJson;
+
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
 import models.*;
 import persistence.*;
@@ -16,20 +18,18 @@ import java.util.List;
  */
 public class TurnController extends Controller{
 
-    @Inject
-    private FormFactory formFactory;
-
     DAOTurn daoTurn      = new DAOTurn();
     DAOArea daoArea      = new DAOArea();
     DAOAdministrative daoAdministrative = new DAOAdministrative();
 
     public Result addTurn() {
-        Turn turn = formFactory.form(Turn.class).bindFromRequest().get();
-        if (!turn.getDescription().equals("1")){
-            return ok("Added TURN successfully: " + turn.getDescription());
-        } else {
-            return internalServerError("Must provide the TURN description like minimum");
-        }
+        JsonNode json = request().body().asJson();
+        Integer id_student = json.findValue("id_student").asInt();
+        Integer id_administrative = json.findValue("id_administrative").asInt();
+        Integer id_position = json.findValue("id_position").asInt();
+        Integer penalty_cost = json.findValue("penalty_cost").asInt();
+        String description = json.findValue("description").asText();
+        return daoTurn.addTurn(id_student, id_administrative, id_position, penalty_cost, description);
     }
 
     public Result getTurn(Integer id){

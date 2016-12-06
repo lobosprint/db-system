@@ -49,6 +49,15 @@ public class Turn extends Model {
         this.attended = attended;
     }
 
+    public Turn(int idTurn, Student student, Administrative administrative, String description, Integer penaltyCost, boolean attended) {
+        this.idTurn = idTurn;
+        this.student = student;
+        this.administrative = administrative;
+        this.description = description;
+        this.penaltyCost = penaltyCost;
+        this.attended = attended;
+    }
+
     public int getIdTurn() {
         return idTurn;
     }
