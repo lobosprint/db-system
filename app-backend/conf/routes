@@ -46,16 +46,20 @@ GET     /getAllTurnsByStudentNumber/:idStudent      controllers.TurnController.g
 
 #Post Methods
 #To Runs in Server
-POST    /app-backend/login         controllers.LoginController.getLogin
-POST    /app-backend/addStudent    controllers.StudentController.addStudent
-POST    /app-backend/addTurn       controllers.TurnController.addTurn
-POST    /app-backend/addPenalty    controllers.PenaltyController.addPenalty
-POST    /app-backend/addPayment    controllers.PaymentController.addPayment
+POST    /app-backend/login                  controllers.LoginController.getLogin
+POST    /app-backend/addStudent             controllers.StudentController.addStudent
+POST    /app-backend/addTurn                controllers.TurnController.addTurn
+POST    /app-backend/addStartTimeTurn       controllers.TurnController.addStartTime
+POST    /app-backend/addFinishTime          controllers.TurnController.addFinishTime
+POST    /app-backend/addPenalty             controllers.PenaltyController.addPenalty
+POST    /app-backend/addPayment             controllers.PaymentController.addPayment
 
 #To Runs Local
 POST    /login                     controllers.LoginController.getLogin
 POST    /addStudent                controllers.StudentController.addStudent
 POST    /addTurn                   controllers.TurnController.addTurn
+POST    /addStartTimeTurn          controllers.TurnController.addStartTime
+POST    /addFinishTimeTurn         controllers.TurnController.addFinishTime
 POST    /addPenalty                controllers.PenaltyController.addPenalty
 POST    /addPayment                controllers.PaymentController.addPayment
 

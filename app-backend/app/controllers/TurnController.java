@@ -32,6 +32,18 @@ public class TurnController extends Controller{
         return daoTurn.addTurn(id_student, id_administrative, id_position, penalty_cost, description);
     }
 
+    public Result addStartTime() {
+        JsonNode json = request().body().asJson();
+        Integer id_turn = json.findValue("id_turn").asInt();
+        return daoTurn.addStartTime(id_turn);
+    }
+
+    public Result addFinishTime() {
+        JsonNode json = request().body().asJson();
+        Integer id_turn = json.findValue("id_turn").asInt();
+        return daoTurn.addFinishTime(id_turn);
+    }
+
     public Result getTurn(Integer id){
         return ok(toJson((Turn) daoTurn.getObjectById(id)));
     }

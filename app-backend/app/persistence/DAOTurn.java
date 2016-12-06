@@ -355,4 +355,56 @@ public class DAOTurn implements DAOGeneric {
         }
         return ok(toJson(turn));
     }
+
+    public Result addStartTime(Integer id_turn) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "UPDATE turn SET start_time= now() WHERE id_turn = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_turn);
+            stmt.executeUpdate();
+        } catch (Exception e){
+            return badRequest("Error asignando la hora de comienzo del turno, informacion mal ingresada");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok("Tiempo de inicio del turno registrado satisfactoriamente.");
+    }
+
+    public Result addFinishTime(Integer id_turn) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "UPDATE turn SET finish_time= now(), attended = TRUE WHERE id_turn = ? AND now() > start_time";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_turn);
+            stmt.executeUpdate();
+        } catch (Exception e){
+            return badRequest("Error asignando la hora de finalizacion del turno, informacion mal ingresada");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok("Tiempo de finalizacion del turno registrado satisfactoriamente.");
+    }
 }
