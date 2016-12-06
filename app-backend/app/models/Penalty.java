@@ -24,4 +24,9 @@ public class Penalty extends Model {
         this.payment = payment;
         this.turn = turn;
     }
+
+    public Penalty(int idPenalty, Turn turn) {
+        this.idPenalty = idPenalty;
+        this.turn = turn;
+    }
 }

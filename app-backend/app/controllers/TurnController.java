@@ -44,6 +44,12 @@ public class TurnController extends Controller{
         return daoTurn.addFinishTime(id_turn);
     }
 
+    public Result addAttendedTurn(){
+        JsonNode json = request().body().asJson();
+        Integer id_turn = json.findValue("id_turn").asInt();
+        return daoTurn.addAttendedTurn(id_turn);
+    }
+
     public Result getTurn(Integer id){
         return ok(toJson((Turn) daoTurn.getObjectById(id)));
     }

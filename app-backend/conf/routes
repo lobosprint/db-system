@@ -60,6 +60,7 @@ POST    /addStudent                controllers.StudentController.addStudent
 POST    /addTurn                   controllers.TurnController.addTurn
 POST    /addStartTimeTurn          controllers.TurnController.addStartTime
 POST    /addFinishTimeTurn         controllers.TurnController.addFinishTime
+POST    /addAttendedTurn           controllers.TurnController.addAttendedTurn
 POST    /addPenalty                controllers.PenaltyController.addPenalty
 POST    /addPayment                controllers.PaymentController.addPayment
 

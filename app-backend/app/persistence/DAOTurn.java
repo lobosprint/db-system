@@ -2,10 +2,7 @@ package persistence;
 
 import com.avaje.ebeaninternal.server.type.ScalarTypeUtilDate;
 import com.fasterxml.jackson.core.format.InputAccessor;
-import models.Administrative;
-import models.Job;
-import models.Student;
-import models.Turn;
+import models.*;
 import org.joda.time.DateTime;
 import play.mvc.Result;
 
@@ -406,5 +403,40 @@ public class DAOTurn implements DAOGeneric {
             }
         }
         return ok("Tiempo de finalizacion del turno registrado satisfactoriamente.");
+    }
+
+    public Result addAttendedTurn(Integer id_turn) {
+        Penalty penalty = new Penalty();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "UPDATE turn SET attended = FALSE WHERE id_turn = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_turn);
+            stmt.executeUpdate();
+            sql = "INSERT INTO penalty(id_turn) VALUES (?);";
+            stmt = conn.prepareStatement(sql, stmt.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, id_turn);
+            stmt.executeUpdate();
+            ResultSet penaltyInsert = stmt.getGeneratedKeys();
+            if (penaltyInsert.next()) {
+                penalty = new Penalty(penaltyInsert.getInt(1), getObjectById(id_turn));
+            }
+        } catch (Exception e){
+            return badRequest("Error registrando la ausencia del estudiante al turno, informacion mal ingresada");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok(toJson(penalty));
     }
 }
