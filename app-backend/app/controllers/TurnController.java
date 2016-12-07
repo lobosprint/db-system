@@ -50,14 +50,30 @@ public class TurnController extends Controller{
         return daoTurn.addAttendedTurn(id_turn);
     }
 
-    public Result getTurn(Integer id){
-        return ok(toJson((Turn) daoTurn.getObjectById(id)));
+    public Result addCommentTurn(){
+        JsonNode json = request().body().asJson();
+        Integer id_turn = json.findValue("id_turn").asInt();
+        String description = json.findValue("description").asText();
+        return daoTurn.addCommentTurn(id_turn, description);
     }
 
-    public Result getAllTurns(){
-        ArrayList<Turn> TurnsList;
-        TurnsList = new ArrayList<>();
-        return ok(toJson(TurnsList));
+    public Result updateComment(){
+        JsonNode json = request().body().asJson();
+        Integer id_comment = json.findValue("id_comment").asInt();
+        Integer id_turn = json.findValue("id_turn").asInt();
+        String description = json.findValue("description").asText();
+        return daoTurn.updateComment(id_comment, id_turn, description);
+    }
+
+    public Result deleteComment(){
+        JsonNode json = request().body().asJson();
+        Integer id_comment = json.findValue("id_comment").asInt();
+        Integer id_turn = json.findValue("id_turn").asInt();
+        return daoTurn.deleteComment(id_comment, id_turn);
+    }
+
+    public Result getTurn(Integer id){
+        return ok(toJson((Turn) daoTurn.getObjectById(id)));
     }
 
     public Result getAllAreas(){ return ok(toJson((List<Area>) daoArea.getAllObjetcs()));}
@@ -82,4 +98,5 @@ public class TurnController extends Controller{
 
     public Result getAllTurnsPendingByAdminJob(Integer idAdministrative, Integer idJob){ return ok(toJson((List<Turn>) daoTurn.getAllTurnsPendingByAdminJob(idAdministrative, idJob))); }
 
+    public Result getAllCommentsByTurn(Integer idTurn){return ok(toJson((List<Comment>) daoTurn.getAllCommentsByTurn(idTurn)));}
 }

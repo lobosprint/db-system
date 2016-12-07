@@ -1,7 +1,5 @@
 package persistence;
 
-import com.avaje.ebeaninternal.server.type.ScalarTypeUtilDate;
-import com.fasterxml.jackson.core.format.InputAccessor;
 import models.*;
 import org.joda.time.DateTime;
 import play.mvc.Result;
@@ -309,11 +307,39 @@ public class DAOTurn implements DAOGeneric {
                 se.printStackTrace();
             }
         }
-//
-//        for(int i = 0; i < students.size(); i++){
-//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
-//        }
         return turns;
+    }
+
+    public Object getAllCommentsByTurn(Integer idTurn) {
+        ArrayList<Comment> comments = new ArrayList<Comment>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "SELECT id_comment, id_turn, description FROM commentary WHERE id_turn = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idTurn);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                comments.add(new Comment(rs.getInt("id_comment"), idTurn, rs.getString("description")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return comments;
     }
 
     public Result addTurn(Integer id_student, Integer id_administrative, Integer id_position, Integer penalty_cost, String description) {
@@ -410,7 +436,7 @@ public class DAOTurn implements DAOGeneric {
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            String sql = "UPDATE turn SET attended = FALSE WHERE id_turn = ?";
+            String sql = "UPDATE turn SET start_time = NULL, finish_time= NULL, attended = FALSE WHERE id_turn = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id_turn);
             stmt.executeUpdate();
@@ -438,5 +464,92 @@ public class DAOTurn implements DAOGeneric {
             }
         }
         return ok(toJson(penalty));
+    }
+
+    public Result addCommentTurn(Integer idTurn, String description){
+        Comment comment = new Comment();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "INSERT INTO commentary(id_turn, description) VALUES (?, ?)";
+            stmt = conn.prepareStatement(sql, stmt.RETURN_GENERATED_KEYS);
+            stmt.setInt(1, idTurn);
+            stmt.setString(2, description);
+            stmt.executeUpdate();
+            ResultSet commentInsert = stmt.getGeneratedKeys();
+            if (commentInsert.next()) {
+                comment = new Comment(commentInsert.getInt(1), idTurn, description);
+            }
+        } catch (Exception e){
+            return badRequest("Error agregando el turno, informacion mal ingresada");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok(toJson(comment));
+    }
+
+    public Result updateComment(Integer id_comment, Integer id_turn, String description) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "UPDATE commentary SET description = ? WHERE id_comment = ? AND id_turn = ?;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, description);
+            stmt.setInt(2, id_comment);
+            stmt.setInt(3, id_turn);
+            stmt.executeUpdate();
+        } catch (Exception e){
+            return badRequest("Error actualizando la descripcion del turno, informacion mal ingresada");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok("Descripcion del turno actualizada satisfactoriamente.");
+    }
+
+    public Result deleteComment(Integer id_comment, Integer id_turn) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "DELETE FROM commentary WHERE id_comment = ? AND id_turn = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_comment);
+            stmt.setInt(2, id_turn);
+            stmt.executeUpdate();
+        } catch (Exception e){
+            return badRequest("Error eliminando el comentario del turno, informacion mal ingresada");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok("Turno eliminado satisfactoriamente.");
     }
 }

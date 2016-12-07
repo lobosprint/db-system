@@ -7,7 +7,6 @@
 GET     /app-backend/getStudent/:id                             controllers.StudentController.getStudent(id: Integer)
 GET     /app-backend/getStudents                                controllers.StudentController.getAllStudents
 GET     /app-backend/getTurn/:id                                controllers.TurnController.getTurn(id: Integer)
-GET     /app-backend/getTurns                                   controllers.TurnController.getAllTurns
 GET     /app-backend/getAreas                                   controllers.TurnController.getAllAreas
 GET     /app-backend/getJobsByArea/:id                          controllers.TurnController.getAllJobsOfArea(id: Integer)
 GET     /app-backend/getAdminsByJob/:idArea/:idJob              controllers.TurnController.getAllAdministrativesOfJob(idArea: Integer, idJob: Integer)
@@ -21,12 +20,13 @@ GET     /app-backend/getPenalByStudent/:idStudent               controllers.Pena
 GET     /app-backend/getPayment/:id                             controllers.PaymentController.getPayment(id: Integer)
 GET     /app-backend/getPaymentsByStud/:idStudent               controllers.PaymentController.getPaymentsByStudent(idStudent: Integer)
 GET     /app-backend/getAllTurnsByStudentNumber/:idStudent      controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
+GET     /app-backend/getAllCommentsByTurn/:idTurn               controllers.TurnController.getAllCommentsByTurn(idTurn: Integer)
+
 
 #To Runs Local
 GET     /getStudent/:id                             controllers.StudentController.getStudent(id: Integer)
 GET     /getStudents                                controllers.StudentController.getAllStudents
 GET     /getTurn/:id                                controllers.TurnController.getTurn(id: Integer)
-GET     /getTurns                                   controllers.TurnController.getAllTurns
 GET     /getAreas                                   controllers.TurnController.getAllAreas
 GET     /getJobsByArea/:id                          controllers.TurnController.getAllJobsOfArea(id: Integer)
 GET     /getAdminsByJob/:idArea/:idJob              controllers.TurnController.getAllAdministrativesOfJob(idArea: Integer, idJob: Integer)
@@ -41,8 +41,7 @@ GET     /getPayment/:id                             controllers.PaymentControlle
 GET     /getPaymentsByStud/:idStudent               controllers.PaymentController.getPaymentsByStudent(idStudent: Integer)
 GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
 GET     /getAllTurnsByStudentNumber/:idStudent      controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
-
-#GET     /                                           controllers.PaymentController.getAllPayments
+GET     /getAllCommentsByTurn/:idTurn               controllers.TurnController.getAllCommentsByTurn(idTurn: Integer)
 
 #Post Methods
 #To Runs in Server
@@ -51,8 +50,12 @@ POST    /app-backend/addStudent             controllers.StudentController.addStu
 POST    /app-backend/addTurn                controllers.TurnController.addTurn
 POST    /app-backend/addStartTimeTurn       controllers.TurnController.addStartTime
 POST    /app-backend/addFinishTime          controllers.TurnController.addFinishTime
+POST    /app-backend/addComment             controllers.TurnController.addCommentTurn
 POST    /app-backend/addPenalty             controllers.PenaltyController.addPenalty
 POST    /app-backend/addPayment             controllers.PaymentController.addPayment
+POST    /app-backend/updateComment          controllers.TurnController.updateComment
+POST    /app-backend/deleteComment          controllers.TurnController.deleteComment
+
 
 #To Runs Local
 POST    /login                     controllers.LoginController.getLogin
@@ -61,8 +64,12 @@ POST    /addTurn                   controllers.TurnController.addTurn
 POST    /addStartTimeTurn          controllers.TurnController.addStartTime
 POST    /addFinishTimeTurn         controllers.TurnController.addFinishTime
 POST    /addAttendedTurn           controllers.TurnController.addAttendedTurn
+POST    /addComment                controllers.TurnController.addCommentTurn
 POST    /addPenalty                controllers.PenaltyController.addPenalty
 POST    /addPayment                controllers.PaymentController.addPayment
+POST    /updateComment             controllers.TurnController.updateComment
+POST    /deleteComment             controllers.TurnController.deleteComment
+
 
 
 # Map static resources from the /public folder to the /assets URL path
