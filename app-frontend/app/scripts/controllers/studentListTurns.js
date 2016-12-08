@@ -12,8 +12,8 @@ angular.module('appFrontApp')
 
 
   $scope.turns=[];
-  $http.get('/app-backend/getTurnsByStudent/'.concat(localStorage.getItem('id'))).success(function(data){
+  $http.get('/app-backend/getTurnsByStudent/'.concat(localStorage.getItem('id_student'))).success(function(data){
     $scope.turns=data;
   });
-    
+
 }]);
