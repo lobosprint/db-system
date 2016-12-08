@@ -126,7 +126,8 @@ app.factory("turnService", function(){
       studentGetTurnJobName:0,
       studentGetTurnJobID:0,
       studentGetTurnAdminName:0,
-      studentGetTurnAdminID:0
+      studentGetTurnAdminID:0,
+      studentGetTurnDescription:""
     },
     studentRegisterSharedobject: {
 
