@@ -38,6 +38,7 @@ angular.module('appFrontApp')
         }
         localStorage.setItem('role', $scope.role);
         localStorage.setItem('id', data.idPerson);
+        localStorage.setItem('id_student', data.idStudent);
 
         if($scope.role=='administrative'){
            window.location.replace("/#/adminHome");
