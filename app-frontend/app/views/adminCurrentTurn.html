@@ -1,28 +1,38 @@
-<div class="panel panel-default" ng-controller="AdminCurrentTurnCtrl as admincurrentturn" ng-init="fetch"  >
-<strong> Estudiante:        </strong>
-{{student.student.name
-+ " "
-+student.student.middleName
-+ " "
-+student.student.lastName + "            Tiempo corriente de turno: "
-}}
-<b>0h 45min 33seg</b>
-<div>
-<b> Atendido por: </b>
+<div class="" ng-controller="AdminCurrentTurnCtrl as admincurrentturn" ng-init="fetch"  >
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">Acciones Disponibles</div>
+            <div class="panel-body">
 
-{{student.administrative.name
-+ " "
-+student.administrative.middleName
-+ " "
-+student.administrative.lastName
-}}
+                <strong> <span class="glyphicon glyphicon-user icon-admin-turn"></span>
+Estudiante:        </strong>
+                    {{student.student.name
+                    + " "
+                    +student.student.middleName
+                    + " "
+                    +student.student.lastName
+                }}
+                <br>
+                <b><span class="glyphicon glyphicon-time icon-admin-turn"></span>Tiempo corriente de turno: </b>
+                0h 45min 33seg
+                <div>
+                    <b><span class="glyphicon glyphicon-edit icon-admin-turn"></span> Atendido por: </b>
 
- </div>
-    <!-- <timer interval="1000" autostart="true">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer> -->
+                        {{student.administrative.name
+                        + " "
+                        +student.administrative.middleName
+                        + " "
+                        +student.administrative.lastName
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- <timer interval="1000" autostart="true">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer> -->
 
 
     </div>
-    <div class="panel-body">
+    <div class="">
         <div class="row">
             <div class="col-xs-3">
                 <button type="submit" class="btn btn-success  btn-lg">

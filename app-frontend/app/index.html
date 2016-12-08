@@ -80,8 +80,9 @@
     <![endif]-->
 
     <!-- This is the header with the nav -->
-    <header class="container">
+    <header>
         <nav class="navbar navbar-default">
+          <div class="container">
             <!-- No registrado -->
             <div ng-show="navDefault" ng-controller="IndexCtrl">
                 <div class="row">
@@ -93,20 +94,20 @@
 
             <!-- Administrator -->
             <div ng-show="navAdmin" ng-controller="IndexCtrl">
-                <div class="row hidden-xs">
-                    <div class="col-xs-2">
-                        <a ng-href="#/adminHome"><img src="./images/logo.jpg" class="img-responsive logo"></a>
-                    </div>
-
-                    <div class="col-xs-10">
-                        <ul class="nav nav-pills">
-                          <li role="presentation" class="admin-home"><a ng-href="#/adminHome">Inicio</a></li>
-                          <li role="presentation" class="admin-turns"><a ng-href="#/adminPendingTurns">Turnos pendientes</a></li>
-                          <li role="presentation" class="historial"><a ng-href="#/adminTurnsHistory">Historial</a></li>
-                          <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession">Salir</a></li>
-                        </ul>
-                    </div>
+              <div class="row hidden-xs">
+                <div class="col-xs-2">
+                  <a ng-href="#/adminHome"><img src="./images/logo.jpg" class="img-responsive logo"></a>
                 </div>
+
+                <div class="col-xs-10">
+                  <ul class="nav nav-pills">
+                    <li role="presentation" class="admin-home"><a ng-href="#/adminHome">Inicio</a></li>
+                    <li role="presentation" class="admin-turns"><a ng-href="#/adminPendingTurns">Turnos pendientes</a></li>
+                    <li role="presentation" class="historial"><a ng-href="#/adminTurnsHistory">Historial</a></li>
+                    <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession"><span class="glyphicon glyphicon-off" style="padding-right:5px;"></span> Salir</a></li>
+                  </ul>
+                </div>
+              </div>
 
               <div class="hidden-lg hidden-md hidden-sm">
                 <div class="container-fluid">
@@ -127,7 +128,7 @@
                       <li role="presentation"><a ng-href="#/adminCurrentTurn">Turno actual</a></li>
                       <li role="presentation"><a ng-href="#/adminPendingTurns">Turnos pendientes</a></li>
                       <li role="presentation"><a ng-href="#/adminTurnsHistory">Historial</a></li>
-                      <li role="presentation" ><a class="btn btn-danger close-header-small" ng-href="#/closeSession">Salir</a></li>
+                      <li role="presentation" ><a class="btn btn-danger close-header-small" ng-href="#/closeSession"><span class="glyphicon glyphicon-off" style="padding-right:5px;"></span> Salir</a></li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -135,21 +136,20 @@
             </div>
 
             <!-- Student -->
-            <div ng-show="navStudent" ng-controller="IndexCtrl">
-              
+            <div ng-show="navStudent" ng-controller="IndexCtrl">              
               <div class="row hidden-xs">
-                  <div class="col-xs-2">
+                  <div class="col-sm-2">
                       <a ng-href="#/studentHome"><img src="./images/logo.jpg" class="img-responsive logo"></a>
                   </div>
 
-                  <div class="col-xs-10">
+                  <div class="col-sm-10">
                       <ul class="nav nav-pills">
                         <li role="presentation" class="student-home"><a ng-href="#/studentHome">Inicio</a></li>
                         <li role="presentation" class="student-turns"><a ng-href="#/studentListTurns">Turnos pendientes</a></li>
                         <li role="presentation" class="student-ask-turn"><a ng-href="#/studentGetTurn">Solicitar turno</a></li>
                         <li role="presentation" class="student-show-penalties"><a ng-href="#/studentPenaltiesView">Ver penalizaciones</a></li>
                         <li role="presentation" class="student-show-payment"><a ng-href="#/studentPaymentsView">Ver pagos</a></li>
-                        <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession">Salir</a></li>
+                        <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession"><span class="glyphicon glyphicon-off" style="padding-right:5px;"></span> Salir</a></li>
                       </ul>
                   </div>
               </div>
@@ -174,30 +174,34 @@
                         <li role="presentation"><a ng-href="#/studentGetTurn">Solicitar turno</a></li>
                         <li role="presentation"><a ng-href="#/studentPenaltiesView">Ver penalizaciones</a></li>
                         <li role="presentation"><a ng-href="#/studentPaymentsView">Ver pagos</a></li>
-                        <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession">Salir</a></li>
+                        <li role="presentation" style="float:right;"><a class="btn btn-danger close-header" ng-href="#/closeSession"><span class="glyphicon glyphicon-off" style="padding-right:5px;"></span> Salir</a></li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
               </div>
-            </nav>
+            </div>
+          </div>
         </nav>
     </header>
     <!-- Finish of header and nav -->
 
     <div class="container">
-    <div ng-view=""></div>
+      <div class="all-content">
+        <div ng-view=""></div>
+      </div>
     </div>
 
     <!-- Start of footer -->
-    <footer class="container">
+    <footer>
     <div class="navbar navbar-default">
-      <div class="row">
-        <div class="col-xs-12">
-        <center class="margin-top-xs">
-                Developed @2016
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <center style="color:white; margin-top: 10px;" class="margin-top-xs">
+                    Developed @2016
             </center>
-        </div>
-      </div></div>
+          </div>
+      </div>
     </footer>
 </body>
 </html>
