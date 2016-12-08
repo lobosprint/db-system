@@ -32,4 +32,25 @@ angular.module('appFrontApp')
       $log.error($scope.turnQueue.length);
       //$log.error(data);
     });
+    $scope.turnPost={};
+    $scope.thisStudent=[];
+    $scope.postTurns=function(){
+
+      $scope.turnPost.id_student=localStorage.getItem('id_student');
+      $scope.turnPost.id_administrative=$scope.sharedVariable.studentGetTurnJobID;
+      $scope.turnPost.id_position=$scope.sharedVariable.studentGetTurnAdminID;
+      $scope.turnPost.penalty_cost="5";
+      $scope.turnPost.description=$scope.sharedVariable.studentGetTurnDescription;
+      $log.error($scope.turnPost);
+
+
+      $http.post('/app-backend/addTurn',$scope.turnPost).success(function(data){
+        window.location.replace("/#/studentListTurns");
+        $log.error(data);
+
+      }).error(function(data){
+        $log.error(data);
+
+      });
+    };
   }]);

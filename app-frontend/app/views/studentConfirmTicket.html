@@ -15,9 +15,7 @@
         <label class="col-md-6 control-label">{{turnQueue.length*15}} minutes </label>
         <div class="row">
           <div class="col-md-offset-1 col-md-5">
-            <a ng-href="#/studentListTurns">
-              <button type="button" class="btn btn-success col-md-6" style="margin: 10px;"><span class="glyphicon glyphicon-ok"></span> Confirm</button>
-            </a>
+              <button type="button" class="btn btn-success col-md-6" style="margin: 10px;" ng-click="postTurns();"><span class="glyphicon glyphicon-ok" ></span> Confirm</button>
           </div>
           <div class="col-md-offset-1 col-md-5">
             <a ng-href="#/studentGetTurn">
