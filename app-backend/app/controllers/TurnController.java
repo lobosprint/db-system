@@ -72,6 +72,12 @@ public class TurnController extends Controller{
         return daoTurn.deleteComment(id_comment, id_turn);
     }
 
+    public Result deleteTurn(){
+        JsonNode json = request().body().asJson();
+        Integer id_turn = json.findValue("id_turn").asInt();
+        return daoTurn.deleteTurn(id_turn);
+    }
+
     public Result getTurn(Integer id){
         return ok(toJson((Turn) daoTurn.getObjectById(id)));
     }

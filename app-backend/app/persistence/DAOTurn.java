@@ -552,4 +552,31 @@ public class DAOTurn implements DAOGeneric {
         }
         return ok("Turno eliminado satisfactoriamente.");
     }
+
+
+    public Result deleteTurn(Integer id_turn) {
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql = "DELETE FROM turn WHERE id_turn = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_turn);
+            stmt.executeUpdate();
+        } catch (Exception e){
+            return badRequest("Error eliminando el turno, ID del turno incorrecto");
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return ok("Turno eliminado satisfactoriamente.");
+    }
 }

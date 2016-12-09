@@ -55,7 +55,7 @@ POST    /app-backend/addPenalty             controllers.PenaltyController.addPen
 POST    /app-backend/addPayment             controllers.PaymentController.addPayment
 POST    /app-backend/updateComment          controllers.TurnController.updateComment
 POST    /app-backend/deleteComment          controllers.TurnController.deleteComment
-
+POST    /app-backend/deleteTurn             controllers.TurnController.deleteTurn
 
 #To Runs Local
 POST    /login                     controllers.LoginController.getLogin
@@ -69,6 +69,7 @@ POST    /addPenalty                controllers.PenaltyController.addPenalty
 POST    /addPayment                controllers.PaymentController.addPayment
 POST    /updateComment             controllers.TurnController.updateComment
 POST    /deleteComment             controllers.TurnController.deleteComment
+POST    /deleteTurn                controllers.TurnController.deleteTurn
 
 
 
