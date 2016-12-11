@@ -1,16 +1,16 @@
 <div class="panel panel-default" ng-init="job=-1">
   <!-- Default panel contents -->
-  <div class="panel-heading" ng-click="job=-1;" >Turnos All Jobs</div>
+  <div class="panel-heading" ng-click="job=-1;" >Turnos All Jobs{{job}}</div>
   <ul class="nav nav-pills nav-jobs">
-    <li ng-click="job=-1" ng-class="{active:job==-1}"><a >All Jobs</a></li>
-    <li  ng-click="job=1" ng-class="{active:job==1}"><a>Job0</a></li>
-    <li  ng-click="job=2" ng-class="{active:job==2}"><a>Job1</a></li>
-    <li  ng-click="job=3" ng-class="{active:job==3}"><a>Job2</a></li>
+    <li ng-click="job=-1; getAllTurnsByAdmin();" ng-class="{active:job==-1}"><a >All Jobs</a></li>
+    <li  ng-click="job=1; getActiveTurns();" ng-show="secretario" ng-class="{active:job==1}"><a>Secretario</a></li>
+    <li  ng-click="job=2; getActiveTurns();" ng-show="profesor" ng-class="{active:job==2}"><a>Profesor</a></li>
+    <li  ng-click="job=3; getActiveTurns();"  ng-show="consejero" ng-class="{active:job==3}"><a>Consejero</a></li>
   </ul>
 
   <div class="panel-body" >
     <div class="table-responsive" ng-show="job==-1">
-      <table class="table table-bordered" ng-controller=" AdminPendingTurnsCtrl" >
+      <table class="table table-bordered"  >
         <tr>
           <th>RUM ID</th>
           <th>Nombre</th>
@@ -30,7 +30,7 @@
       </table>
     </div>
     <div class="table-responsive" ng-show="job>-1">
-      <table class="table table-bordered" ng-controller=" AdminPendingTurnsCtrl" >
+      <table class="table table-bordered"  >
 
         <tr>
           <th>RUM ID</th>
