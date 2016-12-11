@@ -64,7 +64,7 @@ public class DAOAdministrative implements DAOGeneric{
                             "FROM Administrative NATURAL JOIN Person WHERE id_administrative = ? AND id_position = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
-            stmt.setInt(1, idPosition);
+            stmt.setInt(2, idPosition);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 administrative =    new Administrative(rs.getInt("id_Person"), id, rs.getString("first_name"), rs.getString("middle_name"), rs.getString("last_name"),
@@ -166,5 +166,4 @@ public class DAOAdministrative implements DAOGeneric{
         }
         return admins;
     }
-
 }

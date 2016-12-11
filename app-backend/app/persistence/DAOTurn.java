@@ -233,7 +233,8 @@ public class DAOTurn implements DAOGeneric {
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            String sql =    "SELECT id_turn, id_student, a.id_administrative as id_administrative, penalty_cost, start_time, finish_time, description, attended " +
+            String sql =    "SELECT id_turn, id_student, a.id_administrative as id_administrative, a.id_position as id_position, penalty_cost, start_time, finish_time, " +
+                                    "description, attended " +
                             "FROM turn as a " +
                             "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
                             "INNER JOIN position_type as c ON b.id_position = c.id_position " +
@@ -243,7 +244,8 @@ public class DAOTurn implements DAOGeneric {
             stmt.setInt(2, idJob);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")), (Administrative) daoAdministrative.getObjectById(rs.getInt("id_administrative")) ,
+                turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")),
+                        (Administrative) daoAdministrative.getObjectByIdAndPosition(rs.getInt("id_administrative"), rs.getInt("id_position")) ,
                         rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
                         rs.getBoolean("attended")));
             }
@@ -264,10 +266,6 @@ public class DAOTurn implements DAOGeneric {
                 se.printStackTrace();
             }
         }
-//
-//        for(int i = 0; i < students.size(); i++){
-//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
-//        }
         return turns;
     }
 
