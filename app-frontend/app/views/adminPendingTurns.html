@@ -1,6 +1,6 @@
 <div class="panel panel-default" ng-init="job=-1">
   <!-- Default panel contents -->
-  <div class="panel-heading" ng-click="job=-1;" >Turnos All Jobs{{job}}</div>
+  <div class="panel-heading" ng-click="job=-1;" >Turnos All Jobs</div>
   <ul class="nav nav-pills nav-jobs">
     <li ng-click="job=-1; getAllTurnsByAdmin();" ng-class="{active:job==-1}"><a >All Jobs</a></li>
     <li  ng-click="job=1; getActiveTurns();" ng-show="secretario" ng-class="{active:job==1}"><a>Secretario</a></li>
@@ -35,12 +35,14 @@
         <tr>
           <th>RUM ID</th>
           <th>Nombre</th>
+            <th>Area</th>
           <th>Acción</th>
         </tr>
 
         <tr ng-repeat="currentTurn in turns " ng-show="currentTurn.administrative.position.job.idJob==job" >
           <td >{{currentTurn.student.rumId}}</td>
           <td>{{currentTurn.student.name+ currentTurn.student.middleName+currentTurn.student.lastName}}</td>
+            <td>{{currentTurn.administrative.position.area.name}}</td>
           <td>
             <a ng-href="#/adminCurrentTurn" class="btn btn-success" ng-click="turnVariable.turnID=currentTurn.idTurn"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno</a>
           </td>

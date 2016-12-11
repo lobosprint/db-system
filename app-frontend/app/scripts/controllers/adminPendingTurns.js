@@ -36,21 +36,20 @@ angular.module('appFrontApp')
     $scope.turns=data;
     //$log.error(data);
   });
-$scope.getAllTurnsByAdmin= function(){
-  $http.get('/app-backend/getTurnsByAdmin/'.concat(localStorage.getItem('id_administrative'))).success(function(data){
-    $scope.turns=data;
-    //$log.error(data);
-  });
-};
-  $log.error('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id_administrative')).concat('/').concat($scope.job));
-$scope.getActiveTurns= function(){
-  $log.error("In Function");
-  $log.error('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id_administrative')).concat('/').concat($scope.job));
+  $scope.getAllTurnsByAdmin= function(){
+    $http.get('/app-backend/getTurnsByAdmin/'.concat(localStorage.getItem('id_administrative'))).success(function(data){
+      $scope.turns=data;
+      //$log.error(data);
+    });
+  };
+  $scope.getActiveTurns= function(){
+    $log.error('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id_administrative')).concat('/').concat($scope.job));
 
-  $http.get('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id_administrative')).concat('/').concat($scope.job)).success(function(data){
-    $scope.turns=data;
-    $log.error(data);
-  });
-} ;
+    $http.get('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id_administrative')).concat('/').concat($scope.job)).success(function(data){
+      $scope.turns=data;
+      $log.error(data);
+    });
+    // $scope.$apply();
+  } ;
 
 }]);
