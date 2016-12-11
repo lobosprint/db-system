@@ -166,4 +166,39 @@ public class DAOAdministrative implements DAOGeneric{
         }
         return admins;
     }
+
+    public Object getObjectByIdAndPosAndJob(int id_administrative, int id_position, Integer idJob) {
+        Administrative administrative = null;
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "SELECT id_administrative, id_person, id_position, first_name, middle_name, last_name, date_birth, phone, email, password, rum_id " +
+                            "FROM Administrative NATURAL JOIN Person NATURAL JOIN position_type WHERE id_administrative = ? AND id_position = ? AND id_job = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id_administrative);
+            stmt.setInt(2, id_position);
+            stmt.setInt(3, idJob);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                administrative =    new Administrative(rs.getInt("id_Person"), id_administrative, rs.getString("first_name"), rs.getString("middle_name"), rs.getString("last_name"),
+                        new DateTime(rs.getDate("date_birth")), rs.getString("phone"), rs.getString("email"), rs.getString("password"), rs.getString("rum_id"),
+                        (Position) daoPosition.getObjectById(rs.getInt("id_position")));
+            }
+            rs.close();
+        } catch (Exception e){
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+        return administrative;
+    }
 }

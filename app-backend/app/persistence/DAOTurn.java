@@ -244,10 +244,12 @@ public class DAOTurn implements DAOGeneric {
             stmt.setInt(2, idJob);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")),
-                        (Administrative) daoAdministrative.getObjectByIdAndPosition(rs.getInt("id_administrative"), rs.getInt("id_position")) ,
-                        rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
-                        rs.getBoolean("attended")));
+                Administrative admin = (Administrative) daoAdministrative.getObjectByIdAndPosAndJob(rs.getInt("id_administrative"), rs.getInt("id_position"), idJob);
+                if(admin != null) {
+                    turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")), admin,
+                            rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
+                            rs.getBoolean("attended")));
+                }
             }
             rs.close();
         } catch (Exception e){
