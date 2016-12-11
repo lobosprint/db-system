@@ -11,7 +11,7 @@
             <td><b>Turno con:</b> {{adminName}}</td>
           </tr>
           <tr>
-            <td><b>Número de comentarios:</b> {{turn.CommentList.length}}</td>
+            <td><b>Número de comentarios:</b> {{turnList.length}}</td>
             <td><b>Hora de comienzo:</b>{{startDate}} </td>
             <td><b>Hora de comienzo:</b> {{endDate}}</td>
           </tr>
@@ -33,7 +33,7 @@
             <th>Descripción</th>
           </tr>
           <tr ng-repeat="turn in turnList" >
-            <td>{{turn.idComment}}</td>
+            <td>{{$index+1}}</td>
             <td>{{turn.description}}</td>
           </tr>
         </table>

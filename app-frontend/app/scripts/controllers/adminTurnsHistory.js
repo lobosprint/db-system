@@ -8,12 +8,9 @@
 * Controller of the appFrontApp
 */
 angular.module('appFrontApp')
-.controller('AdminTurnsHistoryCtrl', ['$http','$log','$scope', function ($http, $log,$scope) {
-  this.awesomeThings = [
-    'HTML5 Boilerplate',
-    'AngularJS',
-    'Karma'
-  ];
+.controller('AdminTurnsHistoryCtrl', ['$http','$log','$scope','turnService', function ($http, $log,$scope, turnService) {
+
+  $scope.turnVariable=turnService.adminTurnHistorySharedObject;
   $scope.turns=[];
   $scope.searchedID="";
   $scope.getTurnHistory =function(){
@@ -24,5 +21,6 @@ angular.module('appFrontApp')
 
     });
   }
+  
 
 }]);
