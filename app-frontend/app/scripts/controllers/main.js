@@ -32,13 +32,15 @@ angular.module('appFrontApp')
         }
         if(data.idStudent!= null ){
           $scope.role='student';
+          localStorage.setItem('id_student', data.idStudent);
         }
         if(data.idAdministrative!= null){
           $scope.role='administrative';
+          localStorage.setItem('id_administrative', data.idAdministrative);
         }
         localStorage.setItem('role', $scope.role);
         localStorage.setItem('id', data.idPerson);
-        localStorage.setItem('id_student', data.idStudent);
+
 
         if($scope.role=='administrative'){
            window.location.replace("/#/adminHome");
