@@ -150,6 +150,9 @@ app.factory("turnService", function(){
       expiration_card:0,
       id_penalty:0,
       payment_amount:0
+    },
+    adminTurnHistorySharedObject:{
+      pastTurnId:0
     }
   };
 
