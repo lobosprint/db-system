@@ -1,37 +1,38 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Pending Turns</div>
+  <div class="panel-heading">Pending Turns
+  </div>
   <div class="panel-body">
-    <div class="panel-body">
-      <table class="table table-striped">
-        <tr class="sucess" align="left">
-          <th>Area</th>
-          <th>Job</th>
-          <th>Administrator Name</th>
-          <th>Date & time</th>
-          <th>Actions</th>
-        </tr>
-        <tr align="left" ng-repeat="currentTurn in turns">
-          <td>{{currentTurn.administrative.position.area.name}}</td>
-          <td>{{currentTurn.administrative.position.job.name}}</td>
-          <td>{{currentTurn.administrative.name}} {{turns[0].administrative.middleName}}  {{turns[0].administrative.lastName}}</td>
-          <td>{{currentTurn.startTime.year}}/{{turns[0].startTime.monthOfYear}}/{{turns[0].startTime.dayOfMonth}}-{{turns[0].startTime.hourOfDay}}:{{turns[0].startTime.minuteOfHour}}:{{turns[0].startTime.secondOfMinute}}</td>
-          <td><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+    <table class="table table-striped">
+      <tr class="sucess" align="left">
+        <th>Area</th>
+        <th>Job</th>
+        <th>Administrator Name</th>
+        <th>Date & time</th>
+        <th>Actions</th>
+      </tr>
+      <tr align="left" ng-repeat="currentTurn in turns">
+        <td>{{currentTurn.administrative.position.area.name}}</td>
+        <td>{{currentTurn.administrative.position.job.name}}</td>
+        <td>{{currentTurn.administrative.name}} {{currentTurn.administrative.middleName}}  {{currentTurn.administrative.lastName}}</td>
+        <td>{{currentTurn.startTime.year}}/{{currentTurn.startTime.monthOfYear}}/{{currentTurn.startTime.dayOfMonth}}-{{currentTurn.startTime.hourOfDay}}:{{currentTurn.startTime.minuteOfHour}}:{{currentTurn.startTime.secondOfMinute}}</td>
+        <td><buton type="button" class="btn btn-danger" ng-click='currentID.id_turn=currentTurn.idTurn;testing();'><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+
         </tr>
 
       </table>
     </div>
   </div>
+
 </div>
-
 <script type="text/javascript">
-  if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'student') {
-    document.write('<h1>No tienes permiso para ver el contenido.</h1>');
-    window.stop();
-  }
+if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'student') {
+  document.write('<h1>No tienes permiso para ver el contenido.</h1>');
+  window.stop();
+}
 
-  $('.student-turns').addClass('active');
-  $('.student-ask-turn').removeClass('active');
-  $('.student-show-penalties').removeClass('active');
-  $('.student-show-payment').removeClass('active');
-  $('.student-home').removeClass('active');
+$('.student-turns').addClass('active');
+$('.student-ask-turn').removeClass('active');
+$('.student-show-penalties').removeClass('active');
+$('.student-show-payment').removeClass('active');
+$('.student-home').removeClass('active');
 </script>
