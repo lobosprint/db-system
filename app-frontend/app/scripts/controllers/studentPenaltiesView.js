@@ -16,7 +16,7 @@ angular.module('appFrontApp')
     ];
     $scope.studentPaymentInfoSharedObject=turnService.studentPaymentInfoSharedObject;
     $scope.penalties=[];
-    $http.get('/app-backend/getPenalByStudent/'.concat(localStorage.getItem('id'))).success(function(data){
+    $http.get('/app-backend/getPenalByStudent/'.concat(localStorage.getItem('id_student'))).success(function(data){
       $scope.penalties=data;
       $log.error(data);
     });

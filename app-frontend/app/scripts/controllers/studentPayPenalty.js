@@ -39,12 +39,13 @@ angular.module('appFrontApp')
 
     $scope.paymentVariable.date_payment=$scope.minDate;
     if($scope.paymentVariable.date_payment===""||
-    $scope.paymentVariable.type_card===""||
-    $scope.paymentVariable.numbers_card.length<2147483647||
-    $scope.paymentVariable.expiration_card===""||
-    $scope.paymentVariable.id_penalty===""
+     $scope.paymentVariable.type_card===""
+    // $scope.paymentVariable.numbers_card<2147483647||
+    // $scope.paymentVariable.expiration_card===""||
+    // $scope.paymentVariable.id_penalty===""
   ){
     alert("Por Favor verifique los campos requeridos.");
+    $log.error($scope.paymentVariable);
     }else{
       $scope.paymentVariable.confirmation_number= Math.floor((Math.random() * 100000000) + 1);
 
