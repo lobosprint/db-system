@@ -13,7 +13,7 @@ angular.module('appFrontApp')
 
   $scope.paymentsVariable=turnService.sharedObject;
   $scope.payments=[];
-  $http.get('/app-backend/getPaymentsByStud/'.concat(localStorage.getItem('id'))).success(function(data){
+  $http.get('/app-backend/getPaymentsByStud/'.concat(localStorage.getItem('id_student'))).success(function(data){
     $scope.payments=data;
     //$log.error(data);
   });

@@ -44,7 +44,7 @@ public class DAOPenalty implements DAOGeneric{
                             "FROM penalty as a " +
                             "INNER JOIN turn as b ON a.id_turn = b.id_turn " +
                             "INNER JOIN student as c ON b.id_Student = c.id_Student " +
-                            "WHERE c.id_Student = ?";
+                            "WHERE c.id_Student = ? AND a.id_payment IS NULL";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idStudent);
             ResultSet rs = stmt.executeQuery();
