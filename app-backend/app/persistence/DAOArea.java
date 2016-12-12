@@ -96,9 +96,10 @@ public class DAOArea implements DAOGeneric{
         PreparedStatement stmt = null;
         try {
             String sql =    "SELECT DISTINCT b.id_job as id_job, b.name_job as name_job, b.description as description " +
-                            "FROM position_type as a " +
-                            "INNER JOIN job as b ON a.id_job = b.id_job " +
-                            "WHERE id_area = ?";
+                    "FROM position_type as a " +
+                    "INNER JOIN administrative as c ON a.id_position = c.id_position\n " +
+                    "INNER JOIN job as b ON a.id_job = b.id_job " +
+                    "WHERE id_area = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();

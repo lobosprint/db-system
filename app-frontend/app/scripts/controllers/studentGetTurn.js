@@ -63,6 +63,7 @@ angular.module('appFrontApp')
     // $('#collapseThree').removeClass("in");
     // $('#collapseFour').addClass("in");
     // $('#collapseFour').removeAttr("style");
+        $log.error($scope.sharedVariable)
   };
 
   $scope.openArea=function(){
@@ -96,12 +97,14 @@ angular.module('appFrontApp')
   $scope.sharedVariable.studentGetTurnAdminID="";
 
   $scope.getAdministrative= function(){
+
     $scope.getAdminsByJobRoute="/app-backend/getAdminsByJob/";
       $scope.getAdminsByJobRoute=$scope.getAdminsByJobRoute.concat($scope.sharedVariable.studentGetTurnAreaID);
         $scope.getAdminsByJobRoute=$scope.getAdminsByJobRoute.concat("/");
       $scope.getAdminsByJobRoute=$scope.getAdminsByJobRoute.concat($scope.sharedVariable.studentGetTurnJobID);
     $http.get($scope.getAdminsByJobRoute).success(function(data){
       $scope.admins=data;
+      $log.error($scope.admins);
     });
   };
 }]);
