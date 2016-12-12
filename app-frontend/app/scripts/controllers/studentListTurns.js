@@ -19,13 +19,13 @@ angular.module('appFrontApp')
     $log.error('test');
   });
   $scope.testing= function (){
-    if(confirm("testing")==true){
+    if(confirm("Do you want to delete turn?")==true){
       $http.post('/app-backend/deleteTurn',$scope.currentID).success(function(data){
         $scope.turns=[];
         $log.error('turn Deleted');
         $http.get('/app-backend/getTurnsByStudent/'.concat(localStorage.getItem('id_student'))).success(function(data){
           $scope.turns=data;
-    
+
         });
       });
 
