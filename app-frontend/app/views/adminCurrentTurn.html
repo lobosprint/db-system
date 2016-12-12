@@ -1,97 +1,123 @@
-<div class="" ng-controller="AdminCurrentTurnCtrl as admincurrentturn" ng-init="fetch"  >
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">Acciones Disponibles</div>
-            <div class="panel-body">
+<div class="" ng-init="fetch"  >
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">Acciones Disponibles</div>
+      <div class="panel-body">
 
-                <strong> <span class="glyphicon glyphicon-user icon-admin-turn"></span>
-Estudiante:        </strong>
-                    {{student.student.name
-                    + " "
-                    +student.student.middleName
-                    + " "
-                    +student.student.lastName
-                }}
-                <br>
-                <b><span class="glyphicon glyphicon-time icon-admin-turn"></span>Tiempo corriente de turno: </b>
-                0h 45min 33seg
-                <div>
-                    <b><span class="glyphicon glyphicon-edit icon-admin-turn"></span> Atendido por: </b>
+        <strong> <span class="glyphicon glyphicon-user icon-admin-turn"></span>
+          Estudiante:        </strong>
+          {{student.student.name
+            + " "
+            +student.student.middleName
+            + " "
+            +student.student.lastName
+          }}
+          <br>
+          <b><span class="glyphicon glyphicon-time icon-admin-turn"></span>Tiempo corriente de turno: </b>
+          {{timer.seconds}}
+          <div>
+            <b><span class="glyphicon glyphicon-edit icon-admin-turn"></span> Atendido por: </b>
 
-                        {{student.administrative.name
-                        + " "
-                        +student.administrative.middleName
-                        + " "
-                        +student.administrative.lastName
-                    }}
-                </div>
-            </div>
+            {{student.administrative.name
+              + " "
+              +student.administrative.middleName
+              + " "
+              +student.administrative.lastName
+            }}
+          </div>
         </div>
+      </div>
     </div>
-<!-- <timer interval="1000" autostart="true">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer> -->
+    <!-- <timer interval="1000" autostart="true">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer> -->
 
 
+  </div>
+  <div class="">
+    <div class="row">
+      <div  class="col-xs-3">
+        <button ng-hide="timer.seconds" type="submit" ng-click = "startTime(); activateTimer();"class="btn btn-success  btn-lg">
+          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+          Comenzar
+        </button>
+        <button ng-show="timer.seconds" type="submit" class="btn btn-success  btn-lg">
+          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+          Comenzar
+        </button>
+      </div>
+
+      <div class="col-xs-3">
+        <!-- <button type="submit" class="btn btn-success  btn-lg">
+        <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+        Pausar
+      </button> -->
     </div>
-    <div class="">
-        <div class="row">
-            <div class="col-xs-3">
-                <button type="submit" class="btn btn-success  btn-lg">
-                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                    Comenzar
-                </button>
-            </div>
 
-            <div class="col-xs-3">
-                <button type="submit" class="btn btn-success  btn-lg">
-                    <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
-                    Pausar
-                </button>
-            </div>
-
-            <div class="col-xs-3">
-                <button type="submit" class="btn btn-success  btn-lg">
-                    <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
-                    Terminar
-                </button>
-            </div>
-
-            <div class="col-xs-3">
-                <button type="submit" class="btn btn-danger  btn-lg">
-                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                    No se presentó
-                </button>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">Notas tomadas</div>
-            <div class="panel-body">
-               {{student.comment.description}}
-            </div>
-        </div>
-
-        <form>
-            <div class="form-group">
-                <label for="a1">Añadir nota</label>
-                <input type="textarea" class="form-control" id="a1">
-            </div>
-            <button type="submit" class="btn btn-success ">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                Añadir nota
-            </button>
-        </form>
+    <div class="col-xs-3">
+      <a href='/#/adminPendingTurns'>
+      <button ng-click="finishTime();" type="submit" class="btn btn-success  btn-lg">
+        <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+        Terminar
+      </button>
+    </a>
     </div>
+
+    <div class="col-xs-3">
+      <button type="submit" class="btn btn-danger  btn-lg">
+        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+        No se presentó
+      </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Notas tomadas</div>
+    <div class="panel-body">
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th class="col-lg-3">
+              Nota #
+            </th>
+            <th class="col-lg-9">
+              Comentario(s)
+            </th>
+          </tr>
+          <tr ng-repeat="currentComment in comments">
+            <td>
+              {{$index+1}}
+            </td>
+            <td>
+              {{currentComment.description}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <form>
+    <div class="form-group">
+      <label for="a1">Añadir nota</label>
+      <input type="textarea" ng-model="comment" class="form-control" id="a1">
+    </div>
+    <button type="submit" ng-click="postComment()" class="btn btn-success ">
+      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+      Añadir nota
+    </button>
+  </form>
+</div>
 </div>
 
 <script type="text/javascript">
-  if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'administrative') {
-    document.write('<h1>No tienes permiso para ver el contenido.</h1>');
-    window.stop();
-  }
-  
-  $('.admin-home').removeClass('active');
-  $('.admin-turns').addClass('active');
-  $('.historial').removeClass('active');
+if(!localStorage.getItem('user') || !localStorage.getItem('id') || localStorage.getItem('role') != 'administrative') {
+  document.write('<h1>No tienes permiso para ver el contenido.</h1>');
+  window.stop();
+}
+
+$('.admin-home').removeClass('active');
+$('.admin-turns').addClass('active');
+$('.historial').removeClass('active');
 </script>

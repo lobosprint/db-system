@@ -23,7 +23,7 @@
           <td>{{currentTurn.student.name+ currentTurn.student.middleName+currentTurn.student.lastName}}</td>
           <td> {{currentTurn.administrative.position.job.name}}</td>
           <td>
-            <a ng-href="#/adminCurrentTurn" class="btn btn-success" ng-click="turnVariable.turnID=currentTurn.idTurn"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno</a>
+            <a ng-href="#/adminCurrentTurn" class="btn btn-success" ng-click="turnVariable.turnID=currentTurn.idTurn; $log.error('turnVariable.turnID=currentTurn.idTurn')"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno</a>
           </td>
         </tr>
 
@@ -44,7 +44,7 @@
           <td>{{currentTurn.student.name+ currentTurn.student.middleName+currentTurn.student.lastName}}</td>
             <td>{{currentTurn.administrative.position.area.name}}</td>
           <td>
-            <a ng-href="#/adminCurrentTurn" class="btn btn-success" ng-click="turnVariable.turnID=currentTurn.idTurn"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno</a>
+            <a ng-href="#/adminCurrentTurn" class="btn btn-success" ng-click="turnVariable.turnID=currentTurn.idTurn; $log.error('turnVariable.turnID=currentTurn.idTurn')"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver turno</a>
           </td>
         </tr>
 
