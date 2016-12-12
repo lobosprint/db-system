@@ -158,7 +158,7 @@ public class DAOTurn implements DAOGeneric {
         PreparedStatement stmt = null;
         try {
             String sql =    "SELECT id_turn, id_student, id_administrative, penalty_cost, start_time, finish_time, description, attended FROM turn " +
-                            "WHERE attended = FALSE AND id_administrative = ?";
+                            "WHERE attended = FALSE AND start_time IS NULL AND id_administrative = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idAdministrative);
             ResultSet rs = stmt.executeQuery();
@@ -436,7 +436,7 @@ public class DAOTurn implements DAOGeneric {
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            String sql = "UPDATE turn SET start_time = NULL, finish_time= NULL, attended = FALSE WHERE id_turn = ?";
+            String sql = "UPDATE turn SET start_time = now(), finish_time= NULL, attended = FALSE WHERE id_turn = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, id_turn);
             stmt.executeUpdate();
