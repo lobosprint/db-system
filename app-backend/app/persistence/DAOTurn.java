@@ -39,8 +39,8 @@ public class DAOTurn implements DAOGeneric {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 turn = new Turn(id, (Student) daoStudent.getObjectById(rs.getInt("id_student")), (Administrative) daoAdministrative.getObjectById(rs.getInt("id_administrative")) ,
-                                rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
-                                rs.getBoolean("attended"));
+                        rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
+                        rs.getBoolean("attended"));
             }
             rs.close();
         } catch (Exception e){
@@ -76,9 +76,9 @@ public class DAOTurn implements DAOGeneric {
         PreparedStatement stmt = null;
         try {
             String sql =    "SELECT a.id_turn as id_turn, a.id_student as id_student, a.id_administrative as id_administrative, penalty_cost, start_time, finish_time, description, attended  " +
-                            "FROM turn as a INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
-                            "INNER JOIN position_type as c ON b.id_position = c.id_position " +
-                            "WHERE a.id_administrative = ? AND c.id_area = ? AND c.id_job = ? AND a.attended = FALSE";
+                    "FROM turn as a INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
+                    "INNER JOIN position_type as c ON b.id_position = c.id_position " +
+                    "WHERE a.id_administrative = ? AND c.id_area = ? AND c.id_job = ? AND a.attended = FALSE";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idAdmin);
             stmt.setInt(2, idArea);
@@ -119,7 +119,7 @@ public class DAOTurn implements DAOGeneric {
         PreparedStatement stmt = null;
         try {
             String sql =    "SELECT id_turn, id_student, id_administrative, penalty_cost, start_time, finish_time, description, attended FROM turn " +
-                            "WHERE attended = FALSE AND id_student = ?";
+                    "WHERE attended = FALSE  AND start_time IS NOT NULL AND id_student = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idStudent);
             ResultSet rs = stmt.executeQuery();
@@ -157,8 +157,10 @@ public class DAOTurn implements DAOGeneric {
         Connection conn = DbConnection.getConnection();
         PreparedStatement stmt = null;
         try {
-            String sql =    "SELECT id_turn, id_student, id_administrative, penalty_cost, start_time, finish_time, description, attended FROM turn " +
-                            "WHERE attended = FALSE AND start_time IS NULL AND id_administrative = ?";
+            String sql =    "SELECT id_turn, id_student, a.id_administrative, penalty_cost, start_time, finish_time, description, attended  " +
+                    "FROM turn as a " +
+                    "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
+                    "WHERE attended = FALSE AND start_time IS NULL AND b.id_person = ?;";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idAdministrative);
             ResultSet rs = stmt.executeQuery();
@@ -197,11 +199,11 @@ public class DAOTurn implements DAOGeneric {
         PreparedStatement stmt = null;
         try {
             String sql =    "SELECT DISTINCT d.id_job as id_job, name_job, d.description as description " +
-                            "FROM turn as a " +
-                            "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
-                            "INNER JOIN position_type as c ON b.id_position = c.id_position  " +
-                            "INNER JOIN job as d ON c.id_job = d.id_job " +
-                            "WHERE attended = FALSE AND a.id_administrative = ?";
+                    "FROM turn as a " +
+                    "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
+                    "INNER JOIN position_type as c ON b.id_position = c.id_position  " +
+                    "INNER JOIN job as d ON c.id_job = d.id_job " +
+                    "WHERE attended = FALSE AND a.id_administrative = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idAdministrative);
             ResultSet rs = stmt.executeQuery();
@@ -234,11 +236,11 @@ public class DAOTurn implements DAOGeneric {
         PreparedStatement stmt = null;
         try {
             String sql =    "SELECT id_turn, id_student, a.id_administrative as id_administrative, a.id_position as id_position, penalty_cost, start_time, finish_time, " +
-                                    "description, attended " +
-                            "FROM turn as a " +
-                            "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
-                            "INNER JOIN position_type as c ON b.id_position = c.id_position " +
-                            "WHERE a.id_administrative = ? AND c.id_job = ? AND attended = FALSE";
+                    "description, attended " +
+                    "FROM turn as a " +
+                    "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
+                    "INNER JOIN position_type as c ON b.id_position = c.id_position " +
+                    "WHERE a.id_administrative = ? AND c.id_job = ? AND attended = FALSE";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idAdministrative);
             stmt.setInt(2, idJob);
@@ -348,7 +350,7 @@ public class DAOTurn implements DAOGeneric {
         PreparedStatement stmt = null;
         try {
             String sql =    "INSERT INTO public.turn( id_student, id_administrative, id_position, penalty_cost, description, attended) " +
-                            "VALUES (?, ?, ?, ?, ?, FALSE)";
+                    "VALUES (?, ?, ?, ?, ?, FALSE)";
             stmt = conn.prepareStatement(sql, stmt.RETURN_GENERATED_KEYS);
             stmt.setInt(1, id_student);
             stmt.setInt(2, id_administrative);
@@ -359,7 +361,7 @@ public class DAOTurn implements DAOGeneric {
             ResultSet TurnInsert = stmt.getGeneratedKeys();
             if (TurnInsert.next()) {
                 turn = new Turn(   TurnInsert.getInt(1), (Student) daoStudent.getObjectById(id_student),
-                                        (Administrative) daoAdministrative.getObjectByIdAndPosition(id_administrative, id_position), description, penalty_cost, Boolean.FALSE);
+                        (Administrative) daoAdministrative.getObjectByIdAndPosition(id_administrative, id_position), description, penalty_cost, Boolean.FALSE);
             }
         } catch (Exception e){
             return badRequest("Error agregando el turno, informacion mal ingresada");

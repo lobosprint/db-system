@@ -32,12 +32,12 @@ angular.module('appFrontApp')
   });
   $scope.turnVariable=turnService.sharedObject;
   $scope.turns=[];
-  $http.get('/app-backend/getTurnsByAdmin/'.concat(localStorage.getItem('id_administrative'))).success(function(data){
+  $http.get('/app-backend/getTurnsByAdmin/'.concat(localStorage.getItem('id'))).success(function(data){
     $scope.turns=data;
     //$log.error(data);
   });
   $scope.getAllTurnsByAdmin= function(){
-    $http.get('/app-backend/getTurnsByAdmin/'.concat(localStorage.getItem('id_administrative'))).success(function(data){
+    $http.get('/app-backend/getTurnsByAdmin/'.concat(localStorage.getItem('id'))).success(function(data){
       $scope.turns=data;
       //$log.error(data);
     });
