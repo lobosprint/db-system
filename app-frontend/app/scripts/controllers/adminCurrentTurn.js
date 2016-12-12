@@ -56,31 +56,39 @@ angular.module('appFrontApp')
       });
     });
   };
-$scope.startTime=function(){
-      $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
-      $log.error("id-turn: "+$scope.commentInfo.id_turn);
-      $http.post('/app-backend/addStartTimeTurn',$scope.commentInfo).success(function(data){
-        $log.error('starttimePosted');
-      });
+  $scope.startTime=function(){
+    $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
+    $log.error("id-turn: "+$scope.commentInfo.id_turn);
+    $http.post('/app-backend/addStartTimeTurn',$scope.commentInfo).success(function(data){
+      $log.error('starttimePosted');
+    }).error(function(data){
+      alert(data);
+    });
 
 
 
-};
+  };
 
-$scope.finishTime=function(){
+  $scope.notAttended=function(){
+  $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
+  $log.error(  $scope.commentInfo.id_turn);
+    $http.post('/app-backend/addAttended',$scope.commentInfo).success(function(data){
+      $log.error('attendendTurn');
+
+    })};
+
+    $scope.finishTime=function(){
       $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
       $http.post('/app-backend/addFinishTime',$scope.commentInfo).success(function(data){
         $log.error('finishTimePosted');
       });
-      $http.post('/app-backend/addAttended',$scope.commentInfo).success(function(data){
-        $log.error('attendendTurn');
-      })};
-}]);
+    };
+  }]);
 
-// (function(){
-// 	var app= angular.module('appFrontApp',[]);
+  // (function(){
+  // 	var app= angular.module('appFrontApp',[]);
 
-// 	app.controller('AdminCurrentTurnCtrl',function(){
-// 	var testing='123444';
-// 	});
-// })
+  // 	app.controller('AdminCurrentTurnCtrl',function(){
+  // 	var testing='123444';
+  // 	});
+  // })

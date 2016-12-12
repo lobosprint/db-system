@@ -53,6 +53,13 @@
     </div>
 
     <div class="col-xs-3">
+      <a href='/#/adminPendingTurns'><button ng-hide="timer.seconds" ng-click="notAttended()" type="submit" class="btn btn-danger  btn-lg">
+        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+        No se presentó
+      </button>
+    </a>
+    </div>
+    <div class="col-xs-3">
       <a href='/#/adminPendingTurns'>
       <button ng-click="finishTime();" type="submit" class="btn btn-success  btn-lg">
         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
@@ -61,12 +68,7 @@
     </a>
     </div>
 
-    <div class="col-xs-3">
-      <button type="submit" class="btn btn-danger  btn-lg">
-        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-        No se presentó
-      </button>
-    </div>
+
   </div>
 
   <hr>
