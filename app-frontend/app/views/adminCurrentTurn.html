@@ -80,11 +80,14 @@
       <div class="table-responsive">
         <table class="table table-bordered">
           <tr>
-            <th class="col-lg-3">
+            <th class="col-lg-2">
               Nota #
             </th>
-            <th class="col-lg-9">
+            <th class="col-lg-8">
               Comentario(s)
+            </th>
+            <th class="col-lg-2">
+              Acciones
             </th>
           </tr>
           <tr ng-repeat="currentComment in comments">
@@ -94,6 +97,10 @@
             <td>
               {{currentComment.description}}
             </td>
+            <td>
+              <button type="button" ng-click ="commentInfo.id_turn=currentComment.idTurn; commentInfo.id_comment=currentComment.idComment; commentInfo.description=currentComment.description; editComment()" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+              <button type="button" ng-hide="commentInfo.deletable"ng-click="commentIngo.id_turn= currentComment.idTurn; commentInfo.id_comment=currentComment.idComment; deleteComment();" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            </td>
           </tr>
         </table>
       </div>
@@ -102,12 +109,17 @@
 
   <form>
     <div class="form-group">
-      <label for="a1">Añadir nota</label>
+      <label ng-hide="commentInfo.editable" for="a1">Añadir nota</label>
+            <label ng-show="commentInfo.editable" for="a1">Editar nota</label>
       <input type="textarea" ng-model="comment" class="form-control" id="a1">
     </div>
-    <button type="submit" ng-click="postComment()" class="btn btn-success ">
+    <button ng-hide="commentInfo.editable" type="submit" ng-click="postComment()" class="btn btn-success ">
       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
       Añadir nota
+    </button>
+    <button ng-show="commentInfo.editable" type="submit" ng-click="updateComment()" class="btn btn-success ">
+      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+      Editar nota
     </button>
   </form>
 </div>

@@ -15,7 +15,10 @@ angular.module('appFrontApp')
   $scope.comment="";
   $scope.commentInfo={
     description:"test",
-    id_turn:0
+    id_turn:0,
+    editable:false,
+    id_comment:0,
+    deletable:false
   }
   $scope.timer={
     seconds:0
@@ -26,7 +29,6 @@ angular.module('appFrontApp')
     //$log.error(data);
   });
   $http.get('/app-backend/getAllCommentsByTurn/'.concat($scope.turnVariable.turnID)).success(function(data){
-
     $scope.comments=data;
     $log.error(data);
     //$log.error(data);
@@ -70,8 +72,8 @@ angular.module('appFrontApp')
   };
 
   $scope.notAttended=function(){
-  $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
-  $log.error(  $scope.commentInfo.id_turn);
+    $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
+    $log.error(  $scope.commentInfo.id_turn);
     $http.post('/app-backend/addAttended',$scope.commentInfo).success(function(data){
       $log.error('attendendTurn');
 
@@ -83,6 +85,55 @@ angular.module('appFrontApp')
         $log.error('finishTimePosted');
       });
     };
+
+    $scope.editComment=function(){
+      if(confirm("Quieres editar comentrio?")==true){
+      $scope.commentInfo.editable=true;
+      $scope.comment=$scope.commentInfo.description;
+      $scope.commentInfo.deletable=true;
+    }
+    else{
+
+    }
+$log.error(  $scope.commentInfo.deletable+ "error")
+
+    };
+
+    $scope.updateComment= function(){
+
+      $scope.commentInfo.description=$scope.comment;
+      $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
+      $http.post('/app-backend/updateComment',$scope.commentInfo).success(function(){
+        $http.get('/app-backend/getAllCommentsByTurn/'.concat($scope.turnVariable.turnID)).success(function(data){
+          $scope.comments=data;
+          $scope.comment="";
+          $scope.commentInfo.editable=false;
+          $scope.commentInfo.deletable=false;
+
+          //$log.error(data);
+        });
+      });
+    };
+
+    $scope.deleteComment= function(){
+      if(confirm("Quieres borrar el comentario?")==true){
+      $scope.commentInfo.id_turn=$scope.turnVariable.turnID;
+
+      $http.post('/app-backend/deleteComment',$scope.commentInfo).success(function(){
+        $http.get('/app-backend/getAllCommentsByTurn/'.concat($scope.turnVariable.turnID)).success(function(data){
+          $scope.comments=data;
+          $scope.comment="";
+          $scope.commentInfo.editable=false;
+          //$log.error(data);
+        });
+      });
+    }
+    else {
+      
+    }
+  };
+
+
   }]);
 
   // (function(){
