@@ -26,7 +26,7 @@
     });
 
     $scope.turnList=[];
-
+    $log.error(turnService.adminTurnHistorySharedObject.pastTurnId);
     $http.get('/app-backend/getAllCommentsByTurn/'.concat(turnService.adminTurnHistorySharedObject.pastTurnId)).success(function(data){
       $scope.turnList=data;
     });

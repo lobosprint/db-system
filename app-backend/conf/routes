@@ -13,6 +13,7 @@ GET     /app-backend/getAdminsByJob/:idArea/:idJob              controllers.Turn
 GET     /app-backend/getWaitQueue/:idArea/:idJob/:idAdmin       controllers.TurnController.getAllPeopleInLineByAdmin(idArea: Integer, idJob: Integer, idAdmin: Integer)
 GET     /app-backend/getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
 GET     /app-backend/getTurnsByAdmin/:idAdmin                   controllers.TurnController.getAllTurnsPendingByAdmin(idAdmin: Integer)
+GET     /app-backend/getTurnsByAdminHistory/:idPerson           controllers.TurnController.getAllTurnsPendingByAdminHistory(idPerson: Integer)
 GET     /app-backend/getTurnsByAdminJob/:idAdmin/:idJob         controllers.TurnController.getAllTurnsPendingByAdminJob(idAdmin: Integer, idJob: Integer)
 GET     /app-backend/getJobsofTurnsAdmin/:idAdmin               controllers.TurnController.getAllJobsofTurnsPendingByAdmin(idAdmin: Integer)
 GET     /app-backend/getPenalty                                 controllers.PenaltyController.getPenalty
@@ -42,6 +43,7 @@ GET     /getPaymentsByStud/:idStudent               controllers.PaymentControlle
 GET     /getTurnsByStudent/:idStudent               controllers.TurnController.getAllTurnsPendingByStudent(idStudent: Integer)
 GET     /getAllTurnsByStudentNumber/:idStudent      controllers.TurnController.getAllTurnsByStudentNumber(idStudent: Integer)
 GET     /getAllCommentsByTurn/:idTurn               controllers.TurnController.getAllCommentsByTurn(idTurn: Integer)
+GET     /getTurnsByAdminHistory/:idPerson           controllers.TurnController.getAllTurnsPendingByAdminHistory(idPerson: Integer)
 
 
 #Post Methods

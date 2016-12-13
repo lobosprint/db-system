@@ -14,7 +14,7 @@
           }}
           <br>
           <b><span class="glyphicon glyphicon-time icon-admin-turn"></span>Tiempo corriente de turno: </b>
-          {{timer.seconds}}
+          {{Math.floor(timer.seconds/60)+" minuto(s), "+ timer.seconds%60 + " segundo(s)"}}
           <div>
             <b><span class="glyphicon glyphicon-edit icon-admin-turn"></span> Atendido por: </b>
 
@@ -61,7 +61,7 @@
     </div>
     <div class="col-xs-3">
       <a href='/#/adminPendingTurns'>
-      <button ng-click="finishTime();" type="submit" class="btn btn-success  btn-lg">
+      <button ng-click="finishTime();" ng-hide="timer.seconds==0"type="submit" class="btn btn-success  btn-lg">
         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
         Terminar
       </button>
@@ -109,11 +109,11 @@
 
   <form>
     <div class="form-group">
-      <label ng-hide="commentInfo.editable" for="a1">Añadir nota</label>
-            <label ng-show="commentInfo.editable" for="a1">Editar nota</label>
+      <label ng-hide="commentInfo.editable " for="a1">Añadir nota</label>
+      <label ng-show="commentInfo.editable" for="a1">Editar nota</label>
       <input type="textarea" ng-model="comment" class="form-control" id="a1">
     </div>
-    <button ng-hide="commentInfo.editable" type="submit" ng-click="postComment()" class="btn btn-success ">
+    <button ng-hide="commentInfo.editable || timer.seconds==0" type="submit" ng-click="postComment()" class="btn btn-success ">
       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
       Añadir nota
     </button>

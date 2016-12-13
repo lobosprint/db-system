@@ -13,6 +13,12 @@ angular.module('appFrontApp')
   $scope.turnVariable=turnService.adminTurnHistorySharedObject;
   $scope.turns=[];
   $scope.searchedID="";
+  $http.get("/app-backend/getTurnsByAdminHistory/".concat(localStorage.getItem('id'))).success(function(data){
+  $scope.testString="/app-backend/getAllTurnsByStudentNumber/".concat($scope.searchedID);
+    $scope.turns=data;
+    $log.error(data);
+
+  });
   $scope.getTurnHistory =function(){
     $http.get("/app-backend/getAllTurnsByStudentNumber/".concat($scope.searchedID)).success(function(data){
     $scope.testString="/app-backend/getAllTurnsByStudentNumber/".concat($scope.searchedID);
@@ -21,6 +27,6 @@ angular.module('appFrontApp')
 
     });
   }
-  
+
 
 }]);

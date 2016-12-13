@@ -16,18 +16,25 @@ angular.module('appFrontApp')
   $scope.profesor=false;
   $scope.consejero=false;
 
-  $http.get('/app-backend/getJobsofTurnsAdmin/'.concat(localStorage.getItem('id_administrative'))).success(function(data){
+  $http.get('/app-backend/getJobsofTurnsAdmin/'.concat(localStorage.getItem('id'))).success(function(data){
+    $log.error('/app-backend/getJobsofTurnsAdmin/'.concat(localStorage.getItem('id')));
     $scope.jobs=data;
     for( var i =0; i<$scope.jobs.length; i++){
+      if($scope.consejero==false && $scope.jobs[i].idJob==3){
+        $scope.consejero=true;
+        $log.error('consejero ');
+      }
       if ($scope.secretario==false && $scope.jobs[i].idJob==1){
         $scope.secretario=true;
+          $log.error('secretario ');
       }
       if($scope.profesor==false && $scope.jobs[i].idJob==2){
         $scope.profesor=true;
+          $log.error('profesor ');
       }
-      if($scope.consejero=false && $scope.jobs[i].idJob==3){
-        $scope.consejero=true;
-      }
+
+      $log.error(i);
+      $log.error($scope.jobs);
     }
   });
   $scope.turnVariable=turnService.sharedObject;
@@ -43,9 +50,9 @@ angular.module('appFrontApp')
     });
   };
   $scope.getActiveTurns= function(){
-    $log.error('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id_administrative')).concat('/').concat($scope.job));
+    $log.error('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id')).concat('/').concat($scope.job));
 
-    $http.get('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id_administrative')).concat('/').concat($scope.job)).success(function(data){
+    $http.get('/app-backend/getTurnsByAdminJob/'.concat(localStorage.getItem('id')).concat('/').concat($scope.job)).success(function(data){
       $scope.turns=data;
       $log.error(data);
     });

@@ -17,13 +17,13 @@
             <table class="table table-bordered">
                 <tr ng-show="turns.length">
                     <th>RUM ID</th>
-                    <th>Hora</th>
+                    <th>Fecha</th>
                     <th>Acción</th>
                 </tr>
 
                 <tr ng-repeat="currentTurn in turns">
                     <td>{{currentTurn.student.rumId}}</td>
-                    <td>{{currentTurn.startTime.hourOfDay+":"+currentTurn.startTime.minuteOfHour}}</td>
+                    <td>{{currentTurn.startTime.year+"-"+currentTurn.startTime.monthOfYear+"-"+currentTurn.startTime.dayOfMonth }}</td>
                     <td><a ng-href="#/adminPassTurn">
                             <button type="button" ng-click="turnVariable.pastTurnId=currentTurn.idTurn;$log.error(turnVariable.pastTrunId); "class="btn btn-info"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver</button>
                         </a></td>

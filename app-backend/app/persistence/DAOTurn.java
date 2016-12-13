@@ -193,6 +193,49 @@ public class DAOTurn implements DAOGeneric {
         return turns;
     }
 
+    public Object getAllTurnsPendingByAdminHistory(Integer idPerson){
+        ArrayList<Turn> turns = new ArrayList<Turn>();
+        Connection conn = DbConnection.getConnection();
+        PreparedStatement stmt = null;
+        try {
+            String sql =    "SELECT id_turn, id_student, a.id_administrative, penalty_cost, start_time, " +
+                    "finish_time, description, attended  " +
+                    "FROM turn as a " +
+                    "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
+                    "WHERE attended = TRUE AND b.id_person = ? order by start_time LIMIT 50;";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idPerson);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                turns.add(new Turn(rs.getInt("id_turn"), (Student) daoStudent.getObjectById(rs.getInt("id_student")), (Administrative) daoAdministrative.getObjectById(rs.getInt("id_administrative")) ,
+                        rs.getString("description"), new DateTime(rs.getTimestamp("start_time")), new DateTime(rs.getTimestamp("finish_time")), rs.getInt("penalty_cost"),
+                        rs.getBoolean("attended")));
+            }
+            rs.close();
+        } catch (Exception e){
+            System.out.println("Fallo extrayendo la informacion");
+            e.printStackTrace();
+        }finally {
+            try{
+                if(stmt!=null)
+                    stmt.close();
+            }catch(SQLException se){
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+        }
+//
+//        for(int i = 0; i < students.size(); i++){
+//            System.out.println("Student ID: " + students.get(i).getIdStudent() + "Person ID: " + students.get(i).getIdPerson());
+//        }
+        return turns;
+    }
+
+
     public Object getAllJobsofTurnsPendingByAdmin(Integer idAdministrative){
         ArrayList<Job> jobs = new ArrayList<Job>();
         Connection conn = DbConnection.getConnection();
@@ -203,7 +246,7 @@ public class DAOTurn implements DAOGeneric {
                     "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
                     "INNER JOIN position_type as c ON b.id_position = c.id_position  " +
                     "INNER JOIN job as d ON c.id_job = d.id_job " +
-                    "WHERE attended = FALSE AND a.id_administrative = ?";
+                    "WHERE attended = FALSE AND b.id_person = ? AND a.start_time IS NULL";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idAdministrative);
             ResultSet rs = stmt.executeQuery();
@@ -240,7 +283,7 @@ public class DAOTurn implements DAOGeneric {
                     "FROM turn as a " +
                     "INNER JOIN administrative as b ON a.id_administrative = b.id_administrative " +
                     "INNER JOIN position_type as c ON b.id_position = c.id_position " +
-                    "WHERE a.id_administrative = ? AND c.id_job = ? AND attended = FALSE";
+                    "WHERE b.id_person = ? AND c.id_job = ? AND attended = FALSE AND start_time IS NULL";
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idAdministrative);
             stmt.setInt(2, idJob);
@@ -283,7 +326,7 @@ public class DAOTurn implements DAOGeneric {
                     "FROM turn as t "+
                     "INNER JOIN student as s on t.id_student=s.id_student "+
                     "INNER JOIN person as p on s.id_person=p.id_person " +
-                    "WHERE attended = FALSE AND rum_id = ?  ";
+                    "WHERE attended = TRUE AND rum_id = ?  ";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, Integer.toString(idStudent));
             ResultSet rs = stmt.executeQuery();

@@ -10,6 +10,7 @@
 angular.module('appFrontApp')
 .controller('AdminCurrentTurnCtrl',['$http','$log','$scope','turnService','$timeout' ,function ($http, $log,$scope,turnService, $timeout) {
   //turnVariable is shared between this and adminPendingTurns
+$scope.Math = window.Math;
   $scope.turnVariable=turnService.sharedObject;
   $scope.comments=[];
   $scope.comment="";
@@ -20,9 +21,11 @@ angular.module('appFrontApp')
     id_comment:0,
     deletable:false
   }
+
   $scope.timer={
     seconds:0
   };
+  $log.error($scope.timer.seconds);
   $scope.student=[];
   $http.get('/app-backend/getTurn/'.concat($scope.turnVariable.turnID)).success(function(data){
     $scope.student=data;
@@ -129,7 +132,7 @@ $log.error(  $scope.commentInfo.deletable+ "error")
       });
     }
     else {
-      
+
     }
   };
 
